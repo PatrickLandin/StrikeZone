@@ -77,11 +77,9 @@
 		ECBA07991A73106B00B580F5 /* StrikeZone */ = {
 			isa = PBXGroup;
 			children = (
-				ECBA079C1A73106B00B580F5 /* AppDelegate.swift */,
-				ECBA079E1A73106B00B580F5 /* ViewController.swift */,
-				ECBA07A01A73106B00B580F5 /* Main.storyboard */,
-				ECBA07A31A73106B00B580F5 /* Images.xcassets */,
-				ECBA07A51A73106B00B580F5 /* LaunchScreen.xib */,
+				ECBA07BE1A73172200B580F5 /* Controller */,
+				ECBA07BC1A73171400B580F5 /* Model */,
+				ECBA07BD1A73171A00B580F5 /* View */,
 				ECBA079A1A73106B00B580F5 /* Supporting Files */,
 			);
 			path = StrikeZone;
@@ -110,6 +108,32 @@
 				ECBA07B11A73106C00B580F5 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ECBA07BC1A73171400B580F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ECBA079C1A73106B00B580F5 /* AppDelegate.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		ECBA07BD1A73171A00B580F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ECBA07A01A73106B00B580F5 /* Main.storyboard */,
+				ECBA07A51A73106B00B580F5 /* LaunchScreen.xib */,
+				ECBA07A31A73106B00B580F5 /* Images.xcassets */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		ECBA07BE1A73172200B580F5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ECBA079E1A73106B00B580F5 /* ViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
