@@ -16,6 +16,9 @@
 		ECC5AC001A76AD9D006F9887 /* StrikeZoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5ABFF1A76AD9D006F9887 /* StrikeZoneViewController.swift */; };
 		ECC5AC021A76ADD5006F9887 /* PitcherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5AC011A76ADD5006F9887 /* PitcherDetailViewController.swift */; };
 		ECC5AC041A76ADF4006F9887 /* PitcherMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5AC031A76ADF4006F9887 /* PitcherMenuViewController.swift */; };
+		ECC5AC081A76B6FE006F9887 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECC5AC071A76B6FE006F9887 /* MenuCell.xib */; };
+		ECC5AC0A1A76BCC0006F9887 /* Pitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5AC091A76BCC0006F9887 /* Pitcher.swift */; };
+		ECC5AC0C1A76BD5F006F9887 /* HeatMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5AC0B1A76BD5F006F9887 /* HeatMap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,9 @@
 		ECC5ABFF1A76AD9D006F9887 /* StrikeZoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrikeZoneViewController.swift; sourceTree = "<group>"; };
 		ECC5AC011A76ADD5006F9887 /* PitcherDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitcherDetailViewController.swift; sourceTree = "<group>"; };
 		ECC5AC031A76ADF4006F9887 /* PitcherMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitcherMenuViewController.swift; sourceTree = "<group>"; };
+		ECC5AC071A76B6FE006F9887 /* MenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuCell.xib; path = ../MenuCell.xib; sourceTree = "<group>"; };
+		ECC5AC091A76BCC0006F9887 /* Pitcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pitcher.swift; sourceTree = "<group>"; };
+		ECC5AC0B1A76BD5F006F9887 /* HeatMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatMap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				ECBA079C1A73106B00B580F5 /* AppDelegate.swift */,
+				ECC5AC091A76BCC0006F9887 /* Pitcher.swift */,
+				ECC5AC0B1A76BD5F006F9887 /* HeatMap.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -129,6 +137,7 @@
 			children = (
 				ECBA07A01A73106B00B580F5 /* Main.storyboard */,
 				640389A11A76B59800060349 /* pitcherDetailView.xib */,
+				ECC5AC071A76B6FE006F9887 /* MenuCell.xib */,
 				ECBA07A51A73106B00B580F5 /* LaunchScreen.xib */,
 				ECBA07A31A73106B00B580F5 /* Images.xcassets */,
 			);
@@ -227,6 +236,7 @@
 			files = (
 				ECBA07A21A73106B00B580F5 /* Main.storyboard in Resources */,
 				ECBA07A71A73106B00B580F5 /* LaunchScreen.xib in Resources */,
+				ECC5AC081A76B6FE006F9887 /* MenuCell.xib in Resources */,
 				ECBA07A41A73106B00B580F5 /* Images.xcassets in Resources */,
 				640389A21A76B59800060349 /* pitcherDetailView.xib in Resources */,
 			);
@@ -248,8 +258,10 @@
 			files = (
 				ECC5AC001A76AD9D006F9887 /* StrikeZoneViewController.swift in Sources */,
 				ECC5AC041A76ADF4006F9887 /* PitcherMenuViewController.swift in Sources */,
+				ECC5AC0C1A76BD5F006F9887 /* HeatMap.swift in Sources */,
 				ECBA079D1A73106B00B580F5 /* AppDelegate.swift in Sources */,
 				ECC5AC021A76ADD5006F9887 /* PitcherDetailViewController.swift in Sources */,
+				ECC5AC0A1A76BCC0006F9887 /* Pitcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
