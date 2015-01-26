@@ -14,6 +14,6 @@ class Pitcher {
   var heatMaps = [HeatMap]()
   
   init (name : String) {
-    self.name = ""
+    self.name = name
   }
 }

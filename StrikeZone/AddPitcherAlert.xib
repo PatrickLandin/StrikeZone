@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PitcherMenuViewController" customModule="StrikeZone" customModuleProvider="target">
             <connections>
-                <outlet property="newPitcherText" destination="IG4-Nl-SOk" id="XHc-Dw-eLj"/>
+                <outlet property="newPitcherText" destination="IG4-Nl-SOk" id="lxB-UP-a2x"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

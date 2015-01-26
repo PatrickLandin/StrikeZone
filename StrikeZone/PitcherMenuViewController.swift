@@ -13,8 +13,8 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var newPitcherText: UITextField!
   
-
   var pitchers = [Pitcher]()
+  var alertView : UIView?
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +37,9 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       
       self.tableView.delegate = self
       self.tableView.dataSource = self
-      self.tableView.estimatedRowHeight = 100
-      self.tableView.rowHeight = UITableViewAutomaticDimension
       self.tableView.registerNib(UINib(nibName: "MenuCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CELL")
+//      self.tableView.estimatedRowHeight = 100
+//      self.tableView.rowHeight = UITableViewAutomaticDimension
 
         // Do any additional setup after loading the view.
     }
@@ -48,31 +48,35 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   @IBAction func addButtonPressed(sender: AnyObject) {
     println("Add stuff")
     
-    let alertView = NSBundle.mainBundle().loadNibNamed("AddPitcherAlert", owner: self, options: nil).first as UIView
-    alertView.center = self.view.center
-    alertView.alpha = 0
-    alertView.transform = CGAffineTransformMakeScale(0.4, 0.4)
-    self.view.addSubview(alertView)
+    self.alertView = NSBundle.mainBundle().loadNibNamed("AddPitcherAlert", owner: self, options: nil).first as? UIView
+    self.alertView!.center = self.view.center
+    self.alertView!.alpha = 0
+    self.alertView!.transform = CGAffineTransformMakeScale(0.4, 0.4)
+    self.view.addSubview(alertView!)
     
     UIView.animateWithDuration(0.4, delay: 0.5, options: nil, animations: { () -> Void in
-      alertView.alpha = 1
-      alertView.transform =  CGAffineTransformMakeScale(1.0, 1.0)
+      self.alertView!.alpha = 1
+      self.alertView!.transform =  CGAffineTransformMakeScale(1.0, 1.0)
       }) { (finished) -> Void in
         
     }
-    
   }
   
   @IBAction func addPitcherPressed(sender: AnyObject) {
+    println(newPitcherText.text)
     
-//    var pitcherText = String(newPitcherText.text)
-//    pitchers.append(pitcherText)
+    var newPitcher = Pitcher(name: newPitcherText.text)
+    self.pitchers.append(newPitcher)
+    self.tableView.reloadData()
+    self.alertView?.removeFromSuperview()
     
   }
   
   
   @IBAction func deleteButtonPressed(sender: AnyObject) {
     println("Delete stuff")
+    
+    
     
   }
   
@@ -85,9 +89,20 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     let cell = self.tableView.dequeueReusableCellWithIdentifier("CELL", forIndexPath: indexPath) as MenuTableViewCell
     
     var pitcherToDisplay = self.pitchers[indexPath.row]
-    cell.nameLabel.text = pitcherToDisplay.name
+    cell.pitcherNameLabel.text = pitcherToDisplay.name
     
     return cell
+  }
+  
+  func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    return true
+  }
+  
+  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    if (editingStyle == UITableViewCellEditingStyle.Delete) {
+      self.pitchers.removeAtIndex(indexPath.row)
+      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    }
   }
 
 }
