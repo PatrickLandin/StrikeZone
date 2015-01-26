@@ -10,6 +10,8 @@ import UIKit
 
 class HeatMapCell: UICollectionViewCell {
 
+  @IBOutlet var imageView: UIImageView!
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

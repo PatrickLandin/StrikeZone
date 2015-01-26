@@ -16,6 +16,12 @@ class PitcherDetailViewController: UIViewController, UICollectionViewDataSource,
   
   @IBOutlet var heatMapCollectionView: UICollectionView!
   
+  @IBOutlet var collectionViewHeaderView: UIView!
+  
+  var addButton : UIBarButtonItem!
+  var deleteButton : UIBarButtonItem!
+  var ContinueButton: UIBarButtonItem!
+  
   var currentPitcher : Pitcher?
   
   //MARK:DUMMY PITCHER
@@ -33,8 +39,22 @@ class PitcherDetailViewController: UIViewController, UICollectionViewDataSource,
       
       dummyPitcher.name = "Clayton Kershaw"
       self.pitchersNameLabel.text = dummyPitcher.name
+      
+      
+      let cellGradiantMaskLayer = CAGradientLayer()
+      cellGradiantMaskLayer.colors = [UIColor.lightGrayColor().CGColor, UIColor.clearColor().CGColor]
+      cellGradiantMaskLayer.locations = [-3.0]
+      cellGradiantMaskLayer.frame = collectionViewHeaderView.bounds
+      
+      self.collectionViewHeaderView.layer.insertSublayer(cellGradiantMaskLayer, atIndex: 1)
+      
+      
+      self.addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addButtonPressed")
+      self.deleteButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "deleteButtonPressed")
+      self.ContinueButton = UIBarButtonItem(title: "Continue", style: .Plain, target: self, action: "continueButtonPressed")
 
-        // Do any additional setup after loading the view.
+//      self.navigationItem.rightBarButtonItem = self.shareButton
+
     }
 
   
@@ -51,18 +71,20 @@ class PitcherDetailViewController: UIViewController, UICollectionViewDataSource,
   
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     //return currentPitcher!.heatMaps.count
-    return 5
+    return 15
   }
   
   
   //MARK: CollectionView Delegate
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     
-    //create an action sheet to show options including:
-    //Continue selected heatmap
-    //delete heat map
+    self.toolbarItems?.append(self.addButton)
+    self.toolbarItems?.append(self.deleteButton)
+    self.toolbarItems?.append(self.ContinueButton)
     
   }
+  
+  
   
   //MARK: Add Button Pressed
   @IBAction func addHeatMapButtonPushed(sender: AnyObject) {
