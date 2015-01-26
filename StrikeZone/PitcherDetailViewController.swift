@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PitcherDetailViewController: UIViewController {
+class PitcherDetailViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
   
   @IBOutlet var pitchersNameLabel: UILabel!
@@ -16,20 +16,61 @@ class PitcherDetailViewController: UIViewController {
   
   @IBOutlet var heatMapCollectionView: UICollectionView!
   
-  @IBOutlet var addHeatMapButton: UIBarButtonItem!
-  @IBOutlet var deleteHeatMapButton: UIBarButtonItem!
+  var currentPitcher : Pitcher?
   
+  //MARK:DUMMY PITCHER
+  let dummyPitcher = Pitcher()
   
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+      self.heatMapCollectionView.dataSource = self
+      self.heatMapCollectionView.delegate = self
+      
+      self.heatMapCollectionView.registerNib(UINib(nibName: "HeatMapCell", bundle: nil), forCellWithReuseIdentifier: "HEAT_MAP_CELL")
+      
+      self.heatMapCollectionView.backgroundColor = UIColor.whiteColor()
+      
+      dummyPitcher.name = "Clayton Kershaw"
+      self.pitchersNameLabel.text = dummyPitcher.name
 
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+  
+  
+  //MARK: CollectionView DataSource
+  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("HEAT_MAP_CELL", forIndexPath: indexPath) as HeatMapCell
     
-
+    cell.backgroundColor = UIColor.darkGrayColor()
+    
+    return cell
+    
+  }
+  
+  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    //return currentPitcher!.heatMaps.count
+    return 5
+  }
+  
+  
+  //MARK: CollectionView Delegate
+  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    
+    //create an action sheet to show options including:
+    //Continue selected heatmap
+    //delete heat map
+    
+  }
+  
+  //MARK: Add Button Pressed
+  @IBAction func addHeatMapButtonPushed(sender: AnyObject) {
+    
+    var newHeatMap = HeatMap()
+    currentPitcher?.heatMaps.append(newHeatMap)
+    
+    //Transition Back to Main Heat Map View with blank heat map
+    
+  }
 }
