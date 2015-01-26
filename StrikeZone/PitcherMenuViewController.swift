@@ -26,21 +26,21 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
         // Dispose of any resources that can be recreated.
     }
   @IBAction func addButtonPressed(sender: AnyObject) {
-    
+    println("stuff")
   }
   
   
   @IBAction func deleteButtonPressed(sender: AnyObject) {
-    
+    println("stuff")
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    return 10
+    let cell = tableView.dequeueReusableCellWithIdentifier("CELL", forIndexPath: indexPath) as UITableViewCell
+    return cell
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    let cell = tableView.dequeueReusableCellWithIdentifier("CELL", forIndexPath: indexPath) as UITableViewCell
-    return cell
+   return 10
   }
     
 
