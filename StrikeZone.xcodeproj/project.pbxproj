@@ -18,6 +18,8 @@
 		ECC5AC081A76B6FE006F9887 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECC5AC071A76B6FE006F9887 /* MenuCell.xib */; };
 		ECC5AC0A1A76BCC0006F9887 /* Pitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5AC091A76BCC0006F9887 /* Pitcher.swift */; };
 		ECC5AC0C1A76BD5F006F9887 /* HeatMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5AC0B1A76BD5F006F9887 /* HeatMap.swift */; };
+		ECC5AC0E1A76CCFF006F9887 /* AddPitcherAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECC5AC0D1A76CCFF006F9887 /* AddPitcherAlert.xib */; };
+		ECC5AC121A76D461006F9887 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5AC111A76D461006F9887 /* MenuTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		ECC5AC071A76B6FE006F9887 /* MenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuCell.xib; path = ../MenuCell.xib; sourceTree = "<group>"; };
 		ECC5AC091A76BCC0006F9887 /* Pitcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pitcher.swift; sourceTree = "<group>"; };
 		ECC5AC0B1A76BD5F006F9887 /* HeatMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatMap.swift; sourceTree = "<group>"; };
+		ECC5AC0D1A76CCFF006F9887 /* AddPitcherAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddPitcherAlert.xib; sourceTree = "<group>"; };
+		ECC5AC111A76D461006F9887 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuTableViewCell.swift; path = ../MenuTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +138,9 @@
 			isa = PBXGroup;
 			children = (
 				ECBA07A01A73106B00B580F5 /* Main.storyboard */,
+				ECC5AC0D1A76CCFF006F9887 /* AddPitcherAlert.xib */,
 				ECC5AC071A76B6FE006F9887 /* MenuCell.xib */,
+				ECC5AC111A76D461006F9887 /* MenuTableViewCell.swift */,
 				ECBA07A51A73106B00B580F5 /* LaunchScreen.xib */,
 				ECBA07A31A73106B00B580F5 /* Images.xcassets */,
 			);
@@ -235,6 +241,7 @@
 				ECBA07A71A73106B00B580F5 /* LaunchScreen.xib in Resources */,
 				ECC5AC081A76B6FE006F9887 /* MenuCell.xib in Resources */,
 				ECBA07A41A73106B00B580F5 /* Images.xcassets in Resources */,
+				ECC5AC0E1A76CCFF006F9887 /* AddPitcherAlert.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +261,7 @@
 			files = (
 				ECC5AC001A76AD9D006F9887 /* StrikeZoneViewController.swift in Sources */,
 				ECC5AC041A76ADF4006F9887 /* PitcherMenuViewController.swift in Sources */,
+				ECC5AC121A76D461006F9887 /* MenuTableViewCell.swift in Sources */,
 				ECC5AC0C1A76BD5F006F9887 /* HeatMap.swift in Sources */,
 				ECBA079D1A73106B00B580F5 /* AppDelegate.swift in Sources */,
 				ECC5AC021A76ADD5006F9887 /* PitcherDetailViewController.swift in Sources */,
