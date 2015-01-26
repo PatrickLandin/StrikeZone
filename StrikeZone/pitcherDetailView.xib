@@ -83,6 +83,13 @@
             </view>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <size key="freeformSize" width="600" height="600"/>
+            <connections>
+                <outlet property="addHeatMapButton" destination="0y0-c1-EDv" id="VbK-wM-qLV"/>
+                <outlet property="deleteHeatMapButton" destination="MVH-Y5-oV2" id="fQd-Yq-WLN"/>
+                <outlet property="heatMapCollectionView" destination="heY-p9-qW4" id="SkS-gw-l9t"/>
+                <outlet property="pitchCountLabel" destination="X42-AJ-GaG" id="V1l-uy-TBp"/>
+                <outlet property="pitchersNameLabel" destination="d5c-ku-7CI" id="20c-9l-Jwn"/>
+            </connections>
             <point key="canvasLocation" x="499" y="491"/>
         </viewController>
     </objects>

@@ -10,6 +10,16 @@ import UIKit
 
 class PitcherDetailViewController: UIViewController {
 
+  
+  @IBOutlet var pitchersNameLabel: UILabel!
+  @IBOutlet var pitchCountLabel: UILabel!
+  
+  @IBOutlet var heatMapCollectionView: UICollectionView!
+  
+  @IBOutlet var addHeatMapButton: UIBarButtonItem!
+  @IBOutlet var deleteHeatMapButton: UIBarButtonItem!
+  
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 
