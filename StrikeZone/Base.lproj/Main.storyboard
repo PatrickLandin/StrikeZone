@@ -4,10 +4,46 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Pitcher Detail View Controller-->
+        <scene sceneID="Lr6-K7-8vw">
+            <objects>
+                <viewController id="q2c-q5-tkV" customClass="PitcherDetailViewController" customModule="StrikeZone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fel-vv-9Dq"/>
+                        <viewControllerLayoutGuide type="bottom" id="7Qc-8A-88g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NoY-5j-CNR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fXO-7a-wKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="710" y="387"/>
+        </scene>
+        <!--Pitcher Menu View Controller-->
+        <scene sceneID="tkG-pD-GSo">
+            <objects>
+                <viewController id="dxF-mX-oHf" customClass="PitcherMenuViewController" customModule="StrikeZone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MLX-B6-wca"/>
+                        <viewControllerLayoutGuide type="bottom" id="XMP-Yo-lwn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nFl-fa-lGQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CLv-Vs-RMs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-635" y="387"/>
+        </scene>
+        <!--Strike Zone View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="StrikeZone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="StrikeZoneViewController" customModule="StrikeZone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -20,6 +56,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="42" y="387"/>
         </scene>
     </scenes>
 </document>
