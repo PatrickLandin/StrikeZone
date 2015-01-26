@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		ECBA079D1A73106B00B580F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA079C1A73106B00B580F5 /* AppDelegate.swift */; };
-		ECBA079F1A73106B00B580F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA079E1A73106B00B580F5 /* ViewController.swift */; };
 		ECBA07A21A73106B00B580F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECBA07A01A73106B00B580F5 /* Main.storyboard */; };
 		ECBA07A41A73106B00B580F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECBA07A31A73106B00B580F5 /* Images.xcassets */; };
 		ECBA07A71A73106B00B580F5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECBA07A51A73106B00B580F5 /* LaunchScreen.xib */; };
 		ECBA07B31A73106C00B580F5 /* StrikeZoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA07B21A73106C00B580F5 /* StrikeZoneTests.swift */; };
+		ECC5AC001A76AD9D006F9887 /* StrikeZoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5ABFF1A76AD9D006F9887 /* StrikeZoneViewController.swift */; };
+		ECC5AC021A76ADD5006F9887 /* PitcherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5AC011A76ADD5006F9887 /* PitcherDetailViewController.swift */; };
+		ECC5AC041A76ADF4006F9887 /* PitcherMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5AC031A76ADF4006F9887 /* PitcherMenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +31,15 @@
 		ECBA07971A73106B00B580F5 /* StrikeZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StrikeZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECBA079B1A73106B00B580F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECBA079C1A73106B00B580F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ECBA079E1A73106B00B580F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ECBA07A11A73106B00B580F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ECBA07A31A73106B00B580F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		ECBA07A61A73106B00B580F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		ECBA07AC1A73106C00B580F5 /* StrikeZoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StrikeZoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECBA07B11A73106C00B580F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECBA07B21A73106C00B580F5 /* StrikeZoneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrikeZoneTests.swift; sourceTree = "<group>"; };
+		ECC5ABFF1A76AD9D006F9887 /* StrikeZoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrikeZoneViewController.swift; sourceTree = "<group>"; };
+		ECC5AC011A76ADD5006F9887 /* PitcherDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitcherDetailViewController.swift; sourceTree = "<group>"; };
+		ECC5AC031A76ADF4006F9887 /* PitcherMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitcherMenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +135,9 @@
 		ECBA07BE1A73172200B580F5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				ECBA079E1A73106B00B580F5 /* ViewController.swift */,
+				ECC5ABFF1A76AD9D006F9887 /* StrikeZoneViewController.swift */,
+				ECC5AC031A76ADF4006F9887 /* PitcherMenuViewController.swift */,
+				ECC5AC011A76ADD5006F9887 /* PitcherDetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -236,8 +242,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECBA079F1A73106B00B580F5 /* ViewController.swift in Sources */,
+				ECC5AC001A76AD9D006F9887 /* StrikeZoneViewController.swift in Sources */,
+				ECC5AC041A76ADF4006F9887 /* PitcherMenuViewController.swift in Sources */,
 				ECBA079D1A73106B00B580F5 /* AppDelegate.swift in Sources */,
+				ECC5AC021A76ADD5006F9887 /* PitcherDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
