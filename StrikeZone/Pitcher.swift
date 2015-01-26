@@ -11,10 +11,10 @@ import UIKit
 
 class Pitcher {
   var name : String
+  var image : UIImage?
   var heatMaps = [HeatMap]()
   
   init () {
     self.name = ""
-    
   }
 }

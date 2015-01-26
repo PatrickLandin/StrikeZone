@@ -11,6 +11,7 @@ import UIKit
 class HeatMap {
   var pitchCount : Int
   var date : String
+  var heatMapImage : UIImage?
   
   init () {
     self.pitchCount = 0
