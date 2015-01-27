@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Pitcher Detail View Controller-->
@@ -120,28 +121,28 @@
                                 <rect key="frame" x="250" y="147" width="99" height="102"/>
                                 <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="8" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gGx-Tn-KhF">
-                                <rect key="frame" x="150" y="147" width="100.5" height="102"/>
+                            <view tag="8" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gGx-Tn-KhF">
+                                <rect key="frame" x="150" y="147" width="101" height="102"/>
                                 <color key="backgroundColor" red="0.4549019608" green="0.85490196080000003" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view tag="11" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iPF-QX-cZ8">
-                                <rect key="frame" x="150" y="249" width="100.5" height="102"/>
+                            <view tag="11" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iPF-QX-cZ8">
+                                <rect key="frame" x="150" y="249" width="101" height="102"/>
                                 <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="14" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aZI-Vg-eKv">
-                                <rect key="frame" x="150" y="351" width="100.5" height="102"/>
+                            <view tag="14" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aZI-Vg-eKv">
+                                <rect key="frame" x="150" y="351" width="101" height="102"/>
                                 <color key="backgroundColor" red="0.4549019608" green="0.85490196080000003" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKN-yl-zRC">
-                                <rect key="frame" x="349" y="147" width="100.5" height="102"/>
+                                <rect key="frame" x="349" y="147" width="101" height="102"/>
                                 <color key="backgroundColor" red="0.4549019608" green="0.85490196080000003" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view tag="13" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QhR-EW-aGR">
-                                <rect key="frame" x="349" y="249" width="100.5" height="102"/>
+                                <rect key="frame" x="349" y="249" width="101" height="102"/>
                                 <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view tag="16" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mn2-TL-3IP">
-                                <rect key="frame" x="349" y="351" width="100.5" height="102"/>
+                                <rect key="frame" x="349" y="351" width="101" height="102"/>
                                 <color key="backgroundColor" red="0.4549019608" green="0.85490196080000003" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view tag="12" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="10r-1c-Y6n">
@@ -181,8 +182,8 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="epa-GR-gPh"/>
                                         <exclude reference="UsY-B4-X6k"/>
+                                        <exclude reference="epa-GR-gPh"/>
                                     </mask>
                                 </variation>
                             </view>
