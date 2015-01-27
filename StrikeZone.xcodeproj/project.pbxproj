@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		324FB25F1A77009F0034A59A /* loveGolve.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 324FB25E1A77009F0034A59A /* loveGolve.jpg */; };
+		324FB2631A77059B0034A59A /* pixelGlove.png in Resources */ = {isa = PBXBuildFile; fileRef = 324FB2621A77059B0034A59A /* pixelGlove.png */; };
 		ECBA079D1A73106B00B580F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA079C1A73106B00B580F5 /* AppDelegate.swift */; };
 		ECBA07A21A73106B00B580F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECBA07A01A73106B00B580F5 /* Main.storyboard */; };
 		ECBA07A41A73106B00B580F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECBA07A31A73106B00B580F5 /* Images.xcassets */; };
@@ -33,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		324FB25E1A77009F0034A59A /* loveGolve.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loveGolve.jpg; sourceTree = "<group>"; };
+		324FB2621A77059B0034A59A /* pixelGlove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pixelGlove.png; sourceTree = "<group>"; };
 		ECBA07971A73106B00B580F5 /* StrikeZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StrikeZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECBA079B1A73106B00B580F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECBA079C1A73106B00B580F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 		ECBA079A1A73106B00B580F5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				324FB25E1A77009F0034A59A /* loveGolve.jpg */,
 				ECBA079B1A73106B00B580F5 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -153,6 +158,7 @@
 				ECC5ABFF1A76AD9D006F9887 /* StrikeZoneViewController.swift */,
 				ECC5AC031A76ADF4006F9887 /* PitcherMenuViewController.swift */,
 				ECC5AC011A76ADD5006F9887 /* PitcherDetailViewController.swift */,
+				324FB2621A77059B0034A59A /* pixelGlove.png */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
