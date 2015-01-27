@@ -25,7 +25,7 @@ class PitcherDetailViewController: UIViewController, UICollectionViewDataSource,
   var currentPitcher : Pitcher?
   
   //MARK:DUMMY PITCHER
-  let dummyPitcher = Pitcher()
+  //let dummyPitcher = Pitcher()
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +37,8 @@ class PitcherDetailViewController: UIViewController, UICollectionViewDataSource,
       
       self.heatMapCollectionView.backgroundColor = UIColor.whiteColor()
       
-      dummyPitcher.name = "Clayton Kershaw"
-      self.pitchersNameLabel.text = dummyPitcher.name
+//      dummyPitcher.name = "Clayton Kershaw"
+//      self.pitchersNameLabel.text = dummyPitcher.name
       
       
       let cellGradiantMaskLayer = CAGradientLayer()
