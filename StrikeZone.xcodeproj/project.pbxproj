@@ -12,6 +12,7 @@
 		640389A21A76B59800060349 /* pitcherDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 640389A11A76B59800060349 /* pitcherDetailView.xib */; };
 		64232A8E1A76D16600057E18 /* HeatMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64232A8C1A76D16600057E18 /* HeatMapCell.swift */; };
 		64232A8F1A76D16600057E18 /* HeatMapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64232A8D1A76D16600057E18 /* HeatMapCell.xib */; };
+		6447D4D21A7998D6007C3FCA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6447D4D11A7998D6007C3FCA /* Main.storyboard */; };
 		649B04DA1A78022900A8FD99 /* pitchDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649B04D91A78022900A8FD99 /* pitchDetailCell.xib */; };
 		649B04DC1A78032D00A8FD99 /* PitchDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B04DB1A78032D00A8FD99 /* PitchDetailTableViewCell.swift */; };
 		649B04E01A78542E00A8FD99 /* heatMapCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649B04DF1A78542E00A8FD99 /* heatMapCollectionView.xib */; };
@@ -49,6 +50,7 @@
 		640389A11A76B59800060349 /* pitcherDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = pitcherDetailView.xib; sourceTree = "<group>"; };
 		64232A8C1A76D16600057E18 /* HeatMapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatMapCell.swift; sourceTree = "<group>"; };
 		64232A8D1A76D16600057E18 /* HeatMapCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeatMapCell.xib; sourceTree = "<group>"; };
+		6447D4D11A7998D6007C3FCA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 		649B04D91A78022900A8FD99 /* pitchDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = pitchDetailCell.xib; sourceTree = "<group>"; };
 		649B04DB1A78032D00A8FD99 /* PitchDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchDetailTableViewCell.swift; sourceTree = "<group>"; };
 		649B04DF1A78542E00A8FD99 /* heatMapCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = heatMapCollectionView.xib; path = ../heatMapCollectionView.xib; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		ECBA07BD1A73171A00B580F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6447D4D11A7998D6007C3FCA /* Main.storyboard */,
 				649B04DF1A78542E00A8FD99 /* heatMapCollectionView.xib */,
 				640389A11A76B59800060349 /* pitcherDetailView.xib */,
 				649B04D91A78022900A8FD99 /* pitchDetailCell.xib */,
@@ -276,6 +279,7 @@
 				ECC5AC081A76B6FE006F9887 /* MenuCell.xib in Resources */,
 				ECBA07A41A73106B00B580F5 /* Images.xcassets in Resources */,
 				324FDB3B1A78671200A743E9 /* dodgerBackground.jpg in Resources */,
+				6447D4D21A7998D6007C3FCA /* Main.storyboard in Resources */,
 				64232A8F1A76D16600057E18 /* HeatMapCell.xib in Resources */,
 				640389A21A76B59800060349 /* pitcherDetailView.xib in Resources */,
 				EC5D765D1A77110400833AF0 /* pixelGlove.png in Resources */,
