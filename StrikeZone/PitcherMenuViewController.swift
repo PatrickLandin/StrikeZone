@@ -120,7 +120,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     
     println(sender.tag)
     var strikeZoneVC = self.storyboard?.instantiateViewControllerWithIdentifier("MAP") as UIViewController
-    
     self.navigationController?.pushViewController(strikeZoneVC, animated: true)
     
   }
@@ -149,17 +148,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     tableView.endUpdates()
     
   }
-  
-//    self.performSegueWithIdentifier("SHOW_OPTIONS", sender: self)
-  
-//  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//    if segue.identifier == "SHOW_OPTIONS" {
-//      let optionsTableViewController = segue.destinationViewController as OptionsTableViewController
-//      let selectedIndexPath = self.tableView.indexPathForSelectedRow()
-//      var pitcherToPass = self.pitchers[selectedIndexPath!.row]
-//      optionsTableViewController.selectedPitcher = pitcherToPass
-//    }
-//  }
 
 }
 

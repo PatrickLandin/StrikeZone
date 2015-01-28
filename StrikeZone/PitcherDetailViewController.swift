@@ -17,7 +17,6 @@ class PitcherDetailViewController: UIViewController {
       
       self.navigationItem.title = selectedPitcher?.name
 
-
         // Do any additional setup after loading the view.
     }
 
