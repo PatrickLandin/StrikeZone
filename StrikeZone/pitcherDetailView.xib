@@ -6,9 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PitcherDetailViewController" customModule="StrikeZone" customModuleProvider="target">
             <connections>
-                <outlet property="collectionViewHeaderView" destination="Neb-vD-iR8" id="VU2-ln-sdh"/>
-                <outlet property="heatMapCollectionView" destination="EAw-sM-GeY" id="W9s-wK-LxF"/>
                 <outlet property="pitchCountLabel" destination="EoD-jG-Hgu" id="nZa-Hs-poU"/>
+                <outlet property="pitchTableView" destination="C2a-Tl-GlL" id="djN-9k-ycT"/>
                 <outlet property="pitchersNameLabel" destination="Gzx-W3-fl1" id="KC2-tj-8A1"/>
                 <outlet property="view" destination="zVP-kW-RgV" id="cdx-z0-mJh"/>
             </connections>
@@ -18,15 +17,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="EAw-sM-GeY">
-                    <rect key="frame" x="0.0" y="166" width="600" height="390"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EDy-i9-sAs">
-                        <size key="itemSize" width="80" height="80"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                </collectionView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pitcher's Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gzx-W3-fl1">
                     <rect key="frame" x="8" y="21" width="600" height="23"/>
                     <constraints>
@@ -38,6 +28,9 @@
                 </label>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iuQ-pV-Snd">
                     <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="5Ye-eK-YAh"/>
+                    </constraints>
                     <items>
                         <barButtonItem systemItem="add" id="DFT-9U-42O">
                             <connections>
@@ -46,25 +39,6 @@
                         </barButtonItem>
                     </items>
                 </toolbar>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Neb-vD-iR8">
-                    <rect key="frame" x="0.0" y="147" width="600" height="19"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player's Heat Maps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rlt-Ca-CmA">
-                            <rect key="frame" x="8" y="0.0" width="118" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="x6E-VS-JGb"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="Rlt-Ca-CmA" firstAttribute="leading" secondItem="Neb-vD-iR8" secondAttribute="leading" constant="8" id="OqE-xf-26u"/>
-                        <constraint firstAttribute="bottom" secondItem="Rlt-Ca-CmA" secondAttribute="bottom" constant="-1" id="bwn-oc-lSL"/>
-                        <constraint firstAttribute="height" constant="19" id="uN5-Lr-zFZ"/>
-                    </constraints>
-                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pitch Count:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yol-Jl-n8J">
                     <rect key="frame" x="8" y="52" width="81" height="20"/>
                     <constraints>
@@ -84,27 +58,28 @@
                     <color key="textColor" red="0.01097088075" green="0.53946586279999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="20" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="C2a-Tl-GlL">
+                    <rect key="frame" x="0.0" y="125" width="600" height="431"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Gzx-W3-fl1" secondAttribute="trailing" constant="-8" id="0ev-8A-9Pu"/>
                 <constraint firstItem="EoD-jG-Hgu" firstAttribute="leading" secondItem="yol-Jl-n8J" secondAttribute="trailing" constant="8" id="3lC-Wp-EWo"/>
-                <constraint firstItem="Neb-vD-iR8" firstAttribute="leading" secondItem="zVP-kW-RgV" secondAttribute="leading" id="AUk-Cq-Ov2"/>
-                <constraint firstItem="Neb-vD-iR8" firstAttribute="top" secondItem="EoD-jG-Hgu" secondAttribute="bottom" constant="74" id="DIB-b3-GJ0"/>
+                <constraint firstItem="iuQ-pV-Snd" firstAttribute="top" secondItem="C2a-Tl-GlL" secondAttribute="bottom" id="5rh-1c-GXW"/>
+                <constraint firstAttribute="bottom" secondItem="iuQ-pV-Snd" secondAttribute="bottom" id="74C-wS-mff"/>
                 <constraint firstItem="yol-Jl-n8J" firstAttribute="top" secondItem="Gzx-W3-fl1" secondAttribute="bottom" constant="8" id="EQ2-9H-xLU"/>
                 <constraint firstItem="Gzx-W3-fl1" firstAttribute="top" secondItem="zVP-kW-RgV" secondAttribute="top" constant="21" id="Jnj-wn-3Pz"/>
                 <constraint firstItem="Gzx-W3-fl1" firstAttribute="leading" secondItem="zVP-kW-RgV" secondAttribute="leading" constant="8" id="Khk-80-lLZ"/>
-                <constraint firstItem="EAw-sM-GeY" firstAttribute="leading" secondItem="zVP-kW-RgV" secondAttribute="leading" id="MdK-Ss-Nez"/>
-                <constraint firstItem="iuQ-pV-Snd" firstAttribute="top" secondItem="EAw-sM-GeY" secondAttribute="bottom" id="STH-dJ-y5c"/>
+                <constraint firstAttribute="trailing" secondItem="iuQ-pV-Snd" secondAttribute="trailing" id="cDQ-qW-ZIi"/>
                 <constraint firstItem="EoD-jG-Hgu" firstAttribute="leading" secondItem="yol-Jl-n8J" secondAttribute="trailing" constant="8" id="cvT-IT-D2D"/>
-                <constraint firstAttribute="trailing" secondItem="Neb-vD-iR8" secondAttribute="trailing" id="htb-gT-q3Z"/>
+                <constraint firstAttribute="trailing" secondItem="C2a-Tl-GlL" secondAttribute="trailing" id="eAz-1L-5pg"/>
                 <constraint firstItem="EoD-jG-Hgu" firstAttribute="top" secondItem="Gzx-W3-fl1" secondAttribute="bottom" constant="9" id="jBi-A7-P5R"/>
-                <constraint firstItem="EAw-sM-GeY" firstAttribute="top" secondItem="Neb-vD-iR8" secondAttribute="bottom" id="lDN-et-9aC"/>
-                <constraint firstItem="iuQ-pV-Snd" firstAttribute="leading" secondItem="zVP-kW-RgV" secondAttribute="leading" id="mS4-PY-rav"/>
                 <constraint firstItem="yol-Jl-n8J" firstAttribute="leading" secondItem="zVP-kW-RgV" secondAttribute="leading" constant="8" id="onx-Cw-6uF"/>
-                <constraint firstAttribute="bottom" secondItem="iuQ-pV-Snd" secondAttribute="bottom" id="rR5-NI-bh2"/>
-                <constraint firstAttribute="trailing" secondItem="EAw-sM-GeY" secondAttribute="trailing" id="xVB-Aa-bNa"/>
-                <constraint firstAttribute="trailing" secondItem="iuQ-pV-Snd" secondAttribute="trailing" id="y3e-Pq-ibo"/>
+                <constraint firstItem="C2a-Tl-GlL" firstAttribute="top" secondItem="EoD-jG-Hgu" secondAttribute="bottom" constant="52" id="tOB-aa-c09"/>
+                <constraint firstItem="iuQ-pV-Snd" firstAttribute="leading" secondItem="zVP-kW-RgV" secondAttribute="leading" id="uMB-My-0Ew"/>
+                <constraint firstItem="C2a-Tl-GlL" firstAttribute="leading" secondItem="zVP-kW-RgV" secondAttribute="leading" id="zSb-jI-X0q"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <point key="canvasLocation" x="586" y="367"/>
