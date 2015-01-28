@@ -168,6 +168,7 @@
 				64232A8D1A76D16600057E18 /* HeatMapCell.xib */,
 				ECC5AC0D1A76CCFF006F9887 /* AddPitcherAlert.xib */,
 				ECC5AC071A76B6FE006F9887 /* MenuCell.xib */,
+				EC8A04291A785B8B00C1E87F /* MenuCollectionCell.xib */,
 				ECBA07A51A73106B00B580F5 /* LaunchScreen.xib */,
 				ECBA07A31A73106B00B580F5 /* Images.xcassets */,
 			);
@@ -180,12 +181,13 @@
 				64232A8C1A76D16600057E18 /* HeatMapCell.swift */,
 				ECC5AC111A76D461006F9887 /* MenuTableViewCell.swift */,
 				649B04DB1A78032D00A8FD99 /* PitchDetailTableViewCell.swift */,
-				ECC5ABFF1A76AD9D006F9887 /* StrikeZoneViewController.swift */,
 				ECC5AC031A76ADF4006F9887 /* PitcherMenuViewController.swift */,
 				EC8A04271A78146F00C1E87F /* OptionsTableViewController.swift */,
 				ECC5ABFF1A76AD9D006F9887 /* StrikeZoneViewController.swift */,
 				ECC5AC011A76ADD5006F9887 /* PitcherDetailViewController.swift */,
 				649B04E11A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift */,
+				ECC5AC111A76D461006F9887 /* MenuTableViewCell.swift */,
+				EC8A042F1A78628000C1E87F /* MenuCollectionViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -304,6 +306,7 @@
 				ECC5AC121A76D461006F9887 /* MenuTableViewCell.swift in Sources */,
 				ECC5AC0C1A76BD5F006F9887 /* HeatMap.swift in Sources */,
 				649B04DC1A78032D00A8FD99 /* PitchDetailTableViewCell.swift in Sources */,
+				EC8A04281A78146F00C1E87F /* OptionsTableViewController.swift in Sources */,
 				ECBA079D1A73106B00B580F5 /* AppDelegate.swift in Sources */,
 				ECC5AC021A76ADD5006F9887 /* PitcherDetailViewController.swift in Sources */,
 				ECC5AC0A1A76BCC0006F9887 /* Pitcher.swift in Sources */,

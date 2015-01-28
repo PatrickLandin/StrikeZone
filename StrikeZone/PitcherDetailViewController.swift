@@ -24,7 +24,7 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
   var currentPitcher : Pitcher?
   
   //MARK:DUMMY PITCHER
-  let dummyPitcher = Pitcher(name: "Clayon Kershaw")
+  //let dummyPitcher = Pitcher(name: "Clayon Kershaw")
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
       self.pitchTableView.registerNib(UINib(nibName: "pitchDetailCell", bundle: nil), forCellReuseIdentifier: "PITCH_CELL")
       
       
-      self.pitchersNameLabel.text = dummyPitcher.name
+      //self.pitchersNameLabel.text = dummyPitcher.name
       
       self.addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addButtonPressed")
       self.deleteButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "deleteButtonPressed")
@@ -126,7 +126,7 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
   @IBAction func addHeatMapButtonPushed(sender: AnyObject) {
     
     var newHeatMap = HeatMap()
-    dummyPitcher.heatMaps.append(newHeatMap)
+    //dummyPitcher.heatMaps.append(newHeatMap)
     
     //Transition Back to Main Heat Map View with blank heat map
     
