@@ -8,12 +8,21 @@
 
 import UIKit
 
-class MenuTableViewCell: UITableViewCell {
+class MenuTableViewCell: UITableViewCell, UICollectionViewDataSource {
   
   @IBOutlet weak var pitcherNameLabel: UILabel!
+  @IBOutlet weak var pitcherNumberLabel: UILabel!
+  @IBOutlet weak var pitcherImage: UIImageView!
+  @IBOutlet weak var collectionView: UICollectionView!
+  @IBOutlet weak var newMapButton: UIButton!
+  
   
     override func awakeFromNib() {
         super.awakeFromNib()
+      
+      self.collectionView.registerNib(UINib(nibName: "MenuCollectionCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "CELL")
+      self.collectionView.dataSource = self
+      
         // Initialization code
     }
 
@@ -22,5 +31,17 @@ class MenuTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+  
+  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 30
+  }
+  
+  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("CELL", forIndexPath: indexPath) as MenuCollectionViewCell
+    
+    cell.backgroundColor = UIColor.redColor()
+    
+    return cell
+  }
 
 }
