@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StrikeZoneViewController: UIViewController{
+class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate {
   
   @IBOutlet var inZoneView: [UIView]!
   @IBOutlet var outZoneView: [UIView]!
@@ -22,19 +22,20 @@ class StrikeZoneViewController: UIViewController{
   let locationView = UIView()
   var selectedPitcher : Pitcher?
   var targetView : UIView?
+  var currentHeatMap : HeatMap?
+  var doneButton : UIBarButtonItem!
+  var backButton : UIBarButtonItem!
   
   
     override func viewDidLoad() {
         super.viewDidLoad()
       
       self.navigationItem.title = selectedPitcher?.name
-      
-//      locationView.frame = CGRect(x: -150, y: -150, width: 100, height: 100)
-//      locationView.tag = 19
-//      self.view.addSubview(locationView)
-//      zoneOutlineView.layer.borderWidth = 5
-//      zoneOutlineView.layer.borderColor = UIColor.blackColor().CGColor
-      //zoneOutlineView.layer.zPosition = 0
+      self.navigationController?.delegate = self
+      self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: "backButtonPressed:")
+      self.doneButton = UIBarButtonItem(title: "Detail", style: .Done, target: self, action: "detailButtonPressed:")
+      self.navigationItem.leftBarButtonItem = backButton
+      self.navigationItem.rightBarButtonItem = doneButton
       strikeZoneView.layer.borderWidth = 3
       strikeZoneView.layer.borderColor = UIColor.blackColor().CGColor
       let tap = UITapGestureRecognizer(target: self, action: ("handleTap:"))
@@ -45,7 +46,27 @@ class StrikeZoneViewController: UIViewController{
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
   }
-
+  
+  func detailButtonPressed(sender: UIButton) {
+     let pitcherDetailVC = PitcherDetailViewController(nibName : "pitcherDetailView" , bundle : NSBundle.mainBundle())
+    if currentHeatMap != nil {
+      self.selectedPitcher?.heatMaps.append(currentHeatMap!)
+    }
+    pitcherDetailVC.currentPitcher = self.selectedPitcher
+    self.navigationController?.pushViewController(pitcherDetailVC, animated: true)
+  }
+  
+  func backButtonPressed(sender: UIButton) {
+    let pitcherMenuVC = PitcherMenuViewController()
+    if currentHeatMap != nil {
+      self.selectedPitcher?.heatMaps.append(currentHeatMap!)
+    }
+    self.navigationController?.popToRootViewControllerAnimated(true)
+  }
+  
+  
+  
+  
   func handleTap(gesture: UITapGestureRecognizer) {
     let tapLocation = gesture.locationInView(strikeZoneView)
    
@@ -63,7 +84,8 @@ class StrikeZoneViewController: UIViewController{
             currentPitch.actualZoneLocation = zoneView.tag
             currentPitch.actualLocation = tapLocation
             isTargetLocation = true
-             pitches.append(currentPitch)
+            pitches.append(currentPitch)
+            currentHeatMap?.allPitches!.append(currentPitch)
           
             var zoneColor : UIColor!
             if self.currentPitch.actualZoneLocation == self.currentPitch.targetZoneLocation {
@@ -77,7 +99,7 @@ class StrikeZoneViewController: UIViewController{
               self.targetView!.alpha = 0.12
             }
             
-            UIView.animateWithDuration(0.2, delay: 0.0, options: nil, animations: { () -> Void in
+            UIView.animateWithDuration(0.7, delay: 0.0, options: nil, animations: { () -> Void in
             }, completion: { (finished) -> Void in
               self.targetView!.alpha = self.targetView!.alpha + 0.01
               self.targetView!.backgroundColor = zoneColor

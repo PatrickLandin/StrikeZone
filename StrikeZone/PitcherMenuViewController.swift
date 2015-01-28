@@ -18,6 +18,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   var alertView : UIView?
   var imagePickerController = UIImagePickerController()
   
+  
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -122,6 +123,8 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     
     println(sender.tag)
     var strikeZoneVC = self.storyboard?.instantiateViewControllerWithIdentifier("MAP") as StrikeZoneViewController
+    let selectediIndexPath = self.tableView.indexPathForSelectedRow()?.row
+    strikeZoneVC.selectedPitcher = self.pitchers[selectediIndexPath!]
     let selectedIndexPath = self.tableView.indexPathForSelectedRow()?.row
     strikeZoneVC.selectedPitcher = self.pitchers[selectedIndexPath!]
     self.navigationController?.pushViewController(strikeZoneVC, animated: true)
