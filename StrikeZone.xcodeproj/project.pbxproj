@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		640389A21A76B59800060349 /* pitcherDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 640389A11A76B59800060349 /* pitcherDetailView.xib */; };
+		64232A8E1A76D16600057E18 /* HeatMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64232A8C1A76D16600057E18 /* HeatMapCell.swift */; };
+		64232A8F1A76D16600057E18 /* HeatMapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64232A8D1A76D16600057E18 /* HeatMapCell.xib */; };
+		649B04DA1A78022900A8FD99 /* pitchDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649B04D91A78022900A8FD99 /* pitchDetailCell.xib */; };
+		649B04DC1A78032D00A8FD99 /* PitchDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B04DB1A78032D00A8FD99 /* PitchDetailTableViewCell.swift */; };
+		649B04E01A78542E00A8FD99 /* heatMapCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649B04DF1A78542E00A8FD99 /* heatMapCollectionView.xib */; };
+		649B04E21A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B04E11A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift */; };
 		EC5D765D1A77110400833AF0 /* pixelGlove.png in Resources */ = {isa = PBXBuildFile; fileRef = EC5D765C1A77110400833AF0 /* pixelGlove.png */; };
 		EC8A04281A78146F00C1E87F /* OptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8A04271A78146F00C1E87F /* OptionsTableViewController.swift */; };
 		EC8A042A1A785B8B00C1E87F /* MenuCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC8A04291A785B8B00C1E87F /* MenuCollectionCell.xib */; };
@@ -37,6 +44,13 @@
 
 /* Begin PBXFileReference section */
 		324FB25E1A77009F0034A59A /* loveGolve.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loveGolve.jpg; sourceTree = "<group>"; };
+		640389A11A76B59800060349 /* pitcherDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = pitcherDetailView.xib; sourceTree = "<group>"; };
+		64232A8C1A76D16600057E18 /* HeatMapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatMapCell.swift; sourceTree = "<group>"; };
+		64232A8D1A76D16600057E18 /* HeatMapCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeatMapCell.xib; sourceTree = "<group>"; };
+		649B04D91A78022900A8FD99 /* pitchDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = pitchDetailCell.xib; sourceTree = "<group>"; };
+		649B04DB1A78032D00A8FD99 /* PitchDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchDetailTableViewCell.swift; sourceTree = "<group>"; };
+		649B04DF1A78542E00A8FD99 /* heatMapCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = heatMapCollectionView.xib; path = ../heatMapCollectionView.xib; sourceTree = "<group>"; };
+		649B04E11A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeatMapCollectionTableViewCell.swift; path = ../HeatMapCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		EC5D765C1A77110400833AF0 /* pixelGlove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pixelGlove.png; sourceTree = "<group>"; };
 		EC8A04271A78146F00C1E87F /* OptionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTableViewController.swift; sourceTree = "<group>"; };
 		EC8A04291A785B8B00C1E87F /* MenuCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCollectionCell.xib; sourceTree = "<group>"; };
@@ -148,6 +162,10 @@
 			isa = PBXGroup;
 			children = (
 				ECBA07A01A73106B00B580F5 /* Main.storyboard */,
+				649B04DF1A78542E00A8FD99 /* heatMapCollectionView.xib */,
+				640389A11A76B59800060349 /* pitcherDetailView.xib */,
+				649B04D91A78022900A8FD99 /* pitchDetailCell.xib */,
+				64232A8D1A76D16600057E18 /* HeatMapCell.xib */,
 				ECC5AC0D1A76CCFF006F9887 /* AddPitcherAlert.xib */,
 				ECC5AC071A76B6FE006F9887 /* MenuCell.xib */,
 				EC8A04291A785B8B00C1E87F /* MenuCollectionCell.xib */,
@@ -160,10 +178,14 @@
 		ECBA07BE1A73172200B580F5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				64232A8C1A76D16600057E18 /* HeatMapCell.swift */,
+				ECC5AC111A76D461006F9887 /* MenuTableViewCell.swift */,
+				649B04DB1A78032D00A8FD99 /* PitchDetailTableViewCell.swift */,
 				ECC5AC031A76ADF4006F9887 /* PitcherMenuViewController.swift */,
 				EC8A04271A78146F00C1E87F /* OptionsTableViewController.swift */,
 				ECC5ABFF1A76AD9D006F9887 /* StrikeZoneViewController.swift */,
 				ECC5AC011A76ADD5006F9887 /* PitcherDetailViewController.swift */,
+				649B04E11A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift */,
 				ECC5AC111A76D461006F9887 /* MenuTableViewCell.swift */,
 				EC8A042F1A78628000C1E87F /* MenuCollectionViewCell.swift */,
 			);
@@ -255,7 +277,11 @@
 				ECBA07A71A73106B00B580F5 /* LaunchScreen.xib in Resources */,
 				ECC5AC081A76B6FE006F9887 /* MenuCell.xib in Resources */,
 				ECBA07A41A73106B00B580F5 /* Images.xcassets in Resources */,
+				64232A8F1A76D16600057E18 /* HeatMapCell.xib in Resources */,
+				640389A21A76B59800060349 /* pitcherDetailView.xib in Resources */,
 				EC5D765D1A77110400833AF0 /* pixelGlove.png in Resources */,
+				649B04E01A78542E00A8FD99 /* heatMapCollectionView.xib in Resources */,
+				649B04DA1A78022900A8FD99 /* pitchDetailCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,15 +299,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				649B04E21A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift in Sources */,
 				ECC5AC001A76AD9D006F9887 /* StrikeZoneViewController.swift in Sources */,
 				ECC5AC041A76ADF4006F9887 /* PitcherMenuViewController.swift in Sources */,
 				EC8A04301A78628000C1E87F /* MenuCollectionViewCell.swift in Sources */,
 				ECC5AC121A76D461006F9887 /* MenuTableViewCell.swift in Sources */,
 				ECC5AC0C1A76BD5F006F9887 /* HeatMap.swift in Sources */,
+				649B04DC1A78032D00A8FD99 /* PitchDetailTableViewCell.swift in Sources */,
 				EC8A04281A78146F00C1E87F /* OptionsTableViewController.swift in Sources */,
 				ECBA079D1A73106B00B580F5 /* AppDelegate.swift in Sources */,
 				ECC5AC021A76ADD5006F9887 /* PitcherDetailViewController.swift in Sources */,
 				ECC5AC0A1A76BCC0006F9887 /* Pitcher.swift in Sources */,
+				64232A8E1A76D16600057E18 /* HeatMapCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
