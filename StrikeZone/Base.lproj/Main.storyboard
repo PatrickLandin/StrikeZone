@@ -106,43 +106,43 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lb5-d9-xZQ">
                                 <rect key="frame" x="60" y="60" width="480" height="480"/>
                                 <subviews>
-                                    <view tag="-1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M0q-2R-qmy">
+                                    <view tag="-1" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M0q-2R-qmy">
                                         <rect key="frame" x="60" y="60" width="360" height="360"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RaY-Ok-GQz">
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RaY-Ok-GQz">
                                                 <rect key="frame" x="120" y="0.0" width="120" height="120"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kLj-co-YH4">
-                                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pKn-SG-HPn">
+                                            <view tag="2" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pKn-SG-HPn">
                                                 <rect key="frame" x="120" y="120" width="120" height="120"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dzc-Gx-buV">
+                                            <view tag="3" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dzc-Gx-buV">
                                                 <rect key="frame" x="0.0" y="120" width="120" height="120"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Gt-3J-HTE">
+                                            <view tag="5" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Gt-3J-HTE">
                                                 <rect key="frame" x="240" y="120" width="120" height="120"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view tag="6" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EgK-uR-Rdz">
+                                            <view tag="6" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EgK-uR-Rdz">
                                                 <rect key="frame" x="120" y="240" width="120" height="120"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view tag="7" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exE-jc-IoH">
+                                            <view tag="7" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="exE-jc-IoH">
                                                 <rect key="frame" x="240" y="240" width="120" height="120"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view tag="8" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i1J-F6-h1z">
+                                            <view tag="8" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i1J-F6-h1z">
                                                 <rect key="frame" x="0.0" y="240" width="120" height="120"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hbe-AL-RpD">
+                                            <view tag="4" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hbe-AL-RpD">
                                                 <rect key="frame" x="240" y="0.0" width="120" height="120"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <view tag="1" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kLj-co-YH4">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
@@ -199,9 +199,15 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="M0q-2R-qmy" secondAttribute="centerX" id="2mx-PF-Yq4"/>
-                                    <constraint firstAttribute="centerY" secondItem="M0q-2R-qmy" secondAttribute="centerY" id="TRe-ny-g7t"/>
+                                    <constraint firstAttribute="height" constant="75" id="UsY-B4-X6k"/>
+                                    <constraint firstAttribute="width" constant="200" id="epa-GR-gPh"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="UsY-B4-X6k"/>
+                                        <exclude reference="epa-GR-gPh"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
