@@ -12,9 +12,12 @@ class HeatMapCell: UICollectionViewCell {
 
   @IBOutlet var imageView: UIImageView!
   
+  @IBOutlet var heatMapDateLabel: UILabel!
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+      
     }
 
 }

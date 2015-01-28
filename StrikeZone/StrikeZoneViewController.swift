@@ -26,7 +26,7 @@ class StrikeZoneViewController: UIViewController{
   var currentPitch = Pitch()
   
   let locationView = UIView()
-  var selectedPitcher = Pitcher?()
+  var selectedPitcher : Pitcher?
   
   var targetView : UIView?
   
@@ -46,10 +46,14 @@ class StrikeZoneViewController: UIViewController{
       let tap = UITapGestureRecognizer(target: self, action: ("handleTap:"))
       strikeZoneView.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
+      
+      self.navigationItem.title = self.selectedPitcher?.name
+      
     }
   
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
+    
   }
 
   func handleTap(gesture: UITapGestureRecognizer) {
