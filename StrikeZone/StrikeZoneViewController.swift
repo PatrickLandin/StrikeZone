@@ -11,30 +11,24 @@ import UIKit
 class StrikeZoneViewController: UIViewController{
   
   @IBOutlet var inZoneView: [UIView]!
-  
   @IBOutlet var outZoneView: [UIView]!
-  
   @IBOutlet weak var pitchArea: UIView!
   @IBOutlet weak var strikeZoneView: UIView!
   
   var pitchLocation = [CGPoint]()
-  
   var pitches = [Pitch]()
-  
   var isTargetLocation = true
-  
   var currentPitch = Pitch()
-  
   let locationView = UIView()
-  var selectedPitcher = Pitcher?()
-  
+  var selectedPitcher : Pitcher?
   var targetView : UIView?
   
-  //this
-
   
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+      self.navigationItem.title = selectedPitcher?.name
+      
 //      locationView.frame = CGRect(x: -150, y: -150, width: 100, height: 100)
 //      locationView.tag = 19
 //      self.view.addSubview(locationView)
