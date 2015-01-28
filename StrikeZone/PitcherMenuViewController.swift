@@ -8,10 +8,11 @@
 
 import UIKit
 
-class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource {
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var newPitcherText: UITextField!
+  @IBOutlet weak var collectionView: UICollectionView!
   
   var pitchers = [Pitcher]()
   var selectedRowIndex = NSIndexPath(forRow: -1, inSection: 1)
@@ -20,6 +21,9 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+      self.collectionView.registerNib(UINib(nibName: "MenuCollectionCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "CELL")
+      self.collectionView.backgroundColor = UIColor.whiteColor()
       
       var pitcher1 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
       var pitcher2 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
@@ -56,11 +60,30 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       self.tableView.registerNib(UINib(nibName: "MenuCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CELL")
       self.tableView.estimatedRowHeight = 100
       self.tableView.rowHeight = UITableViewAutomaticDimension
+      self.navigationController?.delegate = self
 
         // Do any additional setup after loading the view.
     }
-
   
+  func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    self.collectionView.dataSource = self
+  }
+  
+  //MARK: CollectionView DataSource
+  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 50
+  }
+  
+  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("CELL", forIndexPath: indexPath) as MenuCollectionViewCell
+    
+    cell.backgroundColor = UIColor.grayColor()
+    cell.layer.cornerRadius = 7.0
+    
+    return cell
+  }
+
+  //MARK: Button Pressings
   @IBAction func addButtonPressed(sender: AnyObject) {
     println("Add stuff")
     
@@ -119,8 +142,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   //MARK: Instaniate StrikeZoneViewController
   func showMap(sender : UIButton) {
-    
-    println(sender.tag)
     var strikeZoneVC = self.storyboard?.instantiateViewControllerWithIdentifier("MAP") as StrikeZoneViewController
     let selectedIndexPath = self.tableView.indexPathForSelectedRow()?.row
     strikeZoneVC.selectedPitcher = self.pitchers[selectedIndexPath!]
@@ -129,12 +150,12 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   //MARK: UIImagePickerController
   func showPickerController(sender : UIButton) {
-          if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-        self.imagePickerController.sourceType = UIImagePickerControllerSourceType.Camera
-        self.imagePickerController.delegate = self
-        self.imagePickerController.allowsEditing = true
-        self.presentViewController(self.imagePickerController, animated: true, completion: nil)
-      }
+    if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+      self.imagePickerController.sourceType = UIImagePickerControllerSourceType.Camera
+      self.imagePickerController.delegate = self
+      self.imagePickerController.allowsEditing = true
+      self.presentViewController(self.imagePickerController, animated: true, completion: nil)
+    }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
       let image = info[UIImagePickerControllerEditedImage] as UIImage

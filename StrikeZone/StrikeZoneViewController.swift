@@ -23,7 +23,6 @@ class StrikeZoneViewController: UIViewController{
   var selectedPitcher : Pitcher?
   var targetView : UIView?
   
-  
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -48,6 +47,7 @@ class StrikeZoneViewController: UIViewController{
 
   func handleTap(gesture: UITapGestureRecognizer) {
     let tapLocation = gesture.locationInView(strikeZoneView)
+    println("Ryan is a big fat shhhupid idiot")
    
     for subView in self.strikeZoneView.subviews {
       if let zoneView = subView as? UIView {

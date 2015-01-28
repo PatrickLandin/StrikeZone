@@ -5,7 +5,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PitcherMenuViewController" customModule="StrikeZone" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PitcherMenuViewController" customModule="StrikeZone" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="4Dm-kF-bAl" id="ePc-Lz-lTR"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CELL" rowHeight="116" id="haS-zY-erv" customClass="MenuTableViewCell" customModule="StrikeZone" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
@@ -85,7 +89,6 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="collectionView" destination="4Dm-kF-bAl" id="krY-OU-zRy"/>
                 <outlet property="hometownTextField" destination="Iqh-gr-jDQ" id="LUd-Ef-qwP"/>
                 <outlet property="imageButton" destination="1s2-v8-GNw" id="kUY-n8-WUu"/>
                 <outlet property="newMapButton" destination="TEG-sb-W5g" id="XUq-ZP-kLp"/>

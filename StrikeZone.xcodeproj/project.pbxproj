@@ -31,6 +31,7 @@
 		ECC5AC0A1A76BCC0006F9887 /* Pitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5AC091A76BCC0006F9887 /* Pitcher.swift */; };
 		ECC5AC0C1A76BD5F006F9887 /* HeatMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5AC0B1A76BD5F006F9887 /* HeatMap.swift */; };
 		ECC5AC121A76D461006F9887 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5AC111A76D461006F9887 /* MenuTableViewCell.swift */; };
+		ECFA632F1A7982AD00D844A0 /* MapCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA632E1A7982AD00D844A0 /* MapCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		ECC5AC0B1A76BD5F006F9887 /* HeatMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatMap.swift; sourceTree = "<group>"; };
 		ECC5AC0D1A76CCFF006F9887 /* AddPitcherAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddPitcherAlert.xib; sourceTree = "<group>"; };
 		ECC5AC111A76D461006F9887 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuTableViewCell.swift; path = ../MenuTableViewCell.swift; sourceTree = "<group>"; };
+		ECFA632E1A7982AD00D844A0 /* MapCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapCollectionViewController.swift; path = ../MapCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				649B04E11A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift */,
 				ECC5AC111A76D461006F9887 /* MenuTableViewCell.swift */,
 				EC8A042F1A78628000C1E87F /* MenuCollectionViewCell.swift */,
+				ECFA632E1A7982AD00D844A0 /* MapCollectionViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				ECBA079D1A73106B00B580F5 /* AppDelegate.swift in Sources */,
 				ECC5AC021A76ADD5006F9887 /* PitcherDetailViewController.swift in Sources */,
 				324FDB391A780F2400A743E9 /* Pitch.swift in Sources */,
+				ECFA632F1A7982AD00D844A0 /* MapCollectionViewController.swift in Sources */,
 				ECC5AC0A1A76BCC0006F9887 /* Pitcher.swift in Sources */,
 				64232A8E1A76D16600057E18 /* HeatMapCell.swift in Sources */,
 			);
