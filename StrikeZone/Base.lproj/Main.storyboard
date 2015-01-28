@@ -198,9 +198,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="M0q-2R-qmy" firstAttribute="centerY" secondItem="Lb5-d9-xZQ" secondAttribute="centerY" id="PAn-NN-NgT"/>
+                                    <constraint firstItem="M0q-2R-qmy" firstAttribute="centerY" secondItem="Lb5-d9-xZQ" secondAttribute="centerY" id="CEV-Bl-hBB"/>
+                                    <constraint firstItem="M0q-2R-qmy" firstAttribute="centerX" secondItem="Lb5-d9-xZQ" secondAttribute="centerX" id="F6r-Cx-HiN"/>
                                     <constraint firstAttribute="height" constant="75" id="UsY-B4-X6k"/>
-                                    <constraint firstItem="M0q-2R-qmy" firstAttribute="centerX" secondItem="Lb5-d9-xZQ" secondAttribute="centerX" id="eG4-2W-Lpq"/>
+                                    <constraint firstItem="M0q-2R-qmy" firstAttribute="centerX" secondItem="Lb5-d9-xZQ" secondAttribute="centerX" id="avu-Vz-YSG"/>
                                     <constraint firstAttribute="width" constant="200" id="epa-GR-gPh"/>
                                     <constraint firstItem="M0q-2R-qmy" firstAttribute="centerY" secondItem="Lb5-d9-xZQ" secondAttribute="centerY" id="mMZ-Wh-imr"/>
                                 </constraints>
