@@ -9,7 +9,7 @@
         <!--Pitcher Detail View Controller-->
         <scene sceneID="Lr6-K7-8vw">
             <objects>
-                <viewController id="q2c-q5-tkV" customClass="PitcherDetailViewController" customModule="StrikeZone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PITCHER_DETAIL" id="q2c-q5-tkV" customClass="PitcherDetailViewController" customModule="StrikeZone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fel-vv-9Dq"/>
                         <viewControllerLayoutGuide type="bottom" id="7Qc-8A-88g"/>
@@ -48,7 +48,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ej9-6v-T7q">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem title="Delete" systemItem="trash" id="vQn-wp-QHV">
+                                    <barButtonItem title="Sort" id="vQn-wp-QHV">
                                         <connections>
                                             <action selector="deleteButtonPressed:" destination="dxF-mX-oHf" id="15Y-Kp-jdg"/>
                                         </connections>
@@ -200,6 +200,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="M0q-2R-qmy" firstAttribute="centerY" secondItem="Lb5-d9-xZQ" secondAttribute="centerY" id="CEV-Bl-hBB"/>
+                                    <constraint firstItem="M0q-2R-qmy" firstAttribute="centerX" secondItem="Lb5-d9-xZQ" secondAttribute="centerX" id="F6r-Cx-HiN"/>
                                     <constraint firstAttribute="height" constant="75" id="UsY-B4-X6k"/>
                                     <constraint firstItem="M0q-2R-qmy" firstAttribute="centerX" secondItem="Lb5-d9-xZQ" secondAttribute="centerX" id="avu-Vz-YSG"/>
                                     <constraint firstAttribute="width" constant="200" id="epa-GR-gPh"/>

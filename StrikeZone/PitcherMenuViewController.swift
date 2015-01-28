@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var newPitcherText: UITextField!
@@ -16,25 +16,26 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   var pitchers = [Pitcher]()
   var selectedRowIndex = NSIndexPath(forRow: -1, inSection: 1)
   var alertView : UIView?
+  var imagePickerController = UIImagePickerController()
   
   
     override func viewDidLoad() {
         super.viewDidLoad()
       
-      var pitcher1 = Pitcher(name: "Pedro", number: 22)
-      var pitcher2 = Pitcher(name: "Roger", number: 22)
-      var pitcher3 = Pitcher(name: "Gilroy", number: 22)
-      var pitcher4 = Pitcher(name: "Gregory", number: 22)
-      var pitcher5 = Pitcher(name: "Felix", number: 22)
-      var pitcher6 = Pitcher(name: "Clayton", number: 22)
-      var pitcher7 = Pitcher(name: "Stanly", number: 22)
-      var pitcher8 = Pitcher(name: "Pedro", number: 22)
-      var pitcher9 = Pitcher(name: "Roger", number: 22)
-      var pitcher10 = Pitcher(name: "Gilroy", number: 22)
-      var pitcher11 = Pitcher(name: "Gregory", number: 22)
-      var pitcher12 = Pitcher(name: "Felix", number: 22)
-      var pitcher13 = Pitcher(name: "Clayton", number: 22)
-      var pitcher14 = Pitcher(name: "Stanly", number: 22)
+      var pitcher1 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
+      var pitcher2 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
+      var pitcher3 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
+      var pitcher4 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
+      var pitcher5 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
+      var pitcher6 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
+      var pitcher7 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
+      var pitcher8 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
+      var pitcher9 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
+      var pitcher10 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
+      var pitcher11 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
+      var pitcher12 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
+      var pitcher13 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
+      var pitcher14 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
       
       pitchers.append(pitcher1)
       pitchers.append(pitcher2)
@@ -48,7 +49,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       pitchers.append(pitcher10)
       pitchers.append(pitcher11)
       pitchers.append(pitcher12)
-      pitchers.append(pitcher13)
+      pitchers.append(pitcher13) 
       pitchers.append(pitcher14)
       
       self.tableView.delegate = self
@@ -81,21 +82,18 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   @IBAction func addPitcherPressed(sender: AnyObject) {
     println(newPitcherText.text)
     
-    var newPitcher = Pitcher(name: newPitcherText.text, number: 22)
+    var newPitcher = Pitcher(name: newPitcherText.text, number: 22, homeTown: "", team: "")
     self.pitchers.append(newPitcher)
     self.tableView.reloadData()
     self.alertView?.removeFromSuperview()
-    
   }
   
-  
+  //MARK: Delete Button
   @IBAction func deleteButtonPressed(sender: AnyObject) {
-    println("Delete stuff")
-    
-    
-    
+    println("Sort stuff")
   }
   
+  //MARK: Tableview datasource
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
@@ -114,9 +112,13 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     cell.newMapButton.tag = indexPath.row
     cell.newMapButton.addTarget(self, action: "showMap:", forControlEvents: UIControlEvents.TouchUpInside)
     
+    cell.imageButton.tag = indexPath.row
+    cell.imageButton.addTarget(self, action: "showPickerController:", forControlEvents: UIControlEvents.TouchUpInside)
+    
     return cell
   }
   
+  //MARK: Instaniate StrikeZoneViewController
   func showMap(sender : UIButton) {
     
     println(sender.tag)
@@ -124,9 +126,29 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     let selectediIndexPath = self.tableView.indexPathForSelectedRow()?.row
     strikeZoneVC.selectedPitcher = self.pitchers[selectediIndexPath!]
     self.navigationController?.pushViewController(strikeZoneVC, animated: true)
+  }
+  
+  //MARK: UIImagePickerController
+  func showPickerController(sender : UIButton) {
+          if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+        self.imagePickerController.sourceType = UIImagePickerControllerSourceType.Camera
+        self.imagePickerController.delegate = self
+        self.imagePickerController.allowsEditing = true
+        self.presentViewController(self.imagePickerController, animated: true, completion: nil)
+      }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+      let image = info[UIImagePickerControllerEditedImage] as UIImage
+      
+      //    self.pitcherImage.image = image
+      //    self.selectedPitcher?.image = imageView.image
+      
+      self.imagePickerController.dismissViewControllerAnimated(true, completion: nil)
+    }
     
   }
   
+  //MARK: Swipe to Delete
   func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
     return true
   }
@@ -138,6 +160,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
 //    }
 //  }
   
+  //MARK: Expand/Collapse tableView cells
   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     if selectedRowIndex.row == indexPath.row {
       return 196
@@ -149,7 +172,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     selectedRowIndex = indexPath
     tableView.beginUpdates()
     tableView.endUpdates()
-    
   }
 
 }

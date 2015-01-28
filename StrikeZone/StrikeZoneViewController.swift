@@ -26,8 +26,6 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   var doneButton : UIBarButtonItem!
   var backButton : UIBarButtonItem!
   
-  //this
-
   
     override func viewDidLoad() {
         super.viewDidLoad()
