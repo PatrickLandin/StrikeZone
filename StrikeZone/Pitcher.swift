@@ -11,11 +11,15 @@ import UIKit
 class Pitcher {
   var name : String
   var number : Int
+  var homeTown : String
+  var team : String
   var image : UIImage?
   var heatMaps = [HeatMap]()
   
-  init (name : String, number : Int) {
+  init (name : String, number : Int, homeTown : String, team : String) {
     self.name = name
     self.number = number
+    self.homeTown = homeTown
+    self.team = team
   }
 }
