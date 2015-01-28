@@ -17,6 +17,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   var selectedRowIndex = NSIndexPath(forRow: -1, inSection: 1)
   var alertView : UIView?
   
+  
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -119,7 +120,9 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   func showMap(sender : UIButton) {
     
     println(sender.tag)
-    var strikeZoneVC = self.storyboard?.instantiateViewControllerWithIdentifier("MAP") as UIViewController
+    var strikeZoneVC = self.storyboard?.instantiateViewControllerWithIdentifier("MAP") as StrikeZoneViewController
+    let selectediIndexPath = self.tableView.indexPathForSelectedRow()?.row
+    strikeZoneVC.selectedPitcher = self.pitchers[selectediIndexPath!]
     self.navigationController?.pushViewController(strikeZoneVC, animated: true)
     
   }
@@ -137,9 +140,9 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     if selectedRowIndex.row == indexPath.row {
-      return 180
+      return 196
     }
-    return 40
+    return 50
   }
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
