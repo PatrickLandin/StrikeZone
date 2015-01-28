@@ -10,6 +10,9 @@
 		324FDB391A780F2400A743E9 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324FDB381A780F2400A743E9 /* Pitch.swift */; };
 		324FDB3B1A78671200A743E9 /* dodgerBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 324FDB3A1A78671200A743E9 /* dodgerBackground.jpg */; };
 		EC5D765D1A77110400833AF0 /* pixelGlove.png in Resources */ = {isa = PBXBuildFile; fileRef = EC5D765C1A77110400833AF0 /* pixelGlove.png */; };
+		EC8A04281A78146F00C1E87F /* OptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8A04271A78146F00C1E87F /* OptionsTableViewController.swift */; };
+		EC8A042A1A785B8B00C1E87F /* MenuCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC8A04291A785B8B00C1E87F /* MenuCollectionCell.xib */; };
+		EC8A04301A78628000C1E87F /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8A042F1A78628000C1E87F /* MenuCollectionViewCell.swift */; };
 		ECBA079D1A73106B00B580F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA079C1A73106B00B580F5 /* AppDelegate.swift */; };
 		ECBA07A21A73106B00B580F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECBA07A01A73106B00B580F5 /* Main.storyboard */; };
 		ECBA07A41A73106B00B580F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECBA07A31A73106B00B580F5 /* Images.xcassets */; };
@@ -39,6 +42,9 @@
 		324FDB381A780F2400A743E9 /* Pitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
 		324FDB3A1A78671200A743E9 /* dodgerBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dodgerBackground.jpg; sourceTree = "<group>"; };
 		EC5D765C1A77110400833AF0 /* pixelGlove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pixelGlove.png; sourceTree = "<group>"; };
+		EC8A04271A78146F00C1E87F /* OptionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTableViewController.swift; sourceTree = "<group>"; };
+		EC8A04291A785B8B00C1E87F /* MenuCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCollectionCell.xib; sourceTree = "<group>"; };
+		EC8A042F1A78628000C1E87F /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		ECBA07971A73106B00B580F5 /* StrikeZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StrikeZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECBA079B1A73106B00B580F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECBA079C1A73106B00B580F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,9 +153,13 @@
 			isa = PBXGroup;
 			children = (
 				ECBA07A01A73106B00B580F5 /* Main.storyboard */,
+				649B04DF1A78542E00A8FD99 /* heatMapCollectionView.xib */,
+				640389A11A76B59800060349 /* pitcherDetailView.xib */,
+				649B04D91A78022900A8FD99 /* pitchDetailCell.xib */,
+				64232A8D1A76D16600057E18 /* HeatMapCell.xib */,
 				ECC5AC0D1A76CCFF006F9887 /* AddPitcherAlert.xib */,
 				ECC5AC071A76B6FE006F9887 /* MenuCell.xib */,
-				ECC5AC111A76D461006F9887 /* MenuTableViewCell.swift */,
+				EC8A04291A785B8B00C1E87F /* MenuCollectionCell.xib */,
 				ECBA07A51A73106B00B580F5 /* LaunchScreen.xib */,
 				ECBA07A31A73106B00B580F5 /* Images.xcassets */,
 				324FDB3A1A78671200A743E9 /* dodgerBackground.jpg */,
@@ -160,9 +170,16 @@
 		ECBA07BE1A73172200B580F5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				ECC5ABFF1A76AD9D006F9887 /* StrikeZoneViewController.swift */,
+				64232A8C1A76D16600057E18 /* HeatMapCell.swift */,
+				ECC5AC111A76D461006F9887 /* MenuTableViewCell.swift */,
+				649B04DB1A78032D00A8FD99 /* PitchDetailTableViewCell.swift */,
 				ECC5AC031A76ADF4006F9887 /* PitcherMenuViewController.swift */,
+				EC8A04271A78146F00C1E87F /* OptionsTableViewController.swift */,
+				ECC5ABFF1A76AD9D006F9887 /* StrikeZoneViewController.swift */,
 				ECC5AC011A76ADD5006F9887 /* PitcherDetailViewController.swift */,
+				649B04E11A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift */,
+				ECC5AC111A76D461006F9887 /* MenuTableViewCell.swift */,
+				EC8A042F1A78628000C1E87F /* MenuCollectionViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -247,12 +264,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC8A042A1A785B8B00C1E87F /* MenuCollectionCell.xib in Resources */,
 				ECBA07A21A73106B00B580F5 /* Main.storyboard in Resources */,
 				ECBA07A71A73106B00B580F5 /* LaunchScreen.xib in Resources */,
 				ECC5AC081A76B6FE006F9887 /* MenuCell.xib in Resources */,
 				ECBA07A41A73106B00B580F5 /* Images.xcassets in Resources */,
 				324FDB3B1A78671200A743E9 /* dodgerBackground.jpg in Resources */,
 				EC5D765D1A77110400833AF0 /* pixelGlove.png in Resources */,
+				649B04E01A78542E00A8FD99 /* heatMapCollectionView.xib in Resources */,
+				649B04DA1A78022900A8FD99 /* pitchDetailCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,14 +290,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				649B04E21A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift in Sources */,
 				ECC5AC001A76AD9D006F9887 /* StrikeZoneViewController.swift in Sources */,
 				ECC5AC041A76ADF4006F9887 /* PitcherMenuViewController.swift in Sources */,
+				EC8A04301A78628000C1E87F /* MenuCollectionViewCell.swift in Sources */,
 				ECC5AC121A76D461006F9887 /* MenuTableViewCell.swift in Sources */,
 				ECC5AC0C1A76BD5F006F9887 /* HeatMap.swift in Sources */,
+				649B04DC1A78032D00A8FD99 /* PitchDetailTableViewCell.swift in Sources */,
+				EC8A04281A78146F00C1E87F /* OptionsTableViewController.swift in Sources */,
 				ECBA079D1A73106B00B580F5 /* AppDelegate.swift in Sources */,
 				ECC5AC021A76ADD5006F9887 /* PitcherDetailViewController.swift in Sources */,
 				324FDB391A780F2400A743E9 /* Pitch.swift in Sources */,
 				ECC5AC0A1A76BCC0006F9887 /* Pitcher.swift in Sources */,
+				64232A8E1A76D16600057E18 /* HeatMapCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
