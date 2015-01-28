@@ -35,7 +35,7 @@ class OptionsTableViewController: UITableViewController {
     if segue.identifier == "SHOW_ARCHIVE" {
       let pitcherDetailViewController = segue.destinationViewController as PitcherDetailViewController
       let selectedIndexPath = self.tableView.indexPathForSelectedRow()
-      pitcherDetailViewController.selectedPitcher = self.selectedPitcher
+      //pitcherDetailViewController.selectedPitcher = self.selectedPitcher
     }
 
   }
