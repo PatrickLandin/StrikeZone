@@ -167,7 +167,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     if selectedRowIndex.row == indexPath.row {
       return 196
     }
-    return 50
+    return 40
   }
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

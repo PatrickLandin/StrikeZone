@@ -47,11 +47,6 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     super.viewDidAppear(animated)
   }
   
-  override func viewDidDisappear(animated: Bool) {
-    super.viewDidDisappear(animated)
-    self.selectedPitcher?.heatMaps.append(currentHeatMap!)
-  }
-  
   func detailButtonPressed(sender: UIButton) {
      let pitcherDetailVC = PitcherDetailViewController(nibName : "pitcherDetailView" , bundle : NSBundle.mainBundle())
     if currentHeatMap != nil {
