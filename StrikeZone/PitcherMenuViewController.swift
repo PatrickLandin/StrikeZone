@@ -119,7 +119,9 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   func showMap(sender : UIButton) {
     
     println(sender.tag)
-    self.storyboard?.instantiateViewControllerWithIdentifier("MAP")
+    var strikeZoneVC = self.storyboard?.instantiateViewControllerWithIdentifier("MAP") as UIViewController
+    
+    self.navigationController?.pushViewController(strikeZoneVC, animated: true)
     
   }
   
