@@ -20,7 +20,6 @@
 		EC8A042A1A785B8B00C1E87F /* MenuCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC8A04291A785B8B00C1E87F /* MenuCollectionCell.xib */; };
 		EC8A04301A78628000C1E87F /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8A042F1A78628000C1E87F /* MenuCollectionViewCell.swift */; };
 		ECBA079D1A73106B00B580F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA079C1A73106B00B580F5 /* AppDelegate.swift */; };
-		ECBA07A21A73106B00B580F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECBA07A01A73106B00B580F5 /* Main.storyboard */; };
 		ECBA07A41A73106B00B580F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECBA07A31A73106B00B580F5 /* Images.xcassets */; };
 		ECBA07A71A73106B00B580F5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECBA07A51A73106B00B580F5 /* LaunchScreen.xib */; };
 		ECBA07B31A73106C00B580F5 /* StrikeZoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA07B21A73106C00B580F5 /* StrikeZoneTests.swift */; };
@@ -60,7 +59,6 @@
 		ECBA07971A73106B00B580F5 /* StrikeZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StrikeZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECBA079B1A73106B00B580F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECBA079C1A73106B00B580F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ECBA07A11A73106B00B580F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ECBA07A31A73106B00B580F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		ECBA07A61A73106B00B580F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		ECBA07AC1A73106C00B580F5 /* StrikeZoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StrikeZoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,7 +162,6 @@
 		ECBA07BD1A73171A00B580F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				ECBA07A01A73106B00B580F5 /* Main.storyboard */,
 				649B04DF1A78542E00A8FD99 /* heatMapCollectionView.xib */,
 				640389A11A76B59800060349 /* pitcherDetailView.xib */,
 				649B04D91A78022900A8FD99 /* pitchDetailCell.xib */,
@@ -275,7 +272,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC8A042A1A785B8B00C1E87F /* MenuCollectionCell.xib in Resources */,
-				ECBA07A21A73106B00B580F5 /* Main.storyboard in Resources */,
 				ECBA07A71A73106B00B580F5 /* LaunchScreen.xib in Resources */,
 				ECC5AC081A76B6FE006F9887 /* MenuCell.xib in Resources */,
 				ECBA07A41A73106B00B580F5 /* Images.xcassets in Resources */,
@@ -336,14 +332,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		ECBA07A01A73106B00B580F5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ECBA07A11A73106B00B580F5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		ECBA07A51A73106B00B580F5 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
