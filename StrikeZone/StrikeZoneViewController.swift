@@ -26,6 +26,7 @@ class StrikeZoneViewController: UIViewController{
   var currentPitch = Pitch()
   
   let locationView = UIView()
+  var selectedPitcher = Pitcher?()
   
   var targetView : UIView?
   

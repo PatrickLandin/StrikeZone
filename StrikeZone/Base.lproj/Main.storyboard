@@ -22,7 +22,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXO-7a-wKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="898" y="386"/>
+            <point key="canvasLocation" x="1486" y="466"/>
         </scene>
         <!--PitcherMenuVC-->
         <scene sceneID="tkG-pD-GSo">
@@ -91,7 +91,7 @@
         <!--Strike Zone View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="MAP" id="BYZ-38-t0r" customClass="StrikeZoneViewController" customModule="StrikeZone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="StrikeZoneViewController" customModule="StrikeZone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
