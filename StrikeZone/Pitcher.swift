@@ -10,10 +10,12 @@ import UIKit
 
 class Pitcher {
   var name : String
+  var number : Int
   var image : UIImage?
   var heatMaps = [HeatMap]()
   
-  init (name : String) {
+  init (name : String, number : Int) {
     self.name = name
+    self.number = number
   }
 }

@@ -15,12 +15,13 @@ class StrikeZoneViewController: UIViewController{
   @IBOutlet weak var inZoneView: UIView!
   
   var pitchLocation = [CGPoint]()
-  
   let locationView = UIView()
-  
+  var selectedPitcher = Pitcher?()
   
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+      self.navigationItem.title = selectedPitcher?.name
       
       locationView.backgroundColor = UIColor.brownColor()
       locationView.frame = CGRect(x: -150, y: -150, width: 100, height: 100)
