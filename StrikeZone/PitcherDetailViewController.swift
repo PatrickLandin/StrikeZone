@@ -46,7 +46,6 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
       let cell = tableView.dequeueReusableCellWithIdentifier("HEAT_MAP_COLLECTION_CELL", forIndexPath: indexPath) as HeatMapCollectionTableViewCell
       cell.currentPitcher = self.currentPitcher
       cell.currentHeatMap = self.currentHeatMap
-      cell.collectionView.backgroundView = self.currentHeatMap?.heatMapImage
       
       return cell
       
@@ -63,7 +62,7 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
     if section == 0{
       return 1
     }
-    return 5
+    return self.currentHeatMap!.allPitches.count
   }
   
   func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
