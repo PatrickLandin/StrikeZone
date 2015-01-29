@@ -26,6 +26,8 @@ class StrikeZoneViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
       
+      
+      
       self.navigationItem.title = selectedPitcher?.name
       
 //      locationView.frame = CGRect(x: -150, y: -150, width: 100, height: 100)

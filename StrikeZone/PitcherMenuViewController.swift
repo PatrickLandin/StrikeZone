@@ -190,6 +190,10 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       self.editAlertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
       }) { (finished) -> Void in
     }
+//        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.ExtraLight)
+//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//        blurEffectView.frame = editAlertView.bounds
+//        editAlertView.insertSubview(blurEffectView, belowSubview: editAlertView)
   }
   
   @IBAction func editingDonePressed(sender: UIButton) {
