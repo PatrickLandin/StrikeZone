@@ -18,9 +18,13 @@ class MenuTableViewCell: UITableViewCell {
   @IBOutlet weak var teamTextField: UITextField!
   @IBOutlet weak var hometownTextField: UITextField!
   @IBOutlet weak var pitchesTextField: UITextField!
+  @IBOutlet weak var collectionView: UICollectionView!
   
     override func awakeFromNib() {
         super.awakeFromNib()
+      
+      self.collectionView.registerNib(UINib(nibName: "MenuCollectionCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "CELL")
+      self.collectionView.backgroundColor = UIColor.whiteColor()
       
       self.pitcherImage.layer.cornerRadius = 7.0
       self.imageButton.layer.cornerRadius = 7.0

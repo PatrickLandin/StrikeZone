@@ -15,9 +15,6 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-            <connections>
-                <outlet property="cell" destination="-1" id="SrD-4T-oll"/>
-            </connections>
             <point key="canvasLocation" x="298" y="353"/>
         </collectionViewCell>
     </objects>

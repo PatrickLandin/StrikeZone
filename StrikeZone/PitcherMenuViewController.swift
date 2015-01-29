@@ -12,7 +12,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var newPitcherText: UITextField!
-  @IBOutlet weak var collectionView: UICollectionView!
   
   var pitchers = [Pitcher]()
   var selectedRowIndex = NSIndexPath(forRow: -1, inSection: 1)
@@ -21,9 +20,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-      self.collectionView.registerNib(UINib(nibName: "MenuCollectionCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "CELL")
-      self.collectionView.backgroundColor = UIColor.whiteColor()
       
       var pitcher1 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
       var pitcher2 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
@@ -66,7 +62,9 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     }
   
   func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-    self.collectionView.dataSource = self
+    if let menuCell = cell as? MenuTableViewCell {
+      menuCell.collectionView.dataSource = self
+    }
   }
   
   //MARK: CollectionView DataSource
@@ -75,10 +73,11 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   }
   
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("CELL", forIndexPath: indexPath) as MenuCollectionViewCell
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CELL", forIndexPath: indexPath) as MenuCollectionViewCell
     
     cell.backgroundColor = UIColor.grayColor()
     cell.layer.cornerRadius = 7.0
+    
     
     return cell
   }

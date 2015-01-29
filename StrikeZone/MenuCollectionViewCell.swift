@@ -9,9 +9,7 @@
 import UIKit
 
 class MenuCollectionViewCell: UICollectionViewCell {
-  
-  @IBOutlet weak var cell: PitcherMenuViewController!
-  
+    
   override func awakeFromNib() {
     super.awakeFromNib()
   }
