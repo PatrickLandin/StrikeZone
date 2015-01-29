@@ -26,7 +26,7 @@
                     <items>
                         <barButtonItem systemItem="add" id="DFT-9U-42O">
                             <connections>
-                                <action selector="addHeatMapButtonPressed:" destination="-1" id="eLR-9G-5dC"/>
+                                <action selector="addHeatMapButtonPressed:" destination="-1" id="CPM-G5-Htq"/>
                             </connections>
                         </barButtonItem>
                     </items>
