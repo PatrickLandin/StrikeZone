@@ -86,7 +86,14 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
   @IBAction func addHeatMapButtonPressed(sender: AnyObject) {
     //send user back to blank heatmap view
     let destinationVC = StrikeZoneViewController()
+    if currentHeatMap != nil {
+      self.currentPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
+    }
+    destinationVC.currentHeatMap = self.currentHeatMap
+    destinationVC.selectedPitcher = self.currentPitcher
     self.navigationController?.popToViewController(destinationVC, animated: true)
+    
+    
     
   }
 }
