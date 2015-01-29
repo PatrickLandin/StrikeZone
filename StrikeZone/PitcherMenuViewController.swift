@@ -60,7 +60,11 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
 
         // Do any additional setup after loading the view.
     }
-
+  
+  func continueButtonPressed() {
+    let destinationVC = StrikeZoneViewController()
+    self.navigationController?.pushViewController(destinationVC, animated: true)
+  }
   
   @IBAction func addButtonPressed(sender: AnyObject) {
     println("Add stuff")
