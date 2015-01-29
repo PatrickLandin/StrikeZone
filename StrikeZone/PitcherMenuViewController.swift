@@ -27,7 +27,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
       
-      self.navigationController?.navigationItem
+      self.navigationItem.title = "Strike Zone"
       
       var pitcher1 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
       var pitcher2 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
@@ -94,7 +94,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     return cell
   }
   
-  //MARK: New Pitcher buttons
+  //MARK: New Pitcher
   @IBAction func addPressed(sender: AnyObject) {
     
     self.alertView = NSBundle.mainBundle().loadNibNamed("AddPitcherAlert", owner: self, options: nil).first as? UIView
@@ -117,7 +117,22 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     var newPitcher = Pitcher(name: self.newPitcherText.text, team: self.newTeamText.text)
     self.pitchers.append(newPitcher)
     self.tableView.reloadData()
-    self.alertView?.removeFromSuperview()
+    
+    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
+      self.alertView.alpha = 0
+      self.alertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
+      }) { (finished) -> Void in
+        self.alertView.removeFromSuperview()
+    }
+  }
+  
+  @IBAction func cancelNewPressed(sender: UIButton) {
+    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
+      self.alertView.alpha = 0
+      self.alertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
+      }) { (finished) -> Void in
+        self.alertView.removeFromSuperview()
+    }
   }
   
   //MARK: Tableview datasource
@@ -158,7 +173,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     return cell
   }
   
-  //MARK: Edit Pitcher Button
+  //MARK: Edit Pitcher
   func editPitcher(sender : UIButton) {
     
     self.editAlertView = NSBundle.mainBundle().loadNibNamed("editPitcherAlert", owner: self, options: nil).first as? UIView
@@ -182,7 +197,21 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     editedPitcher.name = self.editPitcherText.text
     editedPitcher.team = self.editTeamText.text
     self.tableView.reloadData()
-    self.editAlertView?.removeFromSuperview()
+    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
+      self.editAlertView.alpha = 0
+      self.editAlertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
+      }) { (finished) -> Void in
+        self.editAlertView.removeFromSuperview()
+    }
+  }
+  
+  @IBAction func editCancelPressed(sender: UIButton) {
+    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
+      self.editAlertView.alpha = 0
+      self.editAlertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
+      }) { (finished) -> Void in
+        self.editAlertView.removeFromSuperview()
+    }
   }
   
   //MARK: Instaniate StrikeZoneViewController
