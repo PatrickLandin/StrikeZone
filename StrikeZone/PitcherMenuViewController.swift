@@ -76,6 +76,11 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     }
   }
   
+  func continueButtonPressed() {
+    let destinationVC = StrikeZoneViewController()
+    self.navigationController?.pushViewController(destinationVC, animated: true)
+  }
+  
   //MARK: CollectionView DataSource
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     if selectedPitcher?.heatMaps.count == nil {
@@ -235,6 +240,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   //MARK: Instaniate StrikeZoneViewController
   func showMap(sender : UIButton) {
+    
     var strikeZoneVC = self.storyboard?.instantiateViewControllerWithIdentifier("MAP") as StrikeZoneViewController
     let selectedIndexPath = self.tableView.indexPathForSelectedRow()?.row
     strikeZoneVC.selectedPitcher = self.pitchers[selectedIndexPath!]
