@@ -19,8 +19,10 @@
 		649B04E01A78542E00A8FD99 /* heatMapCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649B04DF1A78542E00A8FD99 /* heatMapCollectionView.xib */; };
 		649B04E21A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B04E11A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift */; };
 		EC5D765D1A77110400833AF0 /* pixelGlove.png in Resources */ = {isa = PBXBuildFile; fileRef = EC5D765C1A77110400833AF0 /* pixelGlove.png */; };
+		EC73FF911A7AACD900CF0E3E /* editPitcherAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC73FF901A7AACD900CF0E3E /* editPitcherAlert.xib */; };
 		EC8A042A1A785B8B00C1E87F /* MenuCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC8A04291A785B8B00C1E87F /* MenuCollectionCell.xib */; };
 		EC8A04301A78628000C1E87F /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8A042F1A78628000C1E87F /* MenuCollectionViewCell.swift */; };
+		ECB520AA1A7AA665003543EC /* AddPitcherAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB520A91A7AA665003543EC /* AddPitcherAlert.xib */; };
 		ECBA079D1A73106B00B580F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA079C1A73106B00B580F5 /* AppDelegate.swift */; };
 		ECBA07A41A73106B00B580F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECBA07A31A73106B00B580F5 /* Images.xcassets */; };
 		ECBA07A71A73106B00B580F5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECBA07A51A73106B00B580F5 /* LaunchScreen.xib */; };
@@ -32,6 +34,7 @@
 		ECC5AC0A1A76BCC0006F9887 /* Pitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5AC091A76BCC0006F9887 /* Pitcher.swift */; };
 		ECC5AC0C1A76BD5F006F9887 /* HeatMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5AC0B1A76BD5F006F9887 /* HeatMap.swift */; };
 		ECC5AC121A76D461006F9887 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5AC111A76D461006F9887 /* MenuTableViewCell.swift */; };
+		ECFA632F1A7982AD00D844A0 /* MapCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA632E1A7982AD00D844A0 /* MapCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +61,10 @@
 		649B04DF1A78542E00A8FD99 /* heatMapCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = heatMapCollectionView.xib; path = ../heatMapCollectionView.xib; sourceTree = "<group>"; };
 		649B04E11A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeatMapCollectionTableViewCell.swift; path = ../HeatMapCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		EC5D765C1A77110400833AF0 /* pixelGlove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pixelGlove.png; sourceTree = "<group>"; };
+		EC73FF901A7AACD900CF0E3E /* editPitcherAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = editPitcherAlert.xib; sourceTree = "<group>"; };
 		EC8A04291A785B8B00C1E87F /* MenuCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCollectionCell.xib; sourceTree = "<group>"; };
 		EC8A042F1A78628000C1E87F /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		ECB520A91A7AA665003543EC /* AddPitcherAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddPitcherAlert.xib; sourceTree = "<group>"; };
 		ECBA07971A73106B00B580F5 /* StrikeZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StrikeZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECBA079B1A73106B00B580F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECBA079C1A73106B00B580F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,8 +79,8 @@
 		ECC5AC071A76B6FE006F9887 /* MenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuCell.xib; path = ../MenuCell.xib; sourceTree = "<group>"; };
 		ECC5AC091A76BCC0006F9887 /* Pitcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pitcher.swift; sourceTree = "<group>"; };
 		ECC5AC0B1A76BD5F006F9887 /* HeatMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatMap.swift; sourceTree = "<group>"; };
-		ECC5AC0D1A76CCFF006F9887 /* AddPitcherAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddPitcherAlert.xib; sourceTree = "<group>"; };
 		ECC5AC111A76D461006F9887 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuTableViewCell.swift; path = ../MenuTableViewCell.swift; sourceTree = "<group>"; };
+		ECFA632E1A7982AD00D844A0 /* MapCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapCollectionViewController.swift; path = ../MapCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,8 +176,8 @@
 				640389A11A76B59800060349 /* pitcherDetailView.xib */,
 				649B04D91A78022900A8FD99 /* pitchDetailCell.xib */,
 				64232A8D1A76D16600057E18 /* HeatMapCell.xib */,
-				648AD7B41A7AB23100472192 /* StrikeRegion.swift */,
-				ECC5AC0D1A76CCFF006F9887 /* AddPitcherAlert.xib */,
+				ECB520A91A7AA665003543EC /* AddPitcherAlert.xib */,
+				EC73FF901A7AACD900CF0E3E /* editPitcherAlert.xib */,
 				ECC5AC071A76B6FE006F9887 /* MenuCell.xib */,
 				EC8A04291A785B8B00C1E87F /* MenuCollectionCell.xib */,
 				ECBA07A51A73106B00B580F5 /* LaunchScreen.xib */,
@@ -193,6 +198,7 @@
 				649B04E11A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift */,
 				ECC5AC111A76D461006F9887 /* MenuTableViewCell.swift */,
 				EC8A042F1A78628000C1E87F /* MenuCollectionViewCell.swift */,
+				ECFA632E1A7982AD00D844A0 /* MapCollectionViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -281,8 +287,9 @@
 				ECBA07A71A73106B00B580F5 /* LaunchScreen.xib in Resources */,
 				ECC5AC081A76B6FE006F9887 /* MenuCell.xib in Resources */,
 				ECBA07A41A73106B00B580F5 /* Images.xcassets in Resources */,
+				EC73FF911A7AACD900CF0E3E /* editPitcherAlert.xib in Resources */,
 				324FDB3B1A78671200A743E9 /* dodgerBackground.jpg in Resources */,
-				6447D4D21A7998D6007C3FCA /* Main.storyboard in Resources */,
+				ECB520AA1A7AA665003543EC /* AddPitcherAlert.xib in Resources */,
 				64232A8F1A76D16600057E18 /* HeatMapCell.xib in Resources */,
 				640389A21A76B59800060349 /* pitcherDetailView.xib in Resources */,
 				EC5D765D1A77110400833AF0 /* pixelGlove.png in Resources */,
@@ -315,7 +322,7 @@
 				ECBA079D1A73106B00B580F5 /* AppDelegate.swift in Sources */,
 				ECC5AC021A76ADD5006F9887 /* PitcherDetailViewController.swift in Sources */,
 				324FDB391A780F2400A743E9 /* Pitch.swift in Sources */,
-				648AD7B51A7AB23100472192 /* StrikeRegion.swift in Sources */,
+				ECFA632F1A7982AD00D844A0 /* MapCollectionViewController.swift in Sources */,
 				ECC5AC0A1A76BCC0006F9887 /* Pitcher.swift in Sources */,
 				64232A8E1A76D16600057E18 /* HeatMapCell.swift in Sources */,
 			);
