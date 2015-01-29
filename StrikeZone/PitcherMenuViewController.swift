@@ -121,7 +121,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   //MARK: Instaniate StrikeZoneViewController
   func showMap(sender : UIButton) {
     
-    println(sender.tag)
     var strikeZoneVC = self.storyboard?.instantiateViewControllerWithIdentifier("MAP") as StrikeZoneViewController
     let selectedIndexPath = self.tableView.indexPathForSelectedRow()?.row
     strikeZoneVC.selectedPitcher = self.pitchers[selectedIndexPath!]

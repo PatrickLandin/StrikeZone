@@ -31,7 +31,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="collectionView" destination="gek-zM-rNc" id="dst-U3-39M"/>
+                <outlet property="collectionView" destination="gek-zM-rNc" id="9uf-MN-k5X"/>
             </connections>
             <point key="canvasLocation" x="434.5" y="258.5"/>
         </tableViewCell>
