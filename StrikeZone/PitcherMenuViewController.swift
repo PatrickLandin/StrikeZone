@@ -104,7 +104,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     self.alertView.transform = CGAffineTransformMakeScale(0.4, 0.4)
     self.view.addSubview(alertView)
     
-    UIView.animateWithDuration(0.4, delay: 0.5, options: nil, animations: { () -> Void in
+    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
       self.alertView.alpha = 1
       self.alertView.layer.cornerRadius = 15.0
       self.alertView.backgroundColor = UIColor.lightGrayColor()
@@ -183,7 +183,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     self.editAlertView.transform = CGAffineTransformMakeScale(0.5, 0.5)
     self.view.addSubview(self.editAlertView)
     
-    UIView.animateWithDuration(0.4, delay: 0.5, options: nil, animations: { () -> Void in
+    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
       self.editAlertView.alpha = 1
       self.editAlertView.layer.cornerRadius = 15.0
       self.editAlertView.backgroundColor = UIColor.lightGrayColor()
@@ -197,6 +197,16 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     editedPitcher.name = self.editPitcherText.text
     editedPitcher.team = self.editTeamText.text
     self.tableView.reloadData()
+    
+    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
+      self.editAlertView.alpha = 0
+      self.editAlertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
+      }) { (finished) -> Void in
+        self.editAlertView.removeFromSuperview()
+    }
+  }
+
+  @IBAction func editCancelPressed(sender: UIButton) {
     UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
       self.editAlertView.alpha = 0
       self.editAlertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
@@ -205,7 +215,11 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     }
   }
   
-  @IBAction func editCancelPressed(sender: UIButton) {
+  @IBAction func removeButtonPressed(sender: UIButton) {
+    var removedPitcher = self.pitchers[selectedRowIndex]
+    pitchers.removeAtIndex(selectedRowIndex)
+    self.tableView.reloadData()
+    
     UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
       self.editAlertView.alpha = 0
       self.editAlertView.transform = CGAffineTransformMakeScale(1.0, 1.0)

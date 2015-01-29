@@ -12,9 +12,20 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="400" height="170"/>
+            <rect key="frame" x="0.0" y="0.0" width="400" height="213"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFQ-Cc-YJC">
+                    <rect key="frame" x="248" y="112" width="67" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="Remove">
+                        <color key="titleColor" red="1" green="0.065172697370000005" blue="0.128983347" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="removeButtonPressed:" destination="-1" eventType="touchUpInside" id="jwi-BM-Cg4"/>
+                    </connections>
+                </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Edit Pitcher Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CBf-qf-BfP">
                     <rect key="frame" x="75" y="34" width="250" height="30"/>
                     <constraints>
@@ -41,14 +52,14 @@
                         <action selector="editCancelPressed:" destination="-1" eventType="touchUpInside" id="r0v-CY-t8b"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFQ-Cc-YJC">
-                    <rect key="frame" x="272" y="112" width="43" height="34"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ses-RR-i6I">
+                    <rect key="frame" x="164" y="158" width="52" height="39"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
                     <state key="normal" title="Done">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="editingDonePressed:" destination="-1" eventType="touchUpInside" id="eh3-PW-hu1"/>
+                        <action selector="editingDonePressed:" destination="-1" eventType="touchUpInside" id="MEY-4x-BPg"/>
                     </connections>
                 </button>
             </subviews>
@@ -64,7 +75,7 @@
                 <constraint firstAttribute="centerX" secondItem="CBf-qf-BfP" secondAttribute="centerX" id="t4t-Fa-D4b"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="348" y="399"/>
+            <point key="canvasLocation" x="348" y="420.5"/>
         </view>
     </objects>
 </document>
