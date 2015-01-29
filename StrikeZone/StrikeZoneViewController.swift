@@ -23,10 +23,16 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   let locationView = UIView()
   var selectedPitcher : Pitcher?
   
+  var targetView : StrikeRegion?
+  var currentHeatMap : HeatMap?
+  var doneButton : UIBarButtonItem!
+  var backButton : UIBarButtonItem!
+  
+  var zoneColor = UIColor()
+  var alphaNumber = 0
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-      
       
       self.navigationItem.title = selectedPitcher?.name
       self.navigationController?.delegate = self
@@ -81,46 +87,49 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     }
     
   }
-
-  func handleTap(gesture: UITapGestureRecognizer) {
-    let tapLocation = gesture.locationInView(strikeZoneView)
-    println("Ryan is a big fat shhhupid idiot")
-   
+  
+  func detailButtonPressed(sender: UIButton) {
+     let pitcherDetailVC = PitcherDetailViewController(nibName : "pitcherDetailView" , bundle : NSBundle.mainBundle())
+//    if currentHeatMap != nil {
+//      self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
+//    }
+    pitcherDetailVC.currentPitcher = self.selectedPitcher
+    pitcherDetailVC.currentHeatMap = self.currentHeatMap
+    self.navigationController?.pushViewController(pitcherDetailVC, animated: true)
+  }
+  
+  func backButtonPressed(sender: UIButton) {
+    let pitcherMenuVC = PitcherMenuViewController()
+    if currentHeatMap != nil {
+      self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
+    }
+    var continueButton = UIBarButtonItem(title: "Continue", style: UIBarButtonItemStyle.Done, target: self, action: "continueButtonPressed")
+    self.navigationController?.popToRootViewControllerAnimated(true)
+  }
+  
+  func handleTapForTarget(targetToouchLocation: CGPoint) {
+    if currentHeatMap == nil {
+      currentHeatMap = HeatMap()
+    }
     for subView in self.strikeZoneView.subviews {
-      if let zoneView = subView as? UIView {
-        if CGRectContainsPoint(zoneView.frame, tapLocation) {
-         
-          if isTargetLocation  {
-            currentPitch.targetZoneLocation = zoneView.tag
-            currentPitch.targetLocation = tapLocation
-            self.targetView = zoneView
-            isTargetLocation = false
-            
-          } else {
-            currentPitch.actualZoneLocation = zoneView.tag
-            currentPitch.actualLocation = tapLocation
-            isTargetLocation = true
-            pitches.append(currentPitch)
-          
-            var zoneColor : UIColor!
-            if self.currentPitch.actualZoneLocation == self.currentPitch.targetZoneLocation {
-              zoneColor = UIColor.redColor()
-            } else {
-              zoneColor = UIColor.blueColor()
-            }
-            
-            currentPitch = Pitch()
-            if self.targetView!.alpha == 1 {
-              self.targetView!.alpha = 0.12
-            }
-            
-            UIView.animateWithDuration(0.2, delay: 0.0, options: nil, animations: { () -> Void in
-            }, completion: { (finished) -> Void in
-              self.targetView!.alpha = self.targetView!.alpha + 0.01
-              self.targetView!.backgroundColor = zoneColor
-              
-            })
-          }
+      if let zoneView = subView as? StrikeRegion {
+        if CGRectContainsPoint(zoneView.frame, targetToouchLocation) {
+          currentPitch.targetZoneLocation = zoneView.tag
+          currentPitch.targetLocation = targetToouchLocation
+          self.targetView = zoneView
+          isTargetLocation = false
+          return
+        }
+      }
+    }
+  }
+  func handleTapForPitch(actualTouchLocation: CGPoint) {
+    for subView in self.strikeZoneView.subviews {
+      if let zoneView = subView as? StrikeRegion {
+        if CGRectContainsPoint(zoneView.frame, actualTouchLocation) {
+          currentPitch.actualZoneLocation = zoneView.tag
+          currentPitch.actualLocation = actualTouchLocation
+          isTargetLocation = true
         }
       }
     }
@@ -179,17 +188,13 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   
   func handleTap(gesture: UITapGestureRecognizer) {
     let tapLocation = gesture.locationInView(strikeZoneView)
+    println("Ryan is a big fat shhhupid idiot")
    
     if isTargetLocation  {
       self.handleTapForTarget(tapLocation)
           } else  {
           handleTapForPitch(tapLocation)
     }
-    
-    
-    
-    
-
-          }
-        }
+  }
+}
       
