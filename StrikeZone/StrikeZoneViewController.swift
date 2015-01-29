@@ -15,6 +15,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   @IBOutlet weak var pitchArea: UIView!
   @IBOutlet weak var strikeZoneView: UIView!
   
+  let alert = UIAlertController(title: "Pitch Type", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
   var pitchLocation = [CGPoint]()
   var pitches = [Pitch]()
   var isTargetLocation = true
@@ -43,17 +44,40 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
       strikeZoneView.layer.borderColor = UIColor.blackColor().CGColor
       let tap = UITapGestureRecognizer(target: self, action: ("handleTap:"))
       strikeZoneView.addGestureRecognizer(tap)
+      let pitchTypeFastBall = UIAlertAction(title: "FastBall", style: .Default, handler: { (action) -> Void in
+        self.currentPitch.pitchType = "Fast Ball"
+        self.currentPitch.wasGoodPitch = true
+        self.modifyTemperatureForNewPitch()
+      })
+      let pitchTypeOffSpeed = UIAlertAction(title: "OffSpeed", style: .Default, handler: { (action) -> Void in
+        self.currentPitch.pitchType = "OffSpeed"
+        self.currentPitch.wasGoodPitch = true
+        self.modifyTemperatureForNewPitch()
+      })
+      let pitchTypeBreaking = UIAlertAction(title: "Breaking Ball", style: .Default, handler: { (action) -> Void in
+        self.currentPitch.pitchType = "Breaking Ball"
+        self.currentPitch.wasGoodPitch = true
+        self.modifyTemperatureForNewPitch()
+      })
+      let pitchCancel = UIAlertAction(title: "Cancel Pitch", style: UIAlertActionStyle.Destructive) { (action) -> Void in
+        println()
+       self.currentPitch.wasGoodPitch = false
+      }
+      self.alert.addAction(pitchTypeFastBall)
+      self.alert.addAction(pitchTypeOffSpeed)
+      self.alert.addAction(pitchTypeBreaking)
+      self.alert.addAction(pitchCancel)
+
         // Do any additional setup after loading the view.
       
       for view in strikeZoneView.subviews{
         let subView = view as? UIView
         subView!.alpha = 0
+        
       }
-      
-      
+
       self.navigationItem.title = self.selectedPitcher?.name
-      
-      
+
     }
   
   override func viewDidAppear(animated: Bool) {
@@ -79,103 +103,102 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     if currentHeatMap != nil {
       self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
     }
+    var continueButton = UIBarButtonItem(title: "Continue", style: UIBarButtonItemStyle.Done, target: self, action: "continueButtonPressed")
     self.navigationController?.popToRootViewControllerAnimated(true)
+  }
+  
+  func handleTapForTarget(targetToouchLocation: CGPoint) {
+    if currentHeatMap == nil {
+      currentHeatMap = HeatMap()
+    }
+    for subView in self.strikeZoneView.subviews {
+      if let zoneView = subView as? StrikeRegion {
+        if CGRectContainsPoint(zoneView.frame, targetToouchLocation) {
+          currentPitch.targetZoneLocation = zoneView.tag
+          currentPitch.targetLocation = targetToouchLocation
+          self.targetView = zoneView
+          isTargetLocation = false
+          return
+        }
+      }
+    }
+  }
+  func handleTapForPitch(actualTouchLocation: CGPoint) {
+    for subView in self.strikeZoneView.subviews {
+      if let zoneView = subView as? StrikeRegion {
+        if CGRectContainsPoint(zoneView.frame, actualTouchLocation) {
+          currentPitch.actualZoneLocation = zoneView.tag
+          currentPitch.actualLocation = actualTouchLocation
+          isTargetLocation = true
+        }
+      }
+    }
+    self.presentViewController(self.alert, animated: true, completion: nil)
+  }
+  
+  func modifyTemperatureForNewPitch() {
+    if self.targetView!.temperature == 0{
+      if self.currentPitch.actualZoneLocation == self.currentPitch.targetZoneLocation {
+        //heres how we handle a good pitch
+        self.zoneColor = UIColor.redColor()
+        self.targetView!.alpha = self.targetView!.alpha + 0.1
+        self.targetView!.backgroundColor = self.zoneColor
+        self.targetView!.temperature++
+      }
+      else //Handle a bad pitch
+      {
+        self.zoneColor = UIColor.blueColor()
+        self.targetView!.alpha = self.targetView!.alpha + 0.1
+        self.targetView!.backgroundColor = self.zoneColor
+        self.targetView!.temperature--
+      }
+    }
+    else if self.targetView!.temperature > 0
+    {
+      if self.currentPitch.actualZoneLocation == self.currentPitch.targetZoneLocation{
+        self.targetView!.alpha = self.targetView!.alpha + 0.1
+        self.targetView!.temperature++
+      }
+      else{
+        self.targetView!.alpha = self.targetView!.alpha - 0.1
+        self.targetView!.temperature--
+      }
+    }
+    else
+    {
+      if self.currentPitch.actualZoneLocation == self.currentPitch.targetZoneLocation{
+        self.targetView!.alpha = self.targetView!.alpha - 0.1
+        self.targetView!.temperature++
+      }
+      else{
+        self.targetView!.alpha = self.targetView!.alpha + 0.1
+        self.targetView!.temperature--
+      }
+    }
+    if currentPitch.wasGoodPitch == true {
+      currentHeatMap?.allPitches.append(currentPitch)
+    }
+    UIGraphicsBeginImageContext(view.bounds.size);
+    self.view.layer.renderInContext(UIGraphicsGetCurrentContext())
+    let viewImage = UIGraphicsGetImageFromCurrentImageContext()
+    currentHeatMap?.heatMapImage = viewImage
+    UIGraphicsEndImageContext()
+    currentPitch = Pitch()
   }
   
   func handleTap(gesture: UITapGestureRecognizer) {
     let tapLocation = gesture.locationInView(strikeZoneView)
    
-    for subView in self.strikeZoneView.subviews {
-      if let zoneView = subView as? StrikeRegion {
-        if CGRectContainsPoint(zoneView.frame, tapLocation) {
-         
-          if isTargetLocation  {
-            currentPitch.targetZoneLocation = zoneView.tag
-            currentPitch.targetLocation = tapLocation
-            self.targetView = zoneView
-            isTargetLocation = false
-            
-          } else {
-            currentPitch.actualZoneLocation = zoneView.tag
-            currentPitch.actualLocation = tapLocation
-            isTargetLocation = true
-            currentHeatMap?.allPitches.append(currentPitch)
-//            var snapShotOfStrikeZone = view.snapshotViewAfterScreenUpdates(true)
-            
-            
-//            println("This is ViewImage: \(viewImage)")
-//            println("This is currentHeatMap: \(viewImage)")
-
-            //self.targetView!.alpha = 0
-            
-            //var goodPitch = true
-            
-            if self.targetView!.temperature == 0{
-              if self.currentPitch.actualZoneLocation == self.currentPitch.targetZoneLocation {
-                //heres how we handle a good pitch
-                self.zoneColor = UIColor.redColor()
-                self.targetView!.alpha = self.targetView!.alpha + 0.1
-                self.targetView!.backgroundColor = self.zoneColor
-                self.targetView!.temperature++
-                println(self.targetView!.temperature)
-              }
-              else //Handle a bad pitch
-              {
-                self.zoneColor = UIColor.blueColor()
-                self.targetView!.alpha = self.targetView!.alpha + 0.1
-                self.targetView!.backgroundColor = self.zoneColor
-                self.targetView!.temperature--
-                println(self.targetView!.temperature)
-              }
-            }
-            else if self.targetView!.temperature > 0
-            {
-              if self.currentPitch.actualZoneLocation == self.currentPitch.targetZoneLocation{
-                self.targetView!.alpha = self.targetView!.alpha + 0.1
-                self.targetView!.temperature++
-                println(self.targetView!.temperature)
-              }
-              else{
-                self.targetView!.alpha = self.targetView!.alpha - 0.1
-                self.targetView!.temperature--
-                println(self.targetView!.temperature)
-              }
-            }
-            else
-            {
-              if self.currentPitch.actualZoneLocation == self.currentPitch.targetZoneLocation{
-                self.targetView!.alpha = self.targetView!.alpha - 0.1
-                self.targetView!.temperature++
-                println(self.targetView!.temperature)
-              }
-              else{
-              self.targetView!.alpha = self.targetView!.alpha + 0.1
-                self.targetView!.temperature--
-                println(self.targetView!.temperature)
-              }
-            }
+    if isTargetLocation  {
+      self.handleTapForTarget(tapLocation)
+          } else  {
+          handleTapForPitch(tapLocation)
+    }
     
-            UIGraphicsBeginImageContext(view.bounds.size);
-            self.view.layer.renderInContext(UIGraphicsGetCurrentContext())
-            let viewImage = UIGraphicsGetImageFromCurrentImageContext()
-            currentHeatMap?.heatMapImage = viewImage
-            UIGraphicsEndImageContext()
-//            println("This is ViewImage: \(viewImage)")
-//            println("This is currentHeatMap: \(viewImage)")
-            //currentHeatMap?.allPitches.append(currentPitch)
-
-            var zoneColor : UIColor!
-            if self.currentPitch.actualZoneLocation == self.currentPitch.targetZoneLocation {
-              zoneColor = UIColor.redColor()
-            } else {
-              zoneColor = UIColor.blueColor()
-            }
-            
-            currentPitch = Pitch()
+    
+    
+    
 
           }
         }
-      }
-    }
-  }
-}
+      
