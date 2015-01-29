@@ -141,12 +141,17 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
+                                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pKn-SG-HPn">
+                                                <rect key="frame" x="120" y="120" width="120" height="120"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="kLj-co-YH4" firstAttribute="width" secondItem="RaY-Ok-GQz" secondAttribute="width" id="1E2-en-ttH"/>
                                             <constraint firstItem="EgK-uR-Rdz" firstAttribute="top" secondItem="i1J-F6-h1z" secondAttribute="top" id="2et-kZ-Qyq"/>
                                             <constraint firstItem="RaY-Ok-GQz" firstAttribute="height" secondItem="Hbe-AL-RpD" secondAttribute="height" id="6hn-rq-wwl"/>
+                                            <constraint firstAttribute="centerY" secondItem="pKn-SG-HPn" secondAttribute="centerY" id="7wD-ex-DVt"/>
                                             <constraint firstItem="RaY-Ok-GQz" firstAttribute="leading" secondItem="kLj-co-YH4" secondAttribute="trailing" id="AUJ-nU-WAU"/>
                                             <constraint firstItem="Dzc-Gx-buV" firstAttribute="trailing" secondItem="kLj-co-YH4" secondAttribute="trailing" id="COC-TF-Nnl"/>
                                             <constraint firstItem="RaY-Ok-GQz" firstAttribute="height" secondItem="M0q-2R-qmy" secondAttribute="height" multiplier="0.333" id="EZN-su-Qhd"/>
@@ -160,8 +165,10 @@
                                             <constraint firstItem="Hbe-AL-RpD" firstAttribute="leading" secondItem="RaY-Ok-GQz" secondAttribute="trailing" id="SLm-Zt-JS0"/>
                                             <constraint firstItem="3Gt-3J-HTE" firstAttribute="bottom" secondItem="Dzc-Gx-buV" secondAttribute="bottom" id="TIB-mC-Aqj"/>
                                             <constraint firstAttribute="bottom" secondItem="exE-jc-IoH" secondAttribute="bottom" id="TIh-37-fii"/>
+                                            <constraint firstAttribute="centerX" secondItem="pKn-SG-HPn" secondAttribute="centerX" id="UNn-Hu-Sxr"/>
                                             <constraint firstItem="Hbe-AL-RpD" firstAttribute="leading" secondItem="RaY-Ok-GQz" secondAttribute="trailing" id="Yaa-Q4-eK5"/>
                                             <constraint firstAttribute="centerX" secondItem="RaY-Ok-GQz" secondAttribute="centerX" id="ZEb-gB-mF1"/>
+                                            <constraint firstItem="RaY-Ok-GQz" firstAttribute="height" secondItem="pKn-SG-HPn" secondAttribute="height" id="Zey-8R-09o"/>
                                             <constraint firstItem="i1J-F6-h1z" firstAttribute="top" secondItem="Dzc-Gx-buV" secondAttribute="bottom" id="a5l-D2-DIg"/>
                                             <constraint firstItem="RaY-Ok-GQz" firstAttribute="width" secondItem="M0q-2R-qmy" secondAttribute="width" multiplier="0.333" id="a87-7B-VFr"/>
                                             <constraint firstItem="RaY-Ok-GQz" firstAttribute="top" secondItem="M0q-2R-qmy" secondAttribute="top" id="cQZ-nY-RmS"/>
@@ -175,6 +182,7 @@
                                             <constraint firstItem="kLj-co-YH4" firstAttribute="height" secondItem="RaY-Ok-GQz" secondAttribute="height" id="pzD-M8-gRy"/>
                                             <constraint firstItem="3Gt-3J-HTE" firstAttribute="top" secondItem="Dzc-Gx-buV" secondAttribute="top" id="pzz-Xl-4FE"/>
                                             <constraint firstItem="3Gt-3J-HTE" firstAttribute="leading" secondItem="exE-jc-IoH" secondAttribute="leading" id="tiF-FE-5ff"/>
+                                            <constraint firstItem="RaY-Ok-GQz" firstAttribute="width" secondItem="pKn-SG-HPn" secondAttribute="width" id="wqd-up-5M9"/>
                                             <constraint firstAttribute="bottom" secondItem="i1J-F6-h1z" secondAttribute="bottom" id="xiz-5n-Lcp"/>
                                             <constraint firstItem="i1J-F6-h1z" firstAttribute="width" secondItem="EgK-uR-Rdz" secondAttribute="width" id="yNk-tf-rKD"/>
                                             <constraint firstItem="EgK-uR-Rdz" firstAttribute="height" secondItem="exE-jc-IoH" secondAttribute="height" id="yVH-M6-UN2"/>
@@ -186,10 +194,6 @@
                                                 <exclude reference="IuM-iD-GZe"/>
                                             </mask>
                                         </variation>
-                                    </view>
-                                    <view tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pKn-SG-HPn">
-                                        <rect key="frame" x="180" y="180" width="120" height="120"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

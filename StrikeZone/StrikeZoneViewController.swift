@@ -26,7 +26,6 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   var doneButton : UIBarButtonItem!
   var backButton : UIBarButtonItem!
   
-  
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -53,6 +52,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
       self.selectedPitcher?.heatMaps.append(currentHeatMap!)
     }
     pitcherDetailVC.currentPitcher = self.selectedPitcher
+    pitcherDetailVC.currentHeatMap = self.currentHeatMap
     self.navigationController?.pushViewController(pitcherDetailVC, animated: true)
   }
   
@@ -63,9 +63,6 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     }
     self.navigationController?.popToRootViewControllerAnimated(true)
   }
-  
-  
-  
   
   func handleTap(gesture: UITapGestureRecognizer) {
     let tapLocation = gesture.locationInView(strikeZoneView)
@@ -84,8 +81,9 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
             currentPitch.actualZoneLocation = zoneView.tag
             currentPitch.actualLocation = tapLocation
             isTargetLocation = true
-            pitches.append(currentPitch)
             currentHeatMap?.allPitches!.append(currentPitch)
+            var snapShotOfStrikeZone = view.snapshotViewAfterScreenUpdates(true)
+            currentHeatMap?.heatMapImage = snapShotOfStrikeZone
           
             var zoneColor : UIColor!
             if self.currentPitch.actualZoneLocation == self.currentPitch.targetZoneLocation {
@@ -103,7 +101,6 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
             }, completion: { (finished) -> Void in
               self.targetView!.alpha = self.targetView!.alpha + 0.01
               self.targetView!.backgroundColor = zoneColor
-              
             })
           }
         }

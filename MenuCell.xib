@@ -22,78 +22,46 @@
                         </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pitcher Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xF-FW-ptX">
-                        <rect key="frame" x="66" y="9" width="110" height="22"/>
+                        <rect key="frame" x="8" y="8" width="110" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="60b-wa-9gF">
-                        <rect key="frame" x="8" y="49" width="50" height="50"/>
+                        <rect key="frame" x="17" y="49" width="50" height="50"/>
                         <color key="backgroundColor" red="0.35294117650000001" green="0.73333333329999995" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqZ-Ay-1Sl">
-                        <rect key="frame" x="8" y="9" width="10" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEG-sb-W5g">
+                        <rect key="frame" x="31" y="157" width="22" height="22"/>
+                    </button>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4Dm-kF-bAl">
+                        <rect key="frame" x="84" y="38" width="308" height="143"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cVh-Yi-vcG">
+                            <size key="itemSize" width="80" height="120"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New Heat Map Session" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdC-GV-WSl">
                         <rect key="frame" x="8" y="121" width="68" height="28"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hometown" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iqh-gr-jDQ">
-                        <rect key="frame" x="228" y="49" width="166" height="30"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Team" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a9Y-O4-PNQ">
-                        <rect key="frame" x="66" y="48" width="154" height="30"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="List of Pitches" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="97S-LC-eGF">
-                        <rect key="frame" x="66" y="83" width="328" height="30"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEG-sb-W5g">
-                        <rect key="frame" x="31" y="157" width="22" height="22"/>
-                    </button>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2ZA-Fj-M53">
-                        <rect key="frame" x="21" y="6" width="32" height="30"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                    </textField>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4Dm-kF-bAl">
-                        <rect key="frame" x="84" y="121" width="308" height="60"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cVh-Yi-vcG">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                    </collectionView>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="fqZ-Ay-1Sl" firstAttribute="top" secondItem="uJd-jv-5gg" secondAttribute="topMargin" constant="1" id="6ng-Rq-1Uw"/>
-                    <constraint firstItem="fqZ-Ay-1Sl" firstAttribute="leading" secondItem="uJd-jv-5gg" secondAttribute="leadingMargin" id="DpP-Vm-Ctc"/>
-                    <constraint firstItem="6xF-FW-ptX" firstAttribute="top" secondItem="uJd-jv-5gg" secondAttribute="topMargin" constant="1" id="YZq-pK-2dw"/>
-                    <constraint firstItem="6xF-FW-ptX" firstAttribute="leading" secondItem="fqZ-Ay-1Sl" secondAttribute="trailing" constant="48" id="pk8-Lh-Qzo"/>
+                    <constraint firstItem="6xF-FW-ptX" firstAttribute="top" secondItem="uJd-jv-5gg" secondAttribute="topMargin" id="B0z-Wu-5fR"/>
+                    <constraint firstItem="6xF-FW-ptX" firstAttribute="leading" secondItem="uJd-jv-5gg" secondAttribute="leadingMargin" id="nG8-5N-F7E"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="collectionView" destination="4Dm-kF-bAl" id="krY-OU-zRy"/>
-                <outlet property="hometownTextField" destination="Iqh-gr-jDQ" id="LUd-Ef-qwP"/>
                 <outlet property="imageButton" destination="1s2-v8-GNw" id="kUY-n8-WUu"/>
                 <outlet property="newMapButton" destination="TEG-sb-W5g" id="XUq-ZP-kLp"/>
-                <outlet property="numberTextField" destination="2ZA-Fj-M53" id="LN8-IJ-Njn"/>
                 <outlet property="pitcherImage" destination="60b-wa-9gF" id="s51-6L-uxw"/>
                 <outlet property="pitcherNameLabel" destination="6xF-FW-ptX" id="dL5-il-9c0"/>
-                <outlet property="pitchesTextField" destination="97S-LC-eGF" id="fJR-4I-SRY"/>
-                <outlet property="teamTextField" destination="a9Y-O4-PNQ" id="U3Z-ew-h36"/>
             </connections>
             <point key="canvasLocation" x="327" y="253"/>
         </tableViewCell>

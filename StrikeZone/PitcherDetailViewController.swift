@@ -22,6 +22,7 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
   var ContinueButton: UIBarButtonItem!
   
   var currentPitcher : Pitcher?
+  var currentHeatMap : HeatMap?
   
   //MARK:DUMMY PITCHER
   //let dummyPitcher = Pitcher(name: "Clayon Kershaw")
