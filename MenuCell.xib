@@ -61,9 +61,6 @@
                         <rect key="frame" x="14" y="82" width="56" height="55"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                         <state key="normal" title="Edit"/>
-                        <connections>
-                            <action selector="editButttonPressed:" destination="-1" eventType="touchUpInside" id="RLA-AI-6YK"/>
-                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNn-4Y-gVS">
                         <rect key="frame" x="80" y="41" width="308" height="21"/>
@@ -86,6 +83,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="collectionView" destination="4Dm-kF-bAl" id="onU-qY-TIL"/>
+                <outlet property="editButton" destination="3n9-EC-avR" id="DRt-04-q40"/>
                 <outlet property="imageButton" destination="1s2-v8-GNw" id="kUY-n8-WUu"/>
                 <outlet property="newMapButton" destination="TEG-sb-W5g" id="XUq-ZP-kLp"/>
                 <outlet property="pitcherImage" destination="60b-wa-9gF" id="DZm-L0-F2W"/>

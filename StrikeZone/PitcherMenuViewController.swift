@@ -12,8 +12,9 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var newPitcherText: UITextField!
-  @IBOutlet var newTeamText: UITextField!
-//  @IBOutlet weak var pitcherImageView: UIImageView!
+  @IBOutlet weak var newTeamText: UITextField!
+  @IBOutlet weak var editPitcherText: UITextField!
+  @IBOutlet weak var editTeamText: UITextField!
   
   var pitchers = [Pitcher]()
   var selectedPitcher : Pitcher?
@@ -87,25 +88,8 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     
     return cell
   }
-
-  @IBAction func editButttonPressed(sender: AnyObject) {
-    
-    self.editAlertView = NSBundle.mainBundle().loadNibNamed("editAlertView", owner: self, options: nil).first as? UIView
-    self.editAlertView.center = self.view.center
-    self.editAlertView.alpha = 0
-    self.editAlertView.layer.cornerRadius = 15.0
-    self.editAlertView.transform = CGAffineTransformMakeScale(0.5, 0.5)
-    self.view.addSubview(self.editAlertView)
-    
-    UIView.animateWithDuration(0.4, delay: 0.5, options: nil, animations: { () -> Void in
-      self.editAlertView.alpha = 1
-      self.editAlertView.layer.cornerRadius = 15.0
-      self.editAlertView.backgroundColor = UIColor.lightGrayColor()
-      self.editAlertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
-      }) { (finished) -> Void in
-    }
-  }
   
+  //MARK: New Pitcher buttons
   @IBAction func addPressed(sender: AnyObject) {
     
     self.alertView = NSBundle.mainBundle().loadNibNamed("AddPitcherAlert", owner: self, options: nil).first as? UIView
@@ -128,7 +112,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     var newPitcher = Pitcher(name: self.newPitcherText.text, team: self.newTeamText.text)
     self.pitchers.append(newPitcher)
     self.tableView.reloadData()
-    self.alertView?.removeFromSuperview()
+    self.editAlertView?.removeFromSuperview()
   }
   
   //MARK: Tableview datasource
@@ -154,9 +138,38 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     cell.imageButton.tag = indexPath.row
     cell.imageButton.addTarget(self, action: "showPickerController:", forControlEvents: UIControlEvents.TouchUpInside)
     
-    cell.pitcherImage.image = self.pitcherImage
+    cell.editButton.tag = indexPath.row
+    cell.editButton.addTarget(self, action: "editPitcher:", forControlEvents: UIControlEvents.TouchUpInside)
+    
+    cell.pitcherImage.image = pitcherToDisplay.pitcherImage
+    cell.pitcherImage.layer.cornerRadius = 10.0
     
     return cell
+  }
+  
+  //MARK: Edit Pitcher Button
+  func editPitcher(sender : UIButton) {
+    
+    self.editAlertView = NSBundle.mainBundle().loadNibNamed("editPitcherAlert", owner: self, options: nil).first as? UIView
+    self.editAlertView.center = self.view.center
+    self.editAlertView.alpha = 0
+    self.editAlertView.layer.cornerRadius = 15.0
+    self.editAlertView.transform = CGAffineTransformMakeScale(0.5, 0.5)
+    self.view.addSubview(self.editAlertView)
+    
+    UIView.animateWithDuration(0.4, delay: 0.5, options: nil, animations: { () -> Void in
+      self.editAlertView.alpha = 1
+      self.editAlertView.layer.cornerRadius = 15.0
+      self.editAlertView.backgroundColor = UIColor.lightGrayColor()
+      self.editAlertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
+      }) { (finished) -> Void in
+    }
+  }
+  
+  @IBAction func editingDonePressed(sender: AnyObject) {
+    var editedPitcher = Pitcher(name: self.editPitcherText.text, team: self.editTeamText.text)
+    self.tableView.reloadData()
+    self.editAlertView?.removeFromSuperview()
   }
   
   //MARK: Instaniate StrikeZoneViewController
@@ -174,19 +187,16 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       self.imagePickerController.delegate = self
       self.imagePickerController.allowsEditing = true
       self.presentViewController(self.imagePickerController, animated: true, completion: nil)
-    }
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-      self.pitcherImage = info[UIImagePickerControllerEditedImage] as? UIImage
-      
-      self.tableView.reloadData()
-      
-//        self.pitcherImageView.image = image
-//        self.selectedPitcher!.pitcherImage = pitcherImageView.image
-      
-      self.imagePickerController.dismissViewControllerAnimated(true, completion: nil)
+      self.selectedPitcher = self.pitchers[sender.tag]
     }
   }
+  
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+      self.pitcherImage = info[UIImagePickerControllerEditedImage] as? UIImage
+      self.selectedPitcher!.pitcherImage = self.pitcherImage
+      self.tableView.reloadData()
+      self.imagePickerController.dismissViewControllerAnimated(true, completion: nil)
+    }
   
   //MARK: Swipe to Delete
   func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
