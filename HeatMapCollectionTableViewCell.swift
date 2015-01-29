@@ -13,7 +13,7 @@ class HeatMapCollectionTableViewCell: UITableViewCell, UICollectionViewDataSourc
   @IBOutlet var collectionView: UICollectionView!
   
   var currentPitcher : Pitcher?
-  var currentHeatMap : HeatMap?
+  var currentHeatMap : HeatMap!
   
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,6 +38,6 @@ class HeatMapCollectionTableViewCell: UITableViewCell, UICollectionViewDataSourc
   }
   
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 10
+    return currentPitcher!.heatMaps.count
   }
 }

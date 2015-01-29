@@ -62,7 +62,7 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
     if section == 0{
       return 1
     }
-    return 5
+    return self.currentHeatMap!.allPitches.count
   }
   
   func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
