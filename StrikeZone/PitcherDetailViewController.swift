@@ -19,6 +19,7 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
   @IBOutlet var addNewHeatMap: UIBarButtonItem!
   
   var currentPitcher : Pitcher?
+  var currentHeatMap : HeatMap?
   
     override func viewDidLoad() {
         super.viewDidLoad()
