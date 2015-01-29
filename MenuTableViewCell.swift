@@ -24,7 +24,7 @@ class MenuTableViewCell: UITableViewCell {
         super.awakeFromNib()
       
       self.collectionView.registerNib(UINib(nibName: "MenuCollectionCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "CELL")
-      self.collectionView.backgroundColor = UIColor.whiteColor()
+      self.collectionView.backgroundColor = UIColor.clearColor()
       
       self.pitcherImage.layer.cornerRadius = 7.0
       self.imageButton.layer.cornerRadius = 7.0

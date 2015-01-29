@@ -22,80 +22,69 @@
                         </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pitcher Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xF-FW-ptX">
-                        <rect key="frame" x="66" y="9" width="110" height="22"/>
+                        <rect key="frame" x="8" y="8" width="110" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="60b-wa-9gF">
-                        <rect key="frame" x="8" y="49" width="50" height="50"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="60b-wa-9gF">
+                        <rect key="frame" x="8" y="49" width="60" height="60"/>
                         <color key="backgroundColor" red="0.35294117650000001" green="0.73333333329999995" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="LQX-gT-VNn"/>
+                            <constraint firstAttribute="height" constant="60" id="xUH-XF-79a"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqZ-Ay-1Sl">
-                        <rect key="frame" x="8" y="9" width="10" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New Heat Map Session" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdC-GV-WSl">
                         <rect key="frame" x="8" y="121" width="68" height="28"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hometown" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iqh-gr-jDQ">
-                        <rect key="frame" x="228" y="49" width="166" height="30"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Team" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a9Y-O4-PNQ">
-                        <rect key="frame" x="66" y="48" width="154" height="30"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="List of Pitches" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="97S-LC-eGF">
-                        <rect key="frame" x="66" y="83" width="328" height="30"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEG-sb-W5g">
                         <rect key="frame" x="31" y="157" width="22" height="22"/>
                     </button>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2ZA-Fj-M53">
-                        <rect key="frame" x="21" y="6" width="32" height="30"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                    </textField>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4Dm-kF-bAl">
-                        <rect key="frame" x="84" y="121" width="308" height="60"/>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4Dm-kF-bAl">
+                        <rect key="frame" x="80" y="49" width="308" height="133"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="308" id="1Ah-eU-SLc"/>
+                            <constraint firstAttribute="height" constant="133" id="HD6-mf-hBh"/>
+                        </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cVh-Yi-vcG">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="80" height="133"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3n9-EC-avR">
+                        <rect key="frame" x="356" y="5" width="32" height="34"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <state key="normal" title="Edit">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="fqZ-Ay-1Sl" firstAttribute="top" secondItem="uJd-jv-5gg" secondAttribute="topMargin" constant="1" id="6ng-Rq-1Uw"/>
-                    <constraint firstItem="fqZ-Ay-1Sl" firstAttribute="leading" secondItem="uJd-jv-5gg" secondAttribute="leadingMargin" id="DpP-Vm-Ctc"/>
-                    <constraint firstItem="6xF-FW-ptX" firstAttribute="top" secondItem="uJd-jv-5gg" secondAttribute="topMargin" constant="1" id="YZq-pK-2dw"/>
-                    <constraint firstItem="6xF-FW-ptX" firstAttribute="leading" secondItem="fqZ-Ay-1Sl" secondAttribute="trailing" constant="48" id="pk8-Lh-Qzo"/>
+                    <constraint firstItem="6xF-FW-ptX" firstAttribute="top" secondItem="uJd-jv-5gg" secondAttribute="topMargin" id="1Dp-91-aCk"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="3n9-EC-avR" secondAttribute="trailing" constant="4" id="8f4-vd-488"/>
+                    <constraint firstItem="6xF-FW-ptX" firstAttribute="leading" secondItem="uJd-jv-5gg" secondAttribute="leadingMargin" id="AzF-43-OSM"/>
+                    <constraint firstItem="4Dm-kF-bAl" firstAttribute="top" secondItem="60b-wa-9gF" secondAttribute="top" id="Fm3-FP-Fjk"/>
+                    <constraint firstItem="3n9-EC-avR" firstAttribute="top" secondItem="uJd-jv-5gg" secondAttribute="topMargin" constant="-3" id="fpK-Sn-uYw"/>
+                    <constraint firstItem="4Dm-kF-bAl" firstAttribute="leading" secondItem="60b-wa-9gF" secondAttribute="trailing" constant="12" id="pza-ax-1CM"/>
+                    <constraint firstItem="6xF-FW-ptX" firstAttribute="leading" secondItem="60b-wa-9gF" secondAttribute="leading" id="tK1-mc-5Gg"/>
+                    <constraint firstItem="4Dm-kF-bAl" firstAttribute="top" secondItem="uJd-jv-5gg" secondAttribute="topMargin" constant="41" id="wXY-N3-cMp"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="collectionView" destination="4Dm-kF-bAl" id="onU-qY-TIL"/>
-                <outlet property="hometownTextField" destination="Iqh-gr-jDQ" id="LUd-Ef-qwP"/>
                 <outlet property="imageButton" destination="1s2-v8-GNw" id="kUY-n8-WUu"/>
                 <outlet property="newMapButton" destination="TEG-sb-W5g" id="XUq-ZP-kLp"/>
-                <outlet property="numberTextField" destination="2ZA-Fj-M53" id="LN8-IJ-Njn"/>
                 <outlet property="pitcherImage" destination="60b-wa-9gF" id="s51-6L-uxw"/>
                 <outlet property="pitcherNameLabel" destination="6xF-FW-ptX" id="dL5-il-9c0"/>
-                <outlet property="pitchesTextField" destination="97S-LC-eGF" id="fJR-4I-SRY"/>
-                <outlet property="teamTextField" destination="a9Y-O4-PNQ" id="U3Z-ew-h36"/>
             </connections>
-            <point key="canvasLocation" x="327" y="253"/>
+            <point key="canvasLocation" x="298" y="290"/>
         </tableViewCell>
     </objects>
 </document>
