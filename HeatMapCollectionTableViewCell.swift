@@ -13,7 +13,7 @@ class HeatMapCollectionTableViewCell: UITableViewCell, UICollectionViewDataSourc
   @IBOutlet var collectionView: UICollectionView!
   
   var currentPitcher : Pitcher?
-  var currentHeatMap : HeatMap?
+  var currentHeatMap : HeatMap!
   
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,13 +31,13 @@ class HeatMapCollectionTableViewCell: UITableViewCell, UICollectionViewDataSourc
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier("HEAT_MAP_CELL", forIndexPath: indexPath) as HeatMapCell
     
-    cell.imageView.image = currentHeatMap?.heatMapImage
+    cell.imageView.image = currentPitcher?.heatMaps[indexPath.row].heatMapImage
     cell.heatMapDateLabel.text = "mm/dd/yy"
         
     return cell
   }
   
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 10
+    return currentPitcher!.heatMaps.count
   }
 }
