@@ -8,10 +8,10 @@
 
 import UIKit
 
-let reuseIdentifier = "Cell"
-var selectedPitcher : Pitcher?
-
 class MapCollectionViewController: UICollectionViewController {
+  
+  let reuseIdentifier = "Cell"
+  var selectedPitcher : Pitcher?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,25 +41,26 @@ class MapCollectionViewController: UICollectionViewController {
     */
 
     // MARK: UICollectionViewDataSource
-
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        //#warning Incomplete method implementation -- Return the number of sections
-        return 0
-    }
-
-
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //#warning Incomplete method implementation -- Return the number of items in the section
-        return 100
-    }
-
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CELL", forIndexPath: indexPath) as UICollectionViewCell
-    
-        cell.layer.cornerRadius = 12.0
-    
-        return cell
-    }
+//
+//    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+//        //#warning Incomplete method implementation -- Return the number of sections
+//        return 0
+//    }
+//
+//
+//    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        //#warning Incomplete method implementation -- Return the number of items in the section
+//        return self.selectedPitcher!.heatMaps.count
+//    }
+//
+//    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CELL", forIndexPath: indexPath) as MenuCollectionViewCell
+//      
+//      cell.layer.cornerRadius = 12.0
+//      cell.mapImageView.image = self.selectedPitcher?.heatMaps[indexPath.row].heatMapImage
+//    
+//        return cell
+//    }
 
     // MARK: UICollectionViewDelegate
 

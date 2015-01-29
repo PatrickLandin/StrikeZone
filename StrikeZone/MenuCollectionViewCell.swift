@@ -10,7 +10,10 @@ import UIKit
 
 class MenuCollectionViewCell: UICollectionViewCell {
     
+  @IBOutlet weak var mapImageView: UIImageView!
+  
   override func awakeFromNib() {
     super.awakeFromNib()
+    
   }
 }

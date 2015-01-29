@@ -7,15 +7,30 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CELL" id="AAT-I8-U3K" customClass="MenuCollectionViewCell" customModule="StrikeZone" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="99" height="135"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="99" height="135"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f2Y-Um-yfB">
+                        <rect key="frame" x="0.0" y="0.0" width="99" height="135"/>
+                    </imageView>
+                </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="298" y="353"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="f2Y-Um-yfB" secondAttribute="bottom" id="Xpe-Ac-xu8"/>
+                <constraint firstItem="f2Y-Um-yfB" firstAttribute="top" secondItem="AAT-I8-U3K" secondAttribute="top" id="dft-LY-JZG"/>
+                <constraint firstAttribute="trailing" secondItem="f2Y-Um-yfB" secondAttribute="trailing" id="fkF-UP-LtX"/>
+                <constraint firstItem="f2Y-Um-yfB" firstAttribute="leading" secondItem="AAT-I8-U3K" secondAttribute="leading" id="rxL-TR-6N6"/>
+            </constraints>
+            <size key="customSize" width="99" height="135"/>
+            <connections>
+                <outlet property="mapImageView" destination="f2Y-Um-yfB" id="d6J-TS-nQz"/>
+            </connections>
+            <point key="canvasLocation" x="322.5" y="395.5"/>
         </collectionViewCell>
     </objects>
 </document>

@@ -20,7 +20,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   var selectedPitcher : Pitcher?
   var alertView : UIView!
   var editAlertView : UIView!
-  var selectedRowIndex = NSIndexPath(forRow: -1, inSection: 1)
+  var selectedRowIndex = -1
   var imagePickerController = UIImagePickerController()
   var pitcherImage : UIImage?
   
@@ -77,7 +77,11 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   //MARK: CollectionView DataSource
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 50
+    if selectedPitcher?.heatMaps.count == nil {
+      return 50
+    }
+    return self.selectedPitcher!.heatMaps.count
+    
   }
   
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -85,6 +89,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     
     cell.backgroundColor = UIColor.grayColor()
     cell.layer.cornerRadius = 7.0
+    cell.mapImageView.image = self.selectedPitcher?.heatMaps[indexPath.row].heatMapImage
     
     return cell
   }
@@ -112,7 +117,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     var newPitcher = Pitcher(name: self.newPitcherText.text, team: self.newTeamText.text)
     self.pitchers.append(newPitcher)
     self.tableView.reloadData()
-    self.editAlertView?.removeFromSuperview()
+    self.alertView?.removeFromSuperview()
   }
   
   //MARK: Tableview datasource
@@ -142,7 +147,13 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     cell.editButton.addTarget(self, action: "editPitcher:", forControlEvents: UIControlEvents.TouchUpInside)
     
     cell.pitcherImage.image = pitcherToDisplay.pitcherImage
+    cell.pitcherImage.layer.masksToBounds = true
     cell.pitcherImage.layer.cornerRadius = 10.0
+    
+//    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+//    let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//    blurEffectView.frame = cell.bounds
+//    cell.insertSubview(blurEffectView, atIndex: indexPath.row)
     
     return cell
   }
@@ -166,8 +177,10 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     }
   }
   
-  @IBAction func editingDonePressed(sender: AnyObject) {
-    var editedPitcher = Pitcher(name: self.editPitcherText.text, team: self.editTeamText.text)
+  @IBAction func editingDonePressed(sender: UIButton) {
+    var editedPitcher = self.pitchers[selectedRowIndex]
+    editedPitcher.name = self.editPitcherText.text
+    editedPitcher.team = self.editTeamText.text
     self.tableView.reloadData()
     self.editAlertView?.removeFromSuperview()
   }
@@ -212,14 +225,19 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   //MARK: Expand/Collapse tableView cells
   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    if selectedRowIndex.row == indexPath.row {
+    if indexPath.row == selectedRowIndex {
       return 221
     }
     return 70
   }
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    selectedRowIndex = indexPath
+    
+    if selectedRowIndex == indexPath.row {
+      selectedRowIndex = -1
+    } else {
+      self.selectedRowIndex = indexPath.row
+    }
     tableView.beginUpdates()
     tableView.endUpdates()
   }
