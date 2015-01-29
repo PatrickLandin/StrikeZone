@@ -19,20 +19,24 @@ class HeatMapCollectionTableViewCell: UITableViewCell, UICollectionViewDataSourc
       self.collectionView.backgroundColor = UIColor.whiteColor()
       
       self.collectionView.registerNib(UINib(nibName: "HeatMapCell", bundle: nil), forCellWithReuseIdentifier: "HEAT_MAP_CELL")
-
-        // Initialization code
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
   
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier("HEAT_MAP_CELL", forIndexPath: indexPath) as HeatMapCell
     
-    cell.backgroundColor = UIColor.lightGrayColor()
+    cell.imageView.backgroundColor = UIColor.lightGrayColor()
+    cell.heatMapDateLabel.text = "mm/dd/yy"
+    
+    let cellGradiantMaskLayer = CAGradientLayer()
+    cellGradiantMaskLayer.colors = [UIColor.blackColor().CGColor, UIColor.clearColor().CGColor]
+    cellGradiantMaskLayer.locations = [-0.6]
+    cellGradiantMaskLayer.frame = cell.bounds
+    
+    cell.imageView.layer.insertSublayer(cellGradiantMaskLayer, atIndex: 1)
     
     return cell
   }
@@ -40,7 +44,4 @@ class HeatMapCollectionTableViewCell: UITableViewCell, UICollectionViewDataSourc
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return 10
   }
-  
-  
-
 }
