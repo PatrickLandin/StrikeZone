@@ -89,7 +89,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
             currentPitch.actualZoneLocation = zoneView.tag
             currentPitch.actualLocation = tapLocation
             isTargetLocation = true
-            currentHeatMap?.allPitches!.append(currentPitch)
+            
 //            var snapShotOfStrikeZone = view.snapshotViewAfterScreenUpdates(true)
             
             UIGraphicsBeginImageContext(view.bounds.size);
@@ -97,11 +97,10 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
             let viewImage = UIGraphicsGetImageFromCurrentImageContext()
             currentHeatMap?.heatMapImage = viewImage
             UIGraphicsEndImageContext()
-            println("This is ViewImage: \(viewImage)")
-            println("This is currentHeatMap: \(viewImage)")
+//            println("This is ViewImage: \(viewImage)")
+//            println("This is currentHeatMap: \(viewImage)")
+            currentHeatMap?.allPitches.append(currentPitch)
 
-
-          
             var zoneColor : UIColor!
             if self.currentPitch.actualZoneLocation == self.currentPitch.targetZoneLocation {
               zoneColor = UIColor.redColor()
@@ -110,6 +109,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
             }
             
             currentPitch = Pitch()
+            
             if self.targetView!.alpha == 1 {
               self.targetView!.alpha = 0.12
             }
