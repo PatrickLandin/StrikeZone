@@ -13,9 +13,12 @@ class Pitch  {
   var actualLocation : CGPoint
   var targetZoneLocation : Int?
   var actualZoneLocation : Int?
+  var pitchType : String
+  var wasGoodPitch : Bool?
   
   init () {
     self.targetLocation = CGPoint(x: 0.0, y: 0.0)
     self.actualLocation = CGPoint(x: 0.0, y: 0.0)
+    self.pitchType = "Cheddar, stinky cheddar"
   }
 }

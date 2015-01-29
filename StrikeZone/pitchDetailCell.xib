@@ -13,29 +13,29 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tAL-1e-spy" id="h2o-n1-FPa">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pitch: #" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOh-Nw-9oz">
-                        <rect key="frame" x="226" y="25" width="94" height="18"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="18" id="4WN-Bl-aWX"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vrh-ZX-lnc">
                         <rect key="frame" x="8" y="13" width="229" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pitch: #" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOh-Nw-9oz">
+                        <rect key="frame" x="218" y="25" width="94" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="FHN-do-r8K"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="nOh-Nw-9oz" firstAttribute="trailing" secondItem="h2o-n1-FPa" secondAttribute="trailingMargin" constant="8" id="EQS-MP-cPY"/>
-                    <constraint firstItem="nOh-Nw-9oz" firstAttribute="bottom" secondItem="h2o-n1-FPa" secondAttribute="bottomMargin" constant="8" id="SYZ-R1-0hS"/>
+                    <constraint firstItem="nOh-Nw-9oz" firstAttribute="leading" secondItem="h2o-n1-FPa" secondAttribute="leadingMargin" constant="210" id="JjR-8t-mYV"/>
+                    <constraint firstItem="nOh-Nw-9oz" firstAttribute="trailing" secondItem="h2o-n1-FPa" secondAttribute="trailingMargin" id="Vhe-fR-KlS"/>
                     <constraint firstItem="vrh-ZX-lnc" firstAttribute="leading" secondItem="h2o-n1-FPa" secondAttribute="leadingMargin" id="fiU-pT-28k"/>
                     <constraint firstAttribute="centerY" secondItem="vrh-ZX-lnc" secondAttribute="centerY" id="ohb-XW-IdI"/>
                     <constraint firstAttribute="trailingMargin" secondItem="vrh-ZX-lnc" secondAttribute="trailing" constant="75" id="pzF-GP-0Hh"/>
-                    <constraint firstItem="nOh-Nw-9oz" firstAttribute="leading" secondItem="h2o-n1-FPa" secondAttribute="leadingMargin" constant="218" id="uPC-aO-6Et"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="nOh-Nw-9oz" secondAttribute="bottom" constant="-8" id="qUy-2g-nQq"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

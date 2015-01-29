@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="azW-i3-eat">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C99d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="azW-i3-eat">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -140,82 +140,80 @@
                                     <view tag="-1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M0q-2R-qmy">
                                         <rect key="frame" x="60" y="60" width="360" height="360"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RaY-Ok-GQz">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RaY-Ok-GQz" customClass="StrikeRegion" customModule="StrikeZone" customModuleProvider="target">
                                                 <rect key="frame" x="120" y="0.0" width="120" height="120"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pKn-SG-HPn">
-                                                <rect key="frame" x="120" y="120" width="120" height="120"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dzc-Gx-buV">
+                                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dzc-Gx-buV" customClass="StrikeRegion" customModule="StrikeZone" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="120" width="120" height="120"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Gt-3J-HTE">
+                                            <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Gt-3J-HTE" customClass="StrikeRegion" customModule="StrikeZone" customModuleProvider="target">
                                                 <rect key="frame" x="240" y="120" width="120" height="120"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view tag="6" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EgK-uR-Rdz">
+                                            <view tag="6" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EgK-uR-Rdz" customClass="StrikeRegion" customModule="StrikeZone" customModuleProvider="target">
                                                 <rect key="frame" x="120" y="240" width="120" height="120"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view tag="7" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exE-jc-IoH">
+                                            <view tag="7" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exE-jc-IoH" customClass="StrikeRegion" customModule="StrikeZone" customModuleProvider="target">
                                                 <rect key="frame" x="240" y="240" width="120" height="120"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view tag="8" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i1J-F6-h1z">
+                                            <view tag="8" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i1J-F6-h1z" customClass="StrikeRegion" customModule="StrikeZone" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="240" width="120" height="120"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hbe-AL-RpD">
+                                            <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hbe-AL-RpD" customClass="StrikeRegion" customModule="StrikeZone" customModuleProvider="target">
                                                 <rect key="frame" x="240" y="0.0" width="120" height="120"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kLj-co-YH4">
+                                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kLj-co-YH4" customClass="StrikeRegion" customModule="StrikeZone" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pKn-SG-HPn" customClass="StrikeRegion" customModule="StrikeZone" customModuleProvider="target">
+                                                <rect key="frame" x="120" y="120" width="120" height="120"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="Dzc-Gx-buV" firstAttribute="bottom" secondItem="pKn-SG-HPn" secondAttribute="bottom" id="0YD-gr-Hcd"/>
                                             <constraint firstItem="kLj-co-YH4" firstAttribute="width" secondItem="RaY-Ok-GQz" secondAttribute="width" id="1E2-en-ttH"/>
+                                            <constraint firstItem="EgK-uR-Rdz" firstAttribute="top" secondItem="i1J-F6-h1z" secondAttribute="top" id="2et-kZ-Qyq"/>
                                             <constraint firstItem="RaY-Ok-GQz" firstAttribute="height" secondItem="Hbe-AL-RpD" secondAttribute="height" id="6hn-rq-wwl"/>
-                                            <constraint firstItem="3Gt-3J-HTE" firstAttribute="width" secondItem="pKn-SG-HPn" secondAttribute="width" id="A4a-Zb-8nS"/>
+                                            <constraint firstAttribute="centerY" secondItem="pKn-SG-HPn" secondAttribute="centerY" id="7wD-ex-DVt"/>
                                             <constraint firstItem="RaY-Ok-GQz" firstAttribute="leading" secondItem="kLj-co-YH4" secondAttribute="trailing" id="AUJ-nU-WAU"/>
-                                            <constraint firstItem="3Gt-3J-HTE" firstAttribute="height" secondItem="pKn-SG-HPn" secondAttribute="height" id="Aff-NY-Syr"/>
+                                            <constraint firstItem="Dzc-Gx-buV" firstAttribute="trailing" secondItem="kLj-co-YH4" secondAttribute="trailing" id="COC-TF-Nnl"/>
                                             <constraint firstItem="RaY-Ok-GQz" firstAttribute="height" secondItem="M0q-2R-qmy" secondAttribute="height" multiplier="0.333" id="EZN-su-Qhd"/>
-                                            <constraint firstItem="RaY-Ok-GQz" firstAttribute="height" secondItem="pKn-SG-HPn" secondAttribute="height" id="EiM-tg-Xn6"/>
-                                            <constraint firstItem="3Gt-3J-HTE" firstAttribute="bottom" secondItem="pKn-SG-HPn" secondAttribute="bottom" id="GyH-Oz-c8u"/>
                                             <constraint firstAttribute="centerX" secondItem="EgK-uR-Rdz" secondAttribute="centerX" id="Hvd-6G-k8D"/>
                                             <constraint firstItem="RaY-Ok-GQz" firstAttribute="top" secondItem="Hbe-AL-RpD" secondAttribute="top" id="ITj-Yv-Thi"/>
+                                            <constraint firstItem="3Gt-3J-HTE" firstAttribute="centerY" secondItem="M0q-2R-qmy" secondAttribute="centerY" id="IcC-4W-IWP"/>
                                             <constraint firstAttribute="bottom" secondItem="EgK-uR-Rdz" secondAttribute="bottom" id="IuM-iD-GZe"/>
-                                            <constraint firstAttribute="centerX" secondItem="pKn-SG-HPn" secondAttribute="centerX" id="JHz-gq-4eo"/>
+                                            <constraint firstItem="3Gt-3J-HTE" firstAttribute="top" secondItem="Hbe-AL-RpD" secondAttribute="bottom" id="J19-SG-sKq"/>
                                             <constraint firstItem="i1J-F6-h1z" firstAttribute="height" secondItem="EgK-uR-Rdz" secondAttribute="height" id="Q3O-4y-yET"/>
                                             <constraint firstItem="EgK-uR-Rdz" firstAttribute="width" secondItem="exE-jc-IoH" secondAttribute="width" id="RKa-1d-G4O"/>
-                                            <constraint firstAttribute="centerY" secondItem="pKn-SG-HPn" secondAttribute="centerY" id="SAw-Z8-yFZ"/>
                                             <constraint firstItem="Hbe-AL-RpD" firstAttribute="leading" secondItem="RaY-Ok-GQz" secondAttribute="trailing" id="SLm-Zt-JS0"/>
+                                            <constraint firstItem="3Gt-3J-HTE" firstAttribute="bottom" secondItem="Dzc-Gx-buV" secondAttribute="bottom" id="TIB-mC-Aqj"/>
                                             <constraint firstAttribute="bottom" secondItem="exE-jc-IoH" secondAttribute="bottom" id="TIh-37-fii"/>
-                                            <constraint firstItem="Dzc-Gx-buV" firstAttribute="height" secondItem="pKn-SG-HPn" secondAttribute="height" id="Vwn-IA-1rn"/>
-                                            <constraint firstItem="Dzc-Gx-buV" firstAttribute="width" secondItem="pKn-SG-HPn" secondAttribute="width" id="Xia-Fu-pTQ"/>
+                                            <constraint firstAttribute="centerX" secondItem="pKn-SG-HPn" secondAttribute="centerX" id="UNn-Hu-Sxr"/>
                                             <constraint firstItem="Hbe-AL-RpD" firstAttribute="leading" secondItem="RaY-Ok-GQz" secondAttribute="trailing" id="Yaa-Q4-eK5"/>
                                             <constraint firstAttribute="centerX" secondItem="RaY-Ok-GQz" secondAttribute="centerX" id="ZEb-gB-mF1"/>
+                                            <constraint firstItem="RaY-Ok-GQz" firstAttribute="height" secondItem="pKn-SG-HPn" secondAttribute="height" id="Zey-8R-09o"/>
                                             <constraint firstItem="i1J-F6-h1z" firstAttribute="top" secondItem="Dzc-Gx-buV" secondAttribute="bottom" id="a5l-D2-DIg"/>
                                             <constraint firstItem="RaY-Ok-GQz" firstAttribute="width" secondItem="M0q-2R-qmy" secondAttribute="width" multiplier="0.333" id="a87-7B-VFr"/>
                                             <constraint firstItem="RaY-Ok-GQz" firstAttribute="top" secondItem="M0q-2R-qmy" secondAttribute="top" id="cQZ-nY-RmS"/>
-                                            <constraint firstItem="pKn-SG-HPn" firstAttribute="leading" secondItem="Dzc-Gx-buV" secondAttribute="trailing" id="cXk-VO-TCX"/>
                                             <constraint firstItem="i1J-F6-h1z" firstAttribute="leading" secondItem="Dzc-Gx-buV" secondAttribute="leading" id="ccK-aS-bdQ"/>
-                                            <constraint firstItem="pKn-SG-HPn" firstAttribute="height" secondItem="EgK-uR-Rdz" secondAttribute="height" id="cnN-cf-N8I"/>
-                                            <constraint firstItem="EgK-uR-Rdz" firstAttribute="top" secondItem="pKn-SG-HPn" secondAttribute="bottom" id="efB-nS-31X"/>
                                             <constraint firstItem="Dzc-Gx-buV" firstAttribute="leading" secondItem="kLj-co-YH4" secondAttribute="leading" id="gWU-hs-D5w"/>
                                             <constraint firstItem="3Gt-3J-HTE" firstAttribute="leading" secondItem="Hbe-AL-RpD" secondAttribute="leading" id="hrf-Ot-v6W"/>
                                             <constraint firstItem="kLj-co-YH4" firstAttribute="top" secondItem="RaY-Ok-GQz" secondAttribute="top" id="j2l-sO-AbZ"/>
-                                            <constraint firstItem="RaY-Ok-GQz" firstAttribute="width" secondItem="pKn-SG-HPn" secondAttribute="width" id="mFZ-w3-e46"/>
                                             <constraint firstItem="3Gt-3J-HTE" firstAttribute="trailing" secondItem="exE-jc-IoH" secondAttribute="trailing" id="mtI-oZ-0FQ"/>
                                             <constraint firstItem="RaY-Ok-GQz" firstAttribute="width" secondItem="Hbe-AL-RpD" secondAttribute="width" id="n3R-bj-B8R"/>
+                                            <constraint firstItem="3Gt-3J-HTE" firstAttribute="trailing" secondItem="Hbe-AL-RpD" secondAttribute="trailing" id="p58-fh-kdi"/>
                                             <constraint firstItem="kLj-co-YH4" firstAttribute="height" secondItem="RaY-Ok-GQz" secondAttribute="height" id="pzD-M8-gRy"/>
-                                            <constraint firstItem="pKn-SG-HPn" firstAttribute="width" secondItem="EgK-uR-Rdz" secondAttribute="width" id="r6h-7p-Qf5"/>
+                                            <constraint firstItem="3Gt-3J-HTE" firstAttribute="top" secondItem="Dzc-Gx-buV" secondAttribute="top" id="pzz-Xl-4FE"/>
+                                            <constraint firstItem="3Gt-3J-HTE" firstAttribute="leading" secondItem="exE-jc-IoH" secondAttribute="leading" id="tiF-FE-5ff"/>
+                                            <constraint firstItem="RaY-Ok-GQz" firstAttribute="width" secondItem="pKn-SG-HPn" secondAttribute="width" id="wqd-up-5M9"/>
                                             <constraint firstAttribute="bottom" secondItem="i1J-F6-h1z" secondAttribute="bottom" id="xiz-5n-Lcp"/>
                                             <constraint firstItem="i1J-F6-h1z" firstAttribute="width" secondItem="EgK-uR-Rdz" secondAttribute="width" id="yNk-tf-rKD"/>
                                             <constraint firstItem="EgK-uR-Rdz" firstAttribute="height" secondItem="exE-jc-IoH" secondAttribute="height" id="yVH-M6-UN2"/>
@@ -223,6 +221,7 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
+                                                <exclude reference="AUJ-nU-WAU"/>
                                                 <exclude reference="IuM-iD-GZe"/>
                                             </mask>
                                         </variation>
@@ -233,7 +232,9 @@
                                     <constraint firstItem="M0q-2R-qmy" firstAttribute="centerY" secondItem="Lb5-d9-xZQ" secondAttribute="centerY" id="CEV-Bl-hBB"/>
                                     <constraint firstItem="M0q-2R-qmy" firstAttribute="centerX" secondItem="Lb5-d9-xZQ" secondAttribute="centerX" id="F6r-Cx-HiN"/>
                                     <constraint firstAttribute="height" constant="75" id="UsY-B4-X6k"/>
+                                    <constraint firstItem="M0q-2R-qmy" firstAttribute="centerX" secondItem="Lb5-d9-xZQ" secondAttribute="centerX" id="avu-Vz-YSG"/>
                                     <constraint firstAttribute="width" constant="200" id="epa-GR-gPh"/>
+                                    <constraint firstItem="M0q-2R-qmy" firstAttribute="centerY" secondItem="Lb5-d9-xZQ" secondAttribute="centerY" id="mMZ-Wh-imr"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
