@@ -48,6 +48,9 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
+    if currentHeatMap == nil {
+      currentHeatMap = HeatMap()
+    }
     
   }
   
@@ -86,10 +89,10 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
             currentPitch.actualZoneLocation = zoneView.tag
             currentPitch.actualLocation = tapLocation
             isTargetLocation = true
-            currentHeatMap?.allPitches!.append(currentPitch)
+            currentHeatMap?.allPitches.append(currentPitch)
             var snapShotOfStrikeZone = view.snapshotViewAfterScreenUpdates(true)
             currentHeatMap?.heatMapImage = snapShotOfStrikeZone
-          
+            println(currentHeatMap?.allPitches.count)
             var zoneColor : UIColor!
             if self.currentPitch.actualZoneLocation == self.currentPitch.targetZoneLocation {
               zoneColor = UIColor.redColor()
