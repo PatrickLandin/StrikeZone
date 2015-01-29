@@ -67,7 +67,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   func detailButtonPressed(sender: UIButton) {
      let pitcherDetailVC = PitcherDetailViewController(nibName : "pitcherDetailView" , bundle : NSBundle.mainBundle())
     if currentHeatMap != nil {
-      self.selectedPitcher?.heatMaps.append(currentHeatMap!)
+      self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
     }
     pitcherDetailVC.currentPitcher = self.selectedPitcher
     pitcherDetailVC.currentHeatMap = self.currentHeatMap
@@ -77,7 +77,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   func backButtonPressed(sender: UIButton) {
     let pitcherMenuVC = PitcherMenuViewController()
     if currentHeatMap != nil {
-      self.selectedPitcher?.heatMaps.append(currentHeatMap!)
+      self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
     }
     self.navigationController?.popToRootViewControllerAnimated(true)
   }
@@ -115,7 +115,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
                 //heres how we handle a good pitch
                 self.zoneColor = UIColor.redColor()
                 self.targetView!.alpha = self.targetView!.alpha + 0.1
-                self.targetView!.backgroundColor = zoneColor
+                self.targetView!.backgroundColor = self.zoneColor
                 self.targetView!.temperature++
                 println(self.targetView!.temperature)
               }
@@ -123,7 +123,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
               {
                 self.zoneColor = UIColor.blueColor()
                 self.targetView!.alpha = self.targetView!.alpha + 0.1
-                self.targetView!.backgroundColor = zoneColor
+                self.targetView!.backgroundColor = self.zoneColor
                 self.targetView!.temperature--
                 println(self.targetView!.temperature)
               }
@@ -160,7 +160,17 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
             let viewImage = UIGraphicsGetImageFromCurrentImageContext()
             currentHeatMap?.heatMapImage = viewImage
             UIGraphicsEndImageContext()
+//            println("This is ViewImage: \(viewImage)")
+//            println("This is currentHeatMap: \(viewImage)")
+            //currentHeatMap?.allPitches.append(currentPitch)
 
+            var zoneColor : UIColor!
+            if self.currentPitch.actualZoneLocation == self.currentPitch.targetZoneLocation {
+              zoneColor = UIColor.redColor()
+            } else {
+              zoneColor = UIColor.blueColor()
+            }
+            
             currentPitch = Pitch()
 
           }
