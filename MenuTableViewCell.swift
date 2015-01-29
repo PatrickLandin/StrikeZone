@@ -14,10 +14,7 @@ class MenuTableViewCell: UITableViewCell {
   @IBOutlet weak var pitcherImage: UIImageView!
   @IBOutlet weak var newMapButton: UIButton!
   @IBOutlet weak var imageButton: UIButton!
-  @IBOutlet weak var numberTextField: UITextField!
-  @IBOutlet weak var teamTextField: UITextField!
-  @IBOutlet weak var hometownTextField: UITextField!
-  @IBOutlet weak var pitchesTextField: UITextField!
+  @IBOutlet weak var teamLabel: UILabel!
   @IBOutlet weak var collectionView: UICollectionView!
   
     override func awakeFromNib() {

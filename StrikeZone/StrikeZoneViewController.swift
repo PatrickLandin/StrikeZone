@@ -63,7 +63,7 @@ class StrikeZoneViewController: UIViewController{
             currentPitch.actualZoneLocation = zoneView.tag
             currentPitch.actualLocation = tapLocation
             isTargetLocation = true
-             pitches.append(currentPitch)
+            pitches.append(currentPitch)
           
             var zoneColor : UIColor!
             if self.currentPitch.actualZoneLocation == self.currentPitch.targetZoneLocation {

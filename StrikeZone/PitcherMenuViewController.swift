@@ -12,29 +12,36 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var newPitcherText: UITextField!
+  @IBOutlet var newTeamText: UITextField!
+//  @IBOutlet weak var pitcherImageView: UIImageView!
   
   var pitchers = [Pitcher]()
+  var selectedPitcher : Pitcher?
+  var alertView : UIView!
+  var editAlertView : UIView!
   var selectedRowIndex = NSIndexPath(forRow: -1, inSection: 1)
-  var alertView : UIView?
   var imagePickerController = UIImagePickerController()
+  var pitcherImage : UIImage?
   
     override func viewDidLoad() {
         super.viewDidLoad()
       
-      var pitcher1 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher2 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher3 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher4 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher5 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher6 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher7 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher8 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher9 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher10 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher11 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher12 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher13 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher14 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
+      self.navigationController?.navigationItem
+      
+      var pitcher1 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher2 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher3 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher4 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher5 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher6 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher7 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher8 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher9 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher10 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher11 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher12 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher13 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher14 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
       
       pitchers.append(pitcher1)
       pitchers.append(pitcher2)
@@ -78,40 +85,50 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     cell.backgroundColor = UIColor.grayColor()
     cell.layer.cornerRadius = 7.0
     
-    
     return cell
   }
 
-  //MARK: Button Pressings
-  @IBAction func addButtonPressed(sender: AnyObject) {
-    println("Add stuff")
+  @IBAction func editButttonPressed(sender: AnyObject) {
     
-    self.alertView = NSBundle.mainBundle().loadNibNamed("AddPitcherAlert", owner: self, options: nil).first as? UIView
-    self.alertView!.center = self.view.center
-    self.alertView!.alpha = 0
-    self.alertView!.transform = CGAffineTransformMakeScale(0.4, 0.4)
-    self.view.addSubview(alertView!)
+    self.editAlertView = NSBundle.mainBundle().loadNibNamed("editAlertView", owner: self, options: nil).first as? UIView
+    self.editAlertView.center = self.view.center
+    self.editAlertView.alpha = 0
+    self.editAlertView.layer.cornerRadius = 15.0
+    self.editAlertView.transform = CGAffineTransformMakeScale(0.5, 0.5)
+    self.view.addSubview(self.editAlertView)
     
     UIView.animateWithDuration(0.4, delay: 0.5, options: nil, animations: { () -> Void in
-      self.alertView!.alpha = 1
-      self.alertView!.transform =  CGAffineTransformMakeScale(1.0, 1.0)
+      self.editAlertView.alpha = 1
+      self.editAlertView.layer.cornerRadius = 15.0
+      self.editAlertView.backgroundColor = UIColor.lightGrayColor()
+      self.editAlertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
       }) { (finished) -> Void in
-        
     }
   }
   
-  @IBAction func addPitcherPressed(sender: AnyObject) {
-    println(newPitcherText.text)
+  @IBAction func addPressed(sender: AnyObject) {
     
-    var newPitcher = Pitcher(name: newPitcherText.text, number: 22, homeTown: "", team: "")
+    self.alertView = NSBundle.mainBundle().loadNibNamed("AddPitcherAlert", owner: self, options: nil).first as? UIView
+    self.alertView.center = self.view.center
+    self.alertView.alpha = 0
+    self.alertView.layer.cornerRadius = 15.0
+    self.alertView.transform = CGAffineTransformMakeScale(0.4, 0.4)
+    self.view.addSubview(alertView)
+    
+    UIView.animateWithDuration(0.4, delay: 0.5, options: nil, animations: { () -> Void in
+      self.alertView.alpha = 1
+      self.alertView.layer.cornerRadius = 15.0
+      self.alertView.backgroundColor = UIColor.lightGrayColor()
+      self.alertView.transform =  CGAffineTransformMakeScale(1.0, 1.0)
+      }) { (finished) -> Void in
+    }
+  }
+
+  @IBAction func addPitcherPressed(sender: AnyObject) {    
+    var newPitcher = Pitcher(name: self.newPitcherText.text, team: self.newTeamText.text)
     self.pitchers.append(newPitcher)
     self.tableView.reloadData()
     self.alertView?.removeFromSuperview()
-  }
-  
-  //MARK: Delete Button
-  @IBAction func deleteButtonPressed(sender: AnyObject) {
-    println("Sort stuff")
   }
   
   //MARK: Tableview datasource
@@ -128,6 +145,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     
     var pitcherToDisplay = self.pitchers[indexPath.row]
     cell.pitcherNameLabel.text = pitcherToDisplay.name
+    cell.teamLabel.text = pitcherToDisplay.team
     cell.contentView.clipsToBounds = true
     
     cell.newMapButton.tag = indexPath.row
@@ -135,6 +153,8 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     
     cell.imageButton.tag = indexPath.row
     cell.imageButton.addTarget(self, action: "showPickerController:", forControlEvents: UIControlEvents.TouchUpInside)
+    
+    cell.pitcherImage.image = self.pitcherImage
     
     return cell
   }
@@ -157,14 +177,15 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-      let image = info[UIImagePickerControllerEditedImage] as UIImage
+      self.pitcherImage = info[UIImagePickerControllerEditedImage] as? UIImage
       
-      //    self.pitcherImage.image = image
-      //    self.selectedPitcher?.image = imageView.image
+      self.tableView.reloadData()
+      
+//        self.pitcherImageView.image = image
+//        self.selectedPitcher!.pitcherImage = pitcherImageView.image
       
       self.imagePickerController.dismissViewControllerAnimated(true, completion: nil)
     }
-    
   }
   
   //MARK: Swipe to Delete
@@ -182,9 +203,9 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   //MARK: Expand/Collapse tableView cells
   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     if selectedRowIndex.row == indexPath.row {
-      return 196
+      return 221
     }
-    return 40
+    return 70
   }
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

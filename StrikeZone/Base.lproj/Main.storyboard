@@ -84,15 +84,10 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ej9-6v-T7q">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem title="Sort" id="vQn-wp-QHV">
-                                        <connections>
-                                            <action selector="deleteButtonPressed:" destination="dxF-mX-oHf" id="15Y-Kp-jdg"/>
-                                        </connections>
-                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="xTq-Zy-570"/>
                                     <barButtonItem systemItem="add" id="tou-FE-XXX">
                                         <connections>
-                                            <action selector="addButtonPressed:" destination="dxF-mX-oHf" id="iX5-6g-PQX"/>
+                                            <action selector="addPressed:" destination="dxF-mX-oHf" id="Cha-lf-mNp"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
