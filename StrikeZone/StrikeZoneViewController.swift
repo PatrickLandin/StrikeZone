@@ -188,17 +188,13 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   
   func handleTap(gesture: UITapGestureRecognizer) {
     let tapLocation = gesture.locationInView(strikeZoneView)
+    println("Ryan is a big fat shhhupid idiot")
    
     if isTargetLocation  {
       self.handleTapForTarget(tapLocation)
           } else  {
           handleTapForPitch(tapLocation)
     }
-    
-    
-    
-    
-
-          }
-        }
+  }
+}
       

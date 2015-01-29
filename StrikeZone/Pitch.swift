@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 QadburyDreams. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class Pitch  {

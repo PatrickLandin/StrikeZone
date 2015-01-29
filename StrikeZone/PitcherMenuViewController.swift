@@ -8,34 +8,42 @@
 
 import UIKit
 
-class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource {
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var newPitcherText: UITextField!
+  @IBOutlet weak var newTeamText: UITextField!
+  @IBOutlet weak var editPitcherText: UITextField!
+  @IBOutlet weak var editTeamText: UITextField!
   
   var pitchers = [Pitcher]()
-  var selectedRowIndex = NSIndexPath(forRow: -1, inSection: 1)
-  var alertView : UIView?
+  var selectedPitcher : Pitcher?
+  var alertView : UIView!
+  var editAlertView : UIView!
+  var selectedRowIndex = -1
   var imagePickerController = UIImagePickerController()
+  var pitcherImage : UIImage?
   
   
     override func viewDidLoad() {
         super.viewDidLoad()
       
-      var pitcher1 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher2 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher3 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher4 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher5 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher6 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher7 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher8 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher9 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher10 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher11 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher12 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher13 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
-      var pitcher14 = Pitcher(name: "Pedro", number: 22, homeTown: "BingoLand", team: "The Bingos")
+      self.navigationItem.title = "Strike Zone"
+      
+      var pitcher1 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher2 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher3 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher4 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher5 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher6 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher7 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher8 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher9 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher10 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher11 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher12 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher13 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher14 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
       
       pitchers.append(pitcher1)
       pitchers.append(pitcher2)
@@ -57,44 +65,80 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       self.tableView.registerNib(UINib(nibName: "MenuCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CELL")
       self.tableView.estimatedRowHeight = 100
       self.tableView.rowHeight = UITableViewAutomaticDimension
+      self.navigationController?.delegate = self
 
         // Do any additional setup after loading the view.
     }
+  
+  func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    if let menuCell = cell as? MenuTableViewCell {
+      menuCell.collectionView.dataSource = self
+    }
+  }
   
   func continueButtonPressed() {
     let destinationVC = StrikeZoneViewController()
     self.navigationController?.pushViewController(destinationVC, animated: true)
   }
   
-  @IBAction func addButtonPressed(sender: AnyObject) {
-    println("Add stuff")
+  //MARK: CollectionView DataSource
+  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    if selectedPitcher?.heatMaps.count == nil {
+      return 50
+    }
+    return self.selectedPitcher!.heatMaps.count
+    
+  }
+  
+  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CELL", forIndexPath: indexPath) as MenuCollectionViewCell
+    
+    cell.backgroundColor = UIColor.grayColor()
+    cell.layer.cornerRadius = 7.0
+    cell.mapImageView.image = self.selectedPitcher?.heatMaps[indexPath.row].heatMapImage
+    
+    return cell
+  }
+  
+  //MARK: New Pitcher
+  @IBAction func addPressed(sender: AnyObject) {
     
     self.alertView = NSBundle.mainBundle().loadNibNamed("AddPitcherAlert", owner: self, options: nil).first as? UIView
-    self.alertView!.center = self.view.center
-    self.alertView!.alpha = 0
-    self.alertView!.transform = CGAffineTransformMakeScale(0.4, 0.4)
-    self.view.addSubview(alertView!)
+    self.alertView.center = self.view.center
+    self.alertView.alpha = 0
+    self.alertView.layer.cornerRadius = 15.0
+    self.alertView.transform = CGAffineTransformMakeScale(0.4, 0.4)
+    self.view.addSubview(alertView)
     
-    UIView.animateWithDuration(0.4, delay: 0.5, options: nil, animations: { () -> Void in
-      self.alertView!.alpha = 1
-      self.alertView!.transform =  CGAffineTransformMakeScale(1.0, 1.0)
+    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
+      self.alertView.alpha = 1
+      self.alertView.layer.cornerRadius = 15.0
+      self.alertView.backgroundColor = UIColor.lightGrayColor()
+      self.alertView.transform =  CGAffineTransformMakeScale(1.0, 1.0)
       }) { (finished) -> Void in
-        
+    }
+  }
+
+  @IBAction func addPitcherPressed(sender: AnyObject) {    
+    var newPitcher = Pitcher(name: self.newPitcherText.text, team: self.newTeamText.text)
+    self.pitchers.append(newPitcher)
+    self.tableView.reloadData()
+    
+    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
+      self.alertView.alpha = 0
+      self.alertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
+      }) { (finished) -> Void in
+        self.alertView.removeFromSuperview()
     }
   }
   
-  @IBAction func addPitcherPressed(sender: AnyObject) {
-    println(newPitcherText.text)
-    
-    var newPitcher = Pitcher(name: newPitcherText.text, number: 22, homeTown: "", team: "")
-    self.pitchers.append(newPitcher)
-    self.tableView.reloadData()
-    self.alertView?.removeFromSuperview()
-  }
-  
-  //MARK: Delete Button
-  @IBAction func deleteButtonPressed(sender: AnyObject) {
-    println("Sort stuff")
+  @IBAction func cancelNewPressed(sender: UIButton) {
+    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
+      self.alertView.alpha = 0
+      self.alertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
+      }) { (finished) -> Void in
+        self.alertView.removeFromSuperview()
+    }
   }
   
   //MARK: Tableview datasource
@@ -111,6 +155,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     
     var pitcherToDisplay = self.pitchers[indexPath.row]
     cell.pitcherNameLabel.text = pitcherToDisplay.name
+    cell.teamLabel.text = pitcherToDisplay.team
     cell.contentView.clipsToBounds = true
     
     cell.newMapButton.tag = indexPath.row
@@ -119,7 +164,78 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     cell.imageButton.tag = indexPath.row
     cell.imageButton.addTarget(self, action: "showPickerController:", forControlEvents: UIControlEvents.TouchUpInside)
     
+    cell.editButton.tag = indexPath.row
+    cell.editButton.addTarget(self, action: "editPitcher:", forControlEvents: UIControlEvents.TouchUpInside)
+    
+    cell.pitcherImage.image = pitcherToDisplay.pitcherImage
+    cell.pitcherImage.layer.masksToBounds = true
+    cell.pitcherImage.layer.cornerRadius = 10.0
+    
+//    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+//    let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//    blurEffectView.frame = cell.bounds
+//    cell.insertSubview(blurEffectView, atIndex: indexPath.row)
+    
     return cell
+  }
+  
+  //MARK: Edit Pitcher
+  func editPitcher(sender : UIButton) {
+    
+    self.editAlertView = NSBundle.mainBundle().loadNibNamed("editPitcherAlert", owner: self, options: nil).first as? UIView
+    self.editAlertView.center = self.view.center
+    self.editAlertView.alpha = 0
+    self.editAlertView.layer.cornerRadius = 15.0
+    self.editAlertView.transform = CGAffineTransformMakeScale(0.5, 0.5)
+    self.view.addSubview(self.editAlertView)
+    
+    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
+      self.editAlertView.alpha = 1
+      self.editAlertView.layer.cornerRadius = 15.0
+      self.editAlertView.backgroundColor = UIColor.lightGrayColor()
+      self.editAlertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
+      }) { (finished) -> Void in
+    }
+//        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.ExtraLight)
+//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//        blurEffectView.frame = editAlertView.bounds
+//        editAlertView.insertSubview(blurEffectView, belowSubview: editAlertView)
+  }
+  
+  @IBAction func editingDonePressed(sender: UIButton) {
+    var editedPitcher = self.pitchers[selectedRowIndex]
+    editedPitcher.name = self.editPitcherText.text
+    editedPitcher.team = self.editTeamText.text
+    self.tableView.reloadData()
+    
+    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
+      self.editAlertView.alpha = 0
+      self.editAlertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
+      }) { (finished) -> Void in
+        self.editAlertView.removeFromSuperview()
+    }
+  }
+
+  @IBAction func editCancelPressed(sender: UIButton) {
+    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
+      self.editAlertView.alpha = 0
+      self.editAlertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
+      }) { (finished) -> Void in
+        self.editAlertView.removeFromSuperview()
+    }
+  }
+  
+  @IBAction func removeButtonPressed(sender: UIButton) {
+    var removedPitcher = self.pitchers[selectedRowIndex]
+    pitchers.removeAtIndex(selectedRowIndex)
+    self.tableView.reloadData()
+    
+    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
+      self.editAlertView.alpha = 0
+      self.editAlertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
+      }) { (finished) -> Void in
+        self.editAlertView.removeFromSuperview()
+    }
   }
   
   //MARK: Instaniate StrikeZoneViewController
@@ -133,23 +249,21 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   //MARK: UIImagePickerController
   func showPickerController(sender : UIButton) {
-          if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-        self.imagePickerController.sourceType = UIImagePickerControllerSourceType.Camera
-        self.imagePickerController.delegate = self
-        self.imagePickerController.allowsEditing = true
-        self.presentViewController(self.imagePickerController, animated: true, completion: nil)
-      }
-    
+    if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+      self.imagePickerController.sourceType = UIImagePickerControllerSourceType.Camera
+      self.imagePickerController.delegate = self
+      self.imagePickerController.allowsEditing = true
+      self.presentViewController(self.imagePickerController, animated: true, completion: nil)
+      self.selectedPitcher = self.pitchers[sender.tag]
+    }
+  }
+  
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-      let image = info[UIImagePickerControllerEditedImage] as UIImage
-      
-      //    self.pitcherImage.image = image
-      //    self.selectedPitcher?.image = imageView.image
-      
+      self.pitcherImage = info[UIImagePickerControllerEditedImage] as? UIImage
+      self.selectedPitcher!.pitcherImage = self.pitcherImage
+      self.tableView.reloadData()
       self.imagePickerController.dismissViewControllerAnimated(true, completion: nil)
     }
-    
-  }
   
   //MARK: Swipe to Delete
   func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -165,14 +279,19 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   //MARK: Expand/Collapse tableView cells
   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    if selectedRowIndex.row == indexPath.row {
-      return 196
+    if indexPath.row == selectedRowIndex {
+      return 221
     }
-    return 40
+    return 70
   }
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    selectedRowIndex = indexPath
+    
+    if selectedRowIndex == indexPath.row {
+      selectedRowIndex = -1
+    } else {
+      self.selectedRowIndex = indexPath.row
+    }
     tableView.beginUpdates()
     tableView.endUpdates()
   }
