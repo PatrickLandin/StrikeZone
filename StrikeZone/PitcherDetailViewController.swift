@@ -34,7 +34,7 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
       self.currentHeatMap = currentPitcher?.heatMaps.first
       
       self.pitchersNameLabel.text = currentPitcher?.name
-      self.pitchCountLabel.text = "\(currentHeatMap?.allPitches?.count)"
+      self.pitchCountLabel.text = "\(currentHeatMap!.allPitches.count)"
 
     }
   
@@ -46,6 +46,8 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
       let cell = tableView.dequeueReusableCellWithIdentifier("HEAT_MAP_COLLECTION_CELL", forIndexPath: indexPath) as HeatMapCollectionTableViewCell
       cell.currentPitcher = self.currentPitcher
       cell.currentHeatMap = self.currentHeatMap
+      cell.collectionView.backgroundView = self.currentHeatMap?.heatMapImage
+      
       return cell
       
     default:

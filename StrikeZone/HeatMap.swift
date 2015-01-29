@@ -12,7 +12,7 @@ class HeatMap {
   var pitchCount : Int
   var date : String
   var heatMapImage : UIView?
-  var allPitches : [Pitch]?
+  var allPitches = [Pitch]()
   
   init () {
     self.pitchCount = 0
