@@ -48,6 +48,9 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
+    if currentHeatMap == nil {
+      currentHeatMap = HeatMap()
+    }
     
   }
   
