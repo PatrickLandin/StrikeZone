@@ -12,6 +12,9 @@ class HeatMapCollectionTableViewCell: UITableViewCell, UICollectionViewDataSourc
 
   @IBOutlet var collectionView: UICollectionView!
   
+  var currentPitcher : Pitcher?
+  var currentHeatMap : HeatMap?
+  
     override func awakeFromNib() {
         super.awakeFromNib()
       
@@ -30,14 +33,7 @@ class HeatMapCollectionTableViewCell: UITableViewCell, UICollectionViewDataSourc
     
     cell.imageView.backgroundColor = UIColor.lightGrayColor()
     cell.heatMapDateLabel.text = "mm/dd/yy"
-    
-    let cellGradiantMaskLayer = CAGradientLayer()
-    cellGradiantMaskLayer.colors = [UIColor.blackColor().CGColor, UIColor.clearColor().CGColor]
-    cellGradiantMaskLayer.locations = [-0.6]
-    cellGradiantMaskLayer.frame = cell.bounds
-    
-    cell.imageView.layer.insertSublayer(cellGradiantMaskLayer, atIndex: 1)
-    
+        
     return cell
   }
   

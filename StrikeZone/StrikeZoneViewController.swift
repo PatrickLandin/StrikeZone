@@ -58,6 +58,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
       self.selectedPitcher?.heatMaps.append(currentHeatMap!)
     }
     pitcherDetailVC.currentPitcher = self.selectedPitcher
+    pitcherDetailVC.currentHeatMap = self.currentHeatMap
     self.navigationController?.pushViewController(pitcherDetailVC, animated: true)
   }
   

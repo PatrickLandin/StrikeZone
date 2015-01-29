@@ -19,6 +19,7 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
   @IBOutlet var addNewHeatMap: UIBarButtonItem!
   
   var currentPitcher : Pitcher?
+  var currentHeatMap : HeatMap?
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +31,10 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
     
       self.pitchTableView.registerNib(UINib(nibName: "pitchDetailCell", bundle: nil), forCellReuseIdentifier: "PITCH_CELL")
       
-      self.pitchersNameLabel.text = currentPitcher?.name
+      self.currentHeatMap = currentPitcher?.heatMaps.first
       
-
+      self.pitchersNameLabel.text = currentPitcher?.name
+      self.pitchCountLabel.text = "\(currentHeatMap?.allPitches?.count)"
 
     }
   
@@ -42,6 +44,8 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
     switch indexPath.section{
     case 0:
       let cell = tableView.dequeueReusableCellWithIdentifier("HEAT_MAP_COLLECTION_CELL", forIndexPath: indexPath) as HeatMapCollectionTableViewCell
+      cell.currentPitcher = self.currentPitcher
+      cell.currentHeatMap = self.currentHeatMap
       return cell
       
     default:
@@ -69,7 +73,7 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
   
   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     if indexPath.section == 0 {
-      return 90
+      return 170
     }
     return 44
   }

@@ -7,16 +7,16 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HEAT_MAP_CELL" id="gTV-IL-0wX" customClass="HeatMapCell" customModule="StrikeZone" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="130" height="120"/>
+            <rect key="frame" x="0.0" y="0.0" width="140" height="170"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="130" height="120"/>
+                <rect key="frame" x="0.0" y="0.0" width="140" height="170"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tkr-q6-fFT">
-                        <rect key="frame" x="0.0" y="0.0" width="130" height="120"/>
+                        <rect key="frame" x="0.0" y="0.0" width="140" height="170"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkY-MV-q4D">
-                        <rect key="frame" x="0.0" y="0.0" width="130" height="18"/>
+                        <rect key="frame" x="0.0" y="0.0" width="140" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="dnN-PI-Ehd"/>
                         </constraints>
@@ -36,12 +36,12 @@
                 <constraint firstItem="nkY-MV-q4D" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pvD-rH-ixI"/>
                 <constraint firstItem="Tkr-q6-fFT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rKy-PE-gwf"/>
             </constraints>
-            <size key="customSize" width="139" height="137"/>
+            <size key="customSize" width="149" height="189"/>
             <connections>
                 <outlet property="heatMapDateLabel" destination="nkY-MV-q4D" id="r7K-bt-oqu"/>
                 <outlet property="imageView" destination="Tkr-q6-fFT" id="FAf-zk-ldx"/>
             </connections>
-            <point key="canvasLocation" x="469" y="77"/>
+            <point key="canvasLocation" x="474" y="103"/>
         </collectionViewCell>
     </objects>
 </document>
