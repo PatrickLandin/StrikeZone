@@ -8,11 +8,21 @@
 
 import UIKit
 
+protocol PitcherDetailDelegate{
+  func setPitcher(pitcher : Pitcher?)
+  func setHeatMap(heatmap : HeatMap?)
+}
+// StrikeZoneViewController
+
 class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+  var delegate : PitcherDetailDelegate?
   
+  @IBOutlet var pitcherHometown: UILabel!
   @IBOutlet var pitchersNameLabel: UILabel!
   @IBOutlet var pitchCountLabel: UILabel!
+  
+  @IBOutlet var pitcherImageView: UIImageView!
   
   @IBOutlet var pitchTableView: UITableView!
   
@@ -31,10 +41,12 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
     
       self.pitchTableView.registerNib(UINib(nibName: "pitchDetailCell", bundle: nil), forCellReuseIdentifier: "PITCH_CELL")
       
-      self.currentHeatMap = currentPitcher?.heatMaps.first
+      //self.currentHeatMap = currentPitcher?.heatMaps.first
       
       self.pitchersNameLabel.text = currentPitcher?.name
-      self.pitchCountLabel.text = "\(currentHeatMap?.allPitches.count)"
+      self.pitchCountLabel.text = "\(currentHeatMap!.allPitches.count)"
+      self.pitcherImageView.image = currentPitcher?.pitcherImage
+      self.pitcherHometown.text = currentPitcher?.team
 
     }
   
@@ -58,12 +70,14 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
       cell.pitchStatusView.layer.cornerRadius = 30
       
       if currentHeatMap?.allPitches[indexPath.row].wasGoodPitch == true{
-        cell.pitchStatusView.backgroundColor = UIColor.blueColor()
+        cell.pitchStatusView.backgroundColor = UIColor.redColor()
       }
       else{
-        cell.pitchStatusView.backgroundColor = UIColor.redColor()
+        cell.pitchStatusView.backgroundColor = UIColor.blueColor()
 
       }
+      
+      cell.userInteractionEnabled = false
       
       return cell
     }
@@ -95,13 +109,14 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
   }
   
   @IBAction func addHeatMapButtonPressed(sender: AnyObject) {
-    //send user back to blank heatmap view
-    let destinationVC = StrikeZoneViewController()
+    
     if currentHeatMap != nil {
       self.currentPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
     }
-    destinationVC.currentHeatMap = nil
-    destinationVC.selectedPitcher = self.currentPitcher
+    
+    delegate?.setPitcher(currentPitcher)
+    delegate?.setHeatMap(nil)
+    
     //self.navigationController?.popToViewController(destinationVC, animated: true)
     self.navigationController?.popViewControllerAnimated(true)
     

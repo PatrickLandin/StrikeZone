@@ -8,7 +8,13 @@
 
 import UIKit
 
-class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate {
+protocol heatMapDelegate{
+  func setPitcher(pitcher : Pitcher?) -> (Void)
+}
+
+class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate, PitcherDetailDelegate {
+  
+  var delegate : heatMapDelegate?
   
   @IBOutlet var inZoneView: [UIView]!
   @IBOutlet var outZoneView: [UIView]!
@@ -36,9 +42,9 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
       
       self.navigationItem.title = selectedPitcher?.name
       self.navigationController?.delegate = self
-      self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: "backButtonPressed:")
+      self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: "backButtonPressed:")
       self.doneButton = UIBarButtonItem(title: "Detail", style: .Done, target: self, action: "detailButtonPressed:")
-      self.navigationItem.leftBarButtonItem = backButton
+      //self.navigationItem.leftBarButtonItem = backButton
       self.navigationItem.rightBarButtonItem = doneButton
       strikeZoneView.layer.borderWidth = 3
       strikeZoneView.layer.borderColor = UIColor.blackColor().CGColor
@@ -47,14 +53,19 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
       let pitchTypeFastBall = UIAlertAction(title: "FastBall", style: .Default, handler: { (action) -> Void in
         self.currentPitch.pitchType = "Fast Ball"
         self.modifyTemperatureForNewPitch()
+        self.finishPitch()
       })
       let pitchTypeOffSpeed = UIAlertAction(title: "OffSpeed", style: .Default, handler: { (action) -> Void in
         self.currentPitch.pitchType = "OffSpeed"
         self.modifyTemperatureForNewPitch()
+        self.finishPitch()
+
       })
       let pitchTypeBreaking = UIAlertAction(title: "Breaking Ball", style: .Default, handler: { (action) -> Void in
         self.currentPitch.pitchType = "Breaking Ball"
         self.modifyTemperatureForNewPitch()
+        self.finishPitch()
+
       })
       let pitchCancel = UIAlertAction(title: "Cancel Pitch", style: UIAlertActionStyle.Destructive) { (action) -> Void in
         println()
@@ -63,27 +74,37 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
       self.alert.addAction(pitchTypeOffSpeed)
       self.alert.addAction(pitchTypeBreaking)
       self.alert.addAction(pitchCancel)
-
-        // Do any additional setup after loading the view.
       
       for view in strikeZoneView.subviews{
         let subView = view as? UIView
         subView!.alpha = 0
-        
       }
-
       self.navigationItem.title = self.selectedPitcher?.name
+      
+      // Do any additional setup after loading the view.
+      
+      if currentHeatMap != nil{
+        for pitch in currentHeatMap!.allPitches{
+          for view in strikeZoneView.subviews{
+            let subView = view as? StrikeRegion
+            if pitch.targetZoneLocation == subView!.tag{
+              self.currentPitch = pitch
+              self.targetView = subView
+              self.modifyTemperatureForNewPitch()
+            }
+          }
+        }
+        currentPitch = Pitch()
+      }else{
+        currentHeatMap = HeatMap()
+        self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
+      }
 
     }
   
-  override func viewDidAppear(animated: Bool) {
-    super.viewDidAppear(animated)
-    if currentHeatMap == nil {
-      currentHeatMap = HeatMap()
-      self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
 
-    }
-    
   }
   
   func detailButtonPressed(sender: UIButton) {
@@ -92,16 +113,18 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
 
     pitcherDetailVC.currentPitcher = self.selectedPitcher
     pitcherDetailVC.currentHeatMap = self.currentHeatMap
+    
+    pitcherDetailVC.delegate = self
+        
     self.navigationController?.pushViewController(pitcherDetailVC, animated: true)
   }
   
   func backButtonPressed(sender: UIButton) {
-    let pitcherMenuVC = PitcherMenuViewController()
-    //if currentHeatMap != nil {
-      self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
-    //}
-    var continueButton = UIBarButtonItem(title: "Continue", style: UIBarButtonItemStyle.Done, target: self, action: "continueButtonPressed")
-    self.navigationController?.popToRootViewControllerAnimated(true)
+    //self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
+    println("this should fire")
+    delegate?.setPitcher(selectedPitcher)
+    
+    self.navigationController?.popViewControllerAnimated(true)
   }
   
   func handleTapForTarget(targetToouchLocation: CGPoint) {
@@ -183,14 +206,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
 
       }
     }
-    
-    currentHeatMap?.allPitches.append(currentPitch)
-    UIGraphicsBeginImageContext(view.bounds.size);
-    self.view.layer.renderInContext(UIGraphicsGetCurrentContext())
-    let viewImage = UIGraphicsGetImageFromCurrentImageContext()
-    currentHeatMap?.heatMapImage = viewImage
-    UIGraphicsEndImageContext()
-    currentPitch = Pitch()
+  
   }
   
   func handleTap(gesture: UITapGestureRecognizer) {
@@ -200,6 +216,30 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
       self.handleTapForTarget(tapLocation)
           } else  {
           handleTapForPitch(tapLocation)
+    }
+  }
+  
+  func finishPitch(){
+    currentHeatMap?.allPitches.append(currentPitch)
+    UIGraphicsBeginImageContext(view.bounds.size);
+    self.view.layer.renderInContext(UIGraphicsGetCurrentContext())
+    let viewImage = UIGraphicsGetImageFromCurrentImageContext()
+    currentHeatMap?.heatMapImage = viewImage
+    UIGraphicsEndImageContext()
+    currentPitch = Pitch()
+  }
+  
+  
+  func setPitcher(pitcher : Pitcher?){
+    //self.selectedPitcher = pitcher
+  }
+  func setHeatMap(heatmap: HeatMap?){
+    self.currentHeatMap = heatmap
+    
+    for view in strikeZoneView.subviews{
+      let subView = view as? UIView
+      subView!.alpha = 0
+      
     }
   }
 }
