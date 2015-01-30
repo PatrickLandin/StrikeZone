@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate {
+class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate, PitcherDetailDelegate {
   
   @IBOutlet var inZoneView: [UIView]!
   @IBOutlet var outZoneView: [UIView]!
@@ -92,6 +92,9 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
 
     pitcherDetailVC.currentPitcher = self.selectedPitcher
     pitcherDetailVC.currentHeatMap = self.currentHeatMap
+    
+    pitcherDetailVC.delegate = self
+    
     self.navigationController?.pushViewController(pitcherDetailVC, animated: true)
   }
   
@@ -203,6 +206,19 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
       self.handleTapForTarget(tapLocation)
           } else  {
           handleTapForPitch(tapLocation)
+    }
+  }
+  
+  func setPitcher(pitcher : Pitcher?){
+    self.selectedPitcher = pitcher
+  }
+  func setHeatMap(heatmap: HeatMap?){
+    self.currentHeatMap = heatmap
+    
+    for view in strikeZoneView.subviews{
+      let subView = view as? UIView
+      subView!.alpha = 0
+      
     }
   }
 }
