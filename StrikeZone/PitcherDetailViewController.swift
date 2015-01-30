@@ -34,7 +34,7 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
       self.currentHeatMap = currentPitcher?.heatMaps.first
       
       self.pitchersNameLabel.text = currentPitcher?.name
-      self.pitchCountLabel.text = "\(currentHeatMap!.allPitches.count)"
+      self.pitchCountLabel.text = "\(currentHeatMap?.allPitches.count)"
 
     }
   
@@ -53,7 +53,18 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
       let cell = tableView.dequeueReusableCellWithIdentifier("PITCH_CELL", forIndexPath: indexPath) as PitchDetailTableViewCell
   
       cell.pitchNumberLabel.text = "Pitch: \(indexPath.row + 1)"
-      cell.pitchDetailsLabel.text = "Pitch Details"
+      cell.pitchDetailsLabel.text = currentHeatMap?.allPitches[indexPath.row].pitchType
+      
+      cell.pitchStatusView.layer.cornerRadius = 30
+      
+      if currentHeatMap?.allPitches[indexPath.row].wasGoodPitch == true{
+        cell.pitchStatusView.backgroundColor = UIColor.blueColor()
+      }
+      else{
+        cell.pitchStatusView.backgroundColor = UIColor.redColor()
+
+      }
+      
       return cell
     }
   }
@@ -89,11 +100,10 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
     if currentHeatMap != nil {
       self.currentPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
     }
-    destinationVC.currentHeatMap = self.currentHeatMap
+    destinationVC.currentHeatMap = nil
     destinationVC.selectedPitcher = self.currentPitcher
-    self.navigationController?.popToViewController(destinationVC, animated: true)
-    
-    
+    //self.navigationController?.popToViewController(destinationVC, animated: true)
+    self.navigationController?.popViewControllerAnimated(true)
     
   }
 }

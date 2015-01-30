@@ -17,5 +17,6 @@ class Pitcher {
   init (name : String, team : String) {
     self.name = name
     self.team = team
+    self.pitcherImage = UIImage(named: "PitcherStraightDealin.jpg")
   }
 }
