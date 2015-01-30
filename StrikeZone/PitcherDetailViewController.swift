@@ -8,8 +8,15 @@
 
 import UIKit
 
+protocol PitcherDetailDelegate{
+  func setPitcher(pitcher : Pitcher?)
+  func setHeatMap(heatmap : HeatMap?)
+}
+// StrikeZoneViewController
+
 class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+  var delegate : PitcherDetailDelegate?
   
   @IBOutlet var pitchersNameLabel: UILabel!
   @IBOutlet var pitchCountLabel: UILabel!
@@ -95,13 +102,14 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
   }
   
   @IBAction func addHeatMapButtonPressed(sender: AnyObject) {
-    //send user back to blank heatmap view
-    let destinationVC = StrikeZoneViewController()
+    
     if currentHeatMap != nil {
       self.currentPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
     }
-    destinationVC.currentHeatMap = nil
-    destinationVC.selectedPitcher = self.currentPitcher
+    
+    delegate?.setPitcher(currentPitcher)
+    delegate?.setHeatMap(nil)
+    
     //self.navigationController?.popToViewController(destinationVC, animated: true)
     self.navigationController?.popViewControllerAnimated(true)
     
