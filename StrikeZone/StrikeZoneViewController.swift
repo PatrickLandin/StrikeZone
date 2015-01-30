@@ -170,15 +170,13 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
 
       }
     }
-    else
-    {
+    else {
       if self.currentPitch.actualZoneLocation == self.currentPitch.targetZoneLocation{
         self.targetView!.alpha = self.targetView!.alpha - 0.05
         self.targetView!.temperature++
         self.currentPitch.wasGoodPitch = true
 
-      }
-      else{
+      } else{
         self.targetView!.alpha = self.targetView!.alpha + 0.05
         self.targetView!.temperature--
         self.currentPitch.wasGoodPitch = false
