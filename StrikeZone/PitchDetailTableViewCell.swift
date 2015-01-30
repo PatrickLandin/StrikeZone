@@ -13,6 +13,8 @@ class PitchDetailTableViewCell: UITableViewCell {
   @IBOutlet var pitchDetailsLabel: UILabel!
   @IBOutlet var pitchNumberLabel: UILabel!
   
+  @IBOutlet var pitchStatusView: UIView!
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
