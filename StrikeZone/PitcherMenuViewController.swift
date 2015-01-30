@@ -29,8 +29,16 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
       
       self.navigationItem.title = "Strike Zone"
-      var pitcher1 = Pitcher(name: "Ebby Calvin 'Nuke' LaLoosh", team: "Durham Bulls")
+      
+      var pitcher1 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher2 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher3 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+      var pitcher4 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
+
       pitchers.append(pitcher1)
+      pitchers.append(pitcher2)
+      pitchers.append(pitcher3)
+      pitchers.append(pitcher4)
       
       self.tableView.delegate = self
       self.tableView.dataSource = self
@@ -81,6 +89,44 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     let pitcher = self.pitchers[tableViewIndexPath!.row]
     
     cell.mapImageView.image = pitcher.heatMaps[indexPath.row].heatMapImage
+    
+    return cell
+  }
+  //MARK: Tableview DataSource
+  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    return 1
+  }
+  
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return self.pitchers.count
+  }
+  
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let cell = self.tableView.dequeueReusableCellWithIdentifier("CELL", forIndexPath: indexPath) as MenuTableViewCell
+    
+    var pitcherToDisplay = self.pitchers[indexPath.row]
+    cell.pitcherNameLabel.text = pitcherToDisplay.name
+    cell.teamLabel.text = pitcherToDisplay.team
+    cell.contentView.clipsToBounds = true
+    
+    cell.newMapButton.tag = indexPath.row
+    cell.newMapButton.addTarget(self, action: "showMap:", forControlEvents: UIControlEvents.TouchUpInside)
+    
+    cell.imageButton.tag = indexPath.row
+    cell.imageButton.addTarget(self, action: "showPickerController:", forControlEvents: UIControlEvents.TouchUpInside)
+    
+    cell.editButton.tag = indexPath.row
+    cell.editButton.addTarget(self, action: "editPitcher:", forControlEvents: UIControlEvents.TouchUpInside)
+    cell.editButton.enabled = true
+    
+    cell.pitcherImage.image = pitcherToDisplay.pitcherImage
+    cell.pitcherImage.layer.masksToBounds = true
+    cell.pitcherImage.layer.cornerRadius = 10.0
+    
+    //    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+    //    let blurEffectView = UIVisualEffectView(effect: blurEffect)
+    //    blurEffectView.frame = cell.bounds
+    //    cell.insertSubview(blurEffectView, atIndex: indexPath.row)
     
     return cell
   }
@@ -148,44 +194,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     self.addButton.enabled = true
   }
   
-  //MARK: Tableview datasource
-  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 1
-  }
-  
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.pitchers.count
-  }
-  
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = self.tableView.dequeueReusableCellWithIdentifier("CELL", forIndexPath: indexPath) as MenuTableViewCell
-    
-    var pitcherToDisplay = self.pitchers[indexPath.row]
-    cell.pitcherNameLabel.text = pitcherToDisplay.name
-    cell.teamLabel.text = pitcherToDisplay.team
-    cell.contentView.clipsToBounds = true
-    
-    cell.newMapButton.tag = indexPath.row
-    cell.newMapButton.addTarget(self, action: "showMap:", forControlEvents: UIControlEvents.TouchUpInside)
-    
-    cell.imageButton.tag = indexPath.row
-    cell.imageButton.addTarget(self, action: "showPickerController:", forControlEvents: UIControlEvents.TouchUpInside)
-    
-    cell.editButton.tag = indexPath.row
-    cell.editButton.addTarget(self, action: "editPitcher:", forControlEvents: UIControlEvents.TouchUpInside)
-    cell.editButton.enabled = true
-    
-    if pitcherToDisplay.pitcherImage != nil{
-    cell.pitcherImage.image = pitcherToDisplay.pitcherImage
-    }
-    cell.pitcherImage.layer.masksToBounds = true
-    cell.pitcherImage.layer.cornerRadius = 7.0
-    
-    cell.collectionView.reloadData()
-    
-    return cell
-  }
-  
   //MARK: Edit Pitcher
   func editPitcher(sender : UIButton) {
     
@@ -208,11 +216,12 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   @IBAction func editingDonePressed(sender: UIButton) {
     var editedPitcher = self.pitchers[selectedRowIndex]
-    if self.editPitcherText.text != ""{
-    editedPitcher.name = self.editPitcherText.text
+    
+    if editPitcherText.text != "" {
+      editedPitcher.name = self.editPitcherText.text
     }
-    if self.editTeamText.text != ""{
-    editedPitcher.team = self.editTeamText.text
+    if editTeamText.text != "" {
+      editedPitcher.team = self.editTeamText.text
     }
     self.tableView.reloadData()
     
