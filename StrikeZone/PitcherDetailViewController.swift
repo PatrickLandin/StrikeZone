@@ -41,7 +41,7 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
     
       self.pitchTableView.registerNib(UINib(nibName: "pitchDetailCell", bundle: nil), forCellReuseIdentifier: "PITCH_CELL")
       
-      self.currentHeatMap = currentPitcher?.heatMaps.first
+      //self.currentHeatMap = currentPitcher?.heatMaps.first
       
       self.pitchersNameLabel.text = currentPitcher?.name
       self.pitchCountLabel.text = "\(currentHeatMap!.allPitches.count)"
@@ -76,6 +76,8 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
         cell.pitchStatusView.backgroundColor = UIColor.blueColor()
 
       }
+      
+      cell.userInteractionEnabled = false
       
       return cell
     }

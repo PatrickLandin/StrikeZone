@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource {
+class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, heatMapDelegate {
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var newPitcherText: UITextField!
@@ -29,18 +29,8 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
       
       self.navigationItem.title = "Strike Zone"
-      
-      var pitcher1 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
-      var pitcher2 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
-      var pitcher3 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
-      var pitcher4 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
-      var pitcher5 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
-
+      var pitcher1 = Pitcher(name: "Ebby Calvin 'Nuke' LaLoosh", team: "Durham Bulls")
       pitchers.append(pitcher1)
-      pitchers.append(pitcher2)
-      pitchers.append(pitcher3)
-      pitchers.append(pitcher4)
-      pitchers.append(pitcher5)
       
       self.tableView.delegate = self
       self.tableView.dataSource = self
@@ -48,13 +38,14 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       self.tableView.estimatedRowHeight = 100
       self.tableView.rowHeight = UITableViewAutomaticDimension
       self.navigationController?.delegate = self
-
+      
         // Do any additional setup after loading the view.
     }
   
   func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
     if let menuCell = cell as? MenuTableViewCell {
       menuCell.collectionView.dataSource = self
+      menuCell.collectionView.delegate = self
     }
   }
   
@@ -65,10 +56,16 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   //MARK: CollectionView DataSource
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    if selectedPitcher?.heatMaps.count == nil {
-      return 50
+    let contentView = collectionView.superview! as UIView
+    let tableViewCell = contentView.superview as MenuTableViewCell
+    let tableViewIndexPath = self.tableView.indexPathForCell(tableViewCell)
+    let pitcher = self.pitchers[tableViewIndexPath!.row]
+
+    
+    if pitcher.heatMaps.count == 0 {
+      return 0
     }
-    return self.selectedPitcher!.heatMaps.count
+    return pitcher.heatMaps.count
     
   }
   
@@ -77,9 +74,33 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     
     cell.backgroundColor = UIColor.grayColor()
     cell.layer.cornerRadius = 7.0
-    cell.mapImageView.image = self.selectedPitcher?.heatMaps[indexPath.row].heatMapImage
+    
+    let contentView = collectionView.superview! as UIView
+    let tableViewCell = contentView.superview as MenuTableViewCell
+    let tableViewIndexPath = self.tableView.indexPathForCell(tableViewCell)
+    let pitcher = self.pitchers[tableViewIndexPath!.row]
+    
+    cell.mapImageView.image = pitcher.heatMaps[indexPath.row].heatMapImage
     
     return cell
+  }
+  
+  //MARK: CollectionView DidSelectACell
+  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    let contentView = collectionView.superview! as UIView
+    let tableViewCell = contentView.superview as MenuTableViewCell
+    let tableViewIndexPath = self.tableView.indexPathForCell(tableViewCell)
+    let pitcher = self.pitchers[tableViewIndexPath!.row]
+    
+    let selectedHeatMap = pitcher.heatMaps[indexPath.row]
+    
+    var strikeZoneVC = self.storyboard?.instantiateViewControllerWithIdentifier("MAP") as StrikeZoneViewController
+    let selectedIndexPath = self.tableView.indexPathForSelectedRow()?.row
+    strikeZoneVC.currentHeatMap = selectedHeatMap
+    strikeZoneVC.selectedPitcher = self.pitchers[self.selectedRowIndex]
+    strikeZoneVC.delegate = self
+    self.navigationController?.pushViewController(strikeZoneVC, animated: true)
+    
   }
   
   //MARK: New Pitcher
@@ -113,6 +134,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       self.alertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
       }) { (finished) -> Void in
         self.alertView.removeFromSuperview()
+        self.addButton.enabled = true
     }
   }
   
@@ -153,14 +175,13 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     cell.editButton.addTarget(self, action: "editPitcher:", forControlEvents: UIControlEvents.TouchUpInside)
     cell.editButton.enabled = true
     
+    if pitcherToDisplay.pitcherImage != nil{
     cell.pitcherImage.image = pitcherToDisplay.pitcherImage
+    }
     cell.pitcherImage.layer.masksToBounds = true
-    cell.pitcherImage.layer.cornerRadius = 10.0
+    cell.pitcherImage.layer.cornerRadius = 7.0
     
-//    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
-//    let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//    blurEffectView.frame = cell.bounds
-//    cell.insertSubview(blurEffectView, atIndex: indexPath.row)
+    cell.collectionView.reloadData()
     
     return cell
   }
@@ -187,8 +208,12 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   @IBAction func editingDonePressed(sender: UIButton) {
     var editedPitcher = self.pitchers[selectedRowIndex]
+    if self.editPitcherText.text != ""{
     editedPitcher.name = self.editPitcherText.text
+    }
+    if self.editTeamText.text != ""{
     editedPitcher.team = self.editTeamText.text
+    }
     self.tableView.reloadData()
     
     UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
@@ -227,7 +252,8 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     
     var strikeZoneVC = self.storyboard?.instantiateViewControllerWithIdentifier("MAP") as StrikeZoneViewController
     let selectedIndexPath = self.tableView.indexPathForSelectedRow()?.row
-    strikeZoneVC.selectedPitcher = self.pitchers[selectedIndexPath!]
+    strikeZoneVC.selectedPitcher = self.pitchers[self.selectedRowIndex]
+    strikeZoneVC.delegate = self
     self.navigationController?.pushViewController(strikeZoneVC, animated: true)
   }
   
@@ -268,6 +294,12 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     tableView.endUpdates()
   }
 
+  //MARK: Data Passing
+  func setPitcher(pitcher: Pitcher?){
+    println("this should also fire")
+    self.tableView.reloadData()
+  }
+  
 }
 
 

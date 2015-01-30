@@ -11,6 +11,7 @@
 		324FDB391A780F2400A743E9 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324FDB381A780F2400A743E9 /* Pitch.swift */; };
 		324FDB3B1A78671200A743E9 /* dodgerBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 324FDB3A1A78671200A743E9 /* dodgerBackground.jpg */; };
 		640389A21A76B59800060349 /* pitcherDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 640389A11A76B59800060349 /* pitcherDetailView.xib */; };
+		64124D691A7C0333004C96CB /* baseball10.png in Resources */ = {isa = PBXBuildFile; fileRef = 64124D681A7C0333004C96CB /* baseball10.png */; };
 		64232A8E1A76D16600057E18 /* HeatMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64232A8C1A76D16600057E18 /* HeatMapCell.swift */; };
 		64232A8F1A76D16600057E18 /* HeatMapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64232A8D1A76D16600057E18 /* HeatMapCell.xib */; };
 		648AD7B51A7AB23100472192 /* StrikeRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648AD7B41A7AB23100472192 /* StrikeRegion.swift */; };
@@ -53,6 +54,7 @@
 		324FDB381A780F2400A743E9 /* Pitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
 		324FDB3A1A78671200A743E9 /* dodgerBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dodgerBackground.jpg; sourceTree = "<group>"; };
 		640389A11A76B59800060349 /* pitcherDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = pitcherDetailView.xib; sourceTree = "<group>"; };
+		64124D681A7C0333004C96CB /* baseball10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baseball10.png; path = ../baseball10.png; sourceTree = "<group>"; };
 		64232A8C1A76D16600057E18 /* HeatMapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatMapCell.swift; sourceTree = "<group>"; };
 		64232A8D1A76D16600057E18 /* HeatMapCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeatMapCell.xib; sourceTree = "<group>"; };
 		648AD7B41A7AB23100472192 /* StrikeRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StrikeRegion.swift; path = ../StrikeRegion.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				EC8A04291A785B8B00C1E87F /* MenuCollectionCell.xib */,
 				ECBA07A51A73106B00B580F5 /* LaunchScreen.xib */,
 				ECBA07A31A73106B00B580F5 /* Images.xcassets */,
+				64124D681A7C0333004C96CB /* baseball10.png */,
 				323B7CB81A7AF31900A1B87F /* pitcherStraightDealin.jpg */,
 				324FDB3A1A78671200A743E9 /* dodgerBackground.jpg */,
 			);
@@ -291,6 +294,7 @@
 				ECBA07A71A73106B00B580F5 /* LaunchScreen.xib in Resources */,
 				ECC5AC081A76B6FE006F9887 /* MenuCell.xib in Resources */,
 				ECBA07A41A73106B00B580F5 /* Images.xcassets in Resources */,
+				64124D691A7C0333004C96CB /* baseball10.png in Resources */,
 				EC73FF931A7AECF500CF0E3E /* editPitcherAlert.xib in Resources */,
 				324FDB3B1A78671200A743E9 /* dodgerBackground.jpg in Resources */,
 				EC2374C41A7B1E4D00B46765 /* Main.storyboard in Resources */,
