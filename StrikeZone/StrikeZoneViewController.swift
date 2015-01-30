@@ -100,9 +100,9 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   
   func backButtonPressed(sender: UIButton) {
     let pitcherMenuVC = PitcherMenuViewController()
-    if currentHeatMap != nil {
+    //if currentHeatMap != nil {
       self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
-    }
+    //}
     var continueButton = UIBarButtonItem(title: "Continue", style: UIBarButtonItemStyle.Done, target: self, action: "continueButtonPressed")
     self.navigationController?.popToRootViewControllerAnimated(true)
   }
@@ -141,7 +141,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
       if self.currentPitch.actualZoneLocation == self.currentPitch.targetZoneLocation {
         //heres how we handle a good pitch
         self.zoneColor = UIColor.redColor()
-        self.targetView!.alpha = self.targetView!.alpha + 0.1
+        self.targetView!.alpha = self.targetView!.alpha + 0.05
         self.targetView!.backgroundColor = self.zoneColor
         self.targetView!.temperature++
         self.currentPitch.wasGoodPitch = true
@@ -151,7 +151,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
       else //Handle a bad pitch
       {
         self.zoneColor = UIColor.blueColor()
-        self.targetView!.alpha = self.targetView!.alpha + 0.1
+        self.targetView!.alpha = self.targetView!.alpha + 0.05
         self.targetView!.backgroundColor = self.zoneColor
         self.targetView!.temperature--
         self.currentPitch.wasGoodPitch = false
@@ -161,13 +161,13 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     else if self.targetView!.temperature > 0
     {
       if self.currentPitch.actualZoneLocation == self.currentPitch.targetZoneLocation{
-        self.targetView!.alpha = self.targetView!.alpha + 0.1
+        self.targetView!.alpha = self.targetView!.alpha + 0.05
         self.targetView!.temperature++
         self.currentPitch.wasGoodPitch = true
 
       }
       else{
-        self.targetView!.alpha = self.targetView!.alpha - 0.1
+        self.targetView!.alpha = self.targetView!.alpha - 0.05
         self.targetView!.temperature--
         self.currentPitch.wasGoodPitch = false
 
@@ -176,13 +176,13 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     else
     {
       if self.currentPitch.actualZoneLocation == self.currentPitch.targetZoneLocation{
-        self.targetView!.alpha = self.targetView!.alpha - 0.1
+        self.targetView!.alpha = self.targetView!.alpha - 0.05
         self.targetView!.temperature++
         self.currentPitch.wasGoodPitch = true
 
       }
       else{
-        self.targetView!.alpha = self.targetView!.alpha + 0.1
+        self.targetView!.alpha = self.targetView!.alpha + 0.05
         self.targetView!.temperature--
         self.currentPitch.wasGoodPitch = false
 
@@ -200,7 +200,6 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   
   func handleTap(gesture: UITapGestureRecognizer) {
     let tapLocation = gesture.locationInView(strikeZoneView)
-    println("Ryan is a big fat shhhupid idiot")
    
     if isTargetLocation  {
       self.handleTapForTarget(tapLocation)
