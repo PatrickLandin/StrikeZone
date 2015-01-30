@@ -15,6 +15,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   @IBOutlet weak var newTeamText: UITextField!
   @IBOutlet weak var editPitcherText: UITextField!
   @IBOutlet weak var editTeamText: UITextField!
+  @IBOutlet weak var addButton: UIBarButtonItem!
   
   var pitchers = [Pitcher]()
   var selectedPitcher : Pitcher?
@@ -117,11 +118,12 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       self.alertView.transform =  CGAffineTransformMakeScale(1.0, 1.0)
       }) { (finished) -> Void in
     }
+    self.addButton.enabled = false
   }
 
   @IBAction func addPitcherPressed(sender: AnyObject) {    
     var newPitcher = Pitcher(name: self.newPitcherText.text, team: self.newTeamText.text)
-    self.pitchers.append(newPitcher)
+    self.pitchers.insert(newPitcher, atIndex: 0)
     self.tableView.reloadData()
     
     UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
@@ -139,6 +141,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       }) { (finished) -> Void in
         self.alertView.removeFromSuperview()
     }
+    self.addButton.enabled = true
   }
   
   //MARK: Tableview datasource
@@ -166,6 +169,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     
     cell.editButton.tag = indexPath.row
     cell.editButton.addTarget(self, action: "editPitcher:", forControlEvents: UIControlEvents.TouchUpInside)
+    cell.editButton.enabled = true
     
     cell.pitcherImage.image = pitcherToDisplay.pitcherImage
     cell.pitcherImage.layer.masksToBounds = true
@@ -196,10 +200,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       self.editAlertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
       }) { (finished) -> Void in
     }
-//        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.ExtraLight)
-//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//        blurEffectView.frame = editAlertView.bounds
-//        editAlertView.insertSubview(blurEffectView, belowSubview: editAlertView)
+    sender.enabled = false
   }
   
   @IBAction func editingDonePressed(sender: UIButton) {
@@ -223,6 +224,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       }) { (finished) -> Void in
         self.editAlertView.removeFromSuperview()
     }
+    self.tableView.reloadData()
   }
   
   @IBAction func removeButtonPressed(sender: UIButton) {
