@@ -18,6 +18,7 @@
 		649B04DC1A78032D00A8FD99 /* PitchDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B04DB1A78032D00A8FD99 /* PitchDetailTableViewCell.swift */; };
 		649B04E01A78542E00A8FD99 /* heatMapCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649B04DF1A78542E00A8FD99 /* heatMapCollectionView.xib */; };
 		649B04E21A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B04E11A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift */; };
+		EC2374C41A7B1E4D00B46765 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC2374C31A7B1E4D00B46765 /* Main.storyboard */; };
 		EC5D765D1A77110400833AF0 /* pixelGlove.png in Resources */ = {isa = PBXBuildFile; fileRef = EC5D765C1A77110400833AF0 /* pixelGlove.png */; };
 		EC73FF931A7AECF500CF0E3E /* editPitcherAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC73FF921A7AECF500CF0E3E /* editPitcherAlert.xib */; };
 		EC73FF951A7AED0D00CF0E3E /* AddPitcherAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC73FF941A7AED0D00CF0E3E /* AddPitcherAlert.xib */; };
@@ -59,6 +60,7 @@
 		649B04DB1A78032D00A8FD99 /* PitchDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchDetailTableViewCell.swift; sourceTree = "<group>"; };
 		649B04DF1A78542E00A8FD99 /* heatMapCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = heatMapCollectionView.xib; path = ../heatMapCollectionView.xib; sourceTree = "<group>"; };
 		649B04E11A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeatMapCollectionTableViewCell.swift; path = ../HeatMapCollectionTableViewCell.swift; sourceTree = "<group>"; };
+		EC2374C31A7B1E4D00B46765 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 		EC5D765C1A77110400833AF0 /* pixelGlove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pixelGlove.png; sourceTree = "<group>"; };
 		EC73FF921A7AECF500CF0E3E /* editPitcherAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = editPitcherAlert.xib; sourceTree = "<group>"; };
 		EC73FF941A7AED0D00CF0E3E /* AddPitcherAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddPitcherAlert.xib; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		ECBA07BD1A73171A00B580F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EC2374C31A7B1E4D00B46765 /* Main.storyboard */,
 				649B04DF1A78542E00A8FD99 /* heatMapCollectionView.xib */,
 				640389A11A76B59800060349 /* pitcherDetailView.xib */,
 				649B04D91A78022900A8FD99 /* pitchDetailCell.xib */,
@@ -290,6 +293,7 @@
 				ECBA07A41A73106B00B580F5 /* Images.xcassets in Resources */,
 				EC73FF931A7AECF500CF0E3E /* editPitcherAlert.xib in Resources */,
 				324FDB3B1A78671200A743E9 /* dodgerBackground.jpg in Resources */,
+				EC2374C41A7B1E4D00B46765 /* Main.storyboard in Resources */,
 				EC73FF951A7AED0D00CF0E3E /* AddPitcherAlert.xib in Resources */,
 				64232A8F1A76D16600057E18 /* HeatMapCell.xib in Resources */,
 				640389A21A76B59800060349 /* pitcherDetailView.xib in Resources */,
