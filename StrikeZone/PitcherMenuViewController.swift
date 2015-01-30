@@ -35,30 +35,12 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       var pitcher3 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
       var pitcher4 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
       var pitcher5 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
-      var pitcher6 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
-      var pitcher7 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
-      var pitcher8 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
-      var pitcher9 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
-      var pitcher10 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
-      var pitcher11 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
-      var pitcher12 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
-      var pitcher13 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
-      var pitcher14 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
-      
+
       pitchers.append(pitcher1)
       pitchers.append(pitcher2)
       pitchers.append(pitcher3)
       pitchers.append(pitcher4)
       pitchers.append(pitcher5)
-      pitchers.append(pitcher6)
-      pitchers.append(pitcher7)
-      pitchers.append(pitcher8)
-      pitchers.append(pitcher9)
-      pitchers.append(pitcher10)
-      pitchers.append(pitcher11)
-      pitchers.append(pitcher12)
-      pitchers.append(pitcher13) 
-      pitchers.append(pitcher14)
       
       self.tableView.delegate = self
       self.tableView.dataSource = self
@@ -110,18 +92,19 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     self.alertView.transform = CGAffineTransformMakeScale(0.4, 0.4)
     self.view.addSubview(alertView)
     
-    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
+    UIView.animateWithDuration(0.4, delay: 0.0, options: nil, animations: { () -> Void in
       self.alertView.alpha = 1
       self.alertView.layer.cornerRadius = 15.0
       self.alertView.backgroundColor = UIColor.lightGrayColor()
-      self.alertView.transform =  CGAffineTransformMakeScale(1.0, 1.0)
+      self.alertView.transform =  CGAffineTransformMakeScale(1.0 , 1.0)
       }) { (finished) -> Void in
     }
   }
 
   @IBAction func addPitcherPressed(sender: AnyObject) {    
     var newPitcher = Pitcher(name: self.newPitcherText.text, team: self.newTeamText.text)
-    self.pitchers.append(newPitcher)
+    //self.pitchers.append(newPitcher)
+    self.pitchers.insert(newPitcher, atIndex: 0)
     self.tableView.reloadData()
     
     UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
