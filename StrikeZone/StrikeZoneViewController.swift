@@ -87,10 +87,9 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   }
   
   func detailButtonPressed(sender: UIButton) {
-     let pitcherDetailVC = PitcherDetailViewController(nibName : "pitcherDetailView" , bundle : NSBundle.mainBundle())
-    //if currentHeatMap != nil {
-      self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
-    //}
+    let pitcherDetailVC = PitcherDetailViewController(nibName : "pitcherDetailView" , bundle : NSBundle.mainBundle())
+    //self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
+
     pitcherDetailVC.currentPitcher = self.selectedPitcher
     pitcherDetailVC.currentHeatMap = self.currentHeatMap
     self.navigationController?.pushViewController(pitcherDetailVC, animated: true)
