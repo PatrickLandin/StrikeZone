@@ -18,8 +18,11 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
 
   var delegate : PitcherDetailDelegate?
   
+  @IBOutlet var pitcherHometown: UILabel!
   @IBOutlet var pitchersNameLabel: UILabel!
   @IBOutlet var pitchCountLabel: UILabel!
+  
+  @IBOutlet var pitcherImageView: UIImageView!
   
   @IBOutlet var pitchTableView: UITableView!
   
@@ -41,7 +44,9 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
       self.currentHeatMap = currentPitcher?.heatMaps.first
       
       self.pitchersNameLabel.text = currentPitcher?.name
-      self.pitchCountLabel.text = "\(currentHeatMap?.allPitches.count)"
+      self.pitchCountLabel.text = "\(currentHeatMap!.allPitches.count)"
+      self.pitcherImageView.image = currentPitcher?.pitcherImage
+      self.pitcherHometown.text = currentPitcher?.team
 
     }
   
@@ -65,10 +70,10 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
       cell.pitchStatusView.layer.cornerRadius = 30
       
       if currentHeatMap?.allPitches[indexPath.row].wasGoodPitch == true{
-        cell.pitchStatusView.backgroundColor = UIColor.blueColor()
+        cell.pitchStatusView.backgroundColor = UIColor.redColor()
       }
       else{
-        cell.pitchStatusView.backgroundColor = UIColor.redColor()
+        cell.pitchStatusView.backgroundColor = UIColor.blueColor()
 
       }
       
