@@ -25,7 +25,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   var imagePickerController = UIImagePickerController()
   var pitcherImage : UIImage?
   
-  
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -112,6 +111,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     self.view.addSubview(alertView)
     
     UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
+      
       self.alertView.alpha = 1
       self.alertView.layer.cornerRadius = 15.0
       self.alertView.backgroundColor = UIColor.lightGrayColor()
@@ -267,18 +267,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       self.imagePickerController.dismissViewControllerAnimated(true, completion: nil)
     }
   
-  //MARK: Swipe to Delete
-  func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    return true
-  }
-  
-//  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//    if (editingStyle == UITableViewCellEditingStyle.Delete) {
-//      self.pitchers.removeAtIndex(indexPath.row)
-//      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-//    }
-//  }
-  
   //MARK: Expand/Collapse tableView cells
   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     if indexPath.row == selectedRowIndex {
@@ -299,11 +287,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   }
 
 }
-
-
-
-
-
 
 
 
