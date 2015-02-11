@@ -20,6 +20,7 @@
 		649B04E01A78542E00A8FD99 /* heatMapCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649B04DF1A78542E00A8FD99 /* heatMapCollectionView.xib */; };
 		649B04E21A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B04E11A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift */; };
 		EC036DFB1A7B215F00E88E26 /* AddPitcherAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC036DFA1A7B215F00E88E26 /* AddPitcherAlert.xib */; };
+		EC08AF3A1A8ADDC4006DE716 /* HighHeatModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC08AF381A8ADDC4006DE716 /* HighHeatModel.xcdatamodeld */; };
 		EC2374C41A7B1E4D00B46765 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC2374C31A7B1E4D00B46765 /* Main.storyboard */; };
 		EC5D765D1A77110400833AF0 /* pixelGlove.png in Resources */ = {isa = PBXBuildFile; fileRef = EC5D765C1A77110400833AF0 /* pixelGlove.png */; };
 		EC73FF931A7AECF500CF0E3E /* editPitcherAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC73FF921A7AECF500CF0E3E /* editPitcherAlert.xib */; };
@@ -63,6 +64,7 @@
 		649B04DF1A78542E00A8FD99 /* heatMapCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = heatMapCollectionView.xib; path = ../heatMapCollectionView.xib; sourceTree = "<group>"; };
 		649B04E11A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeatMapCollectionTableViewCell.swift; path = ../HeatMapCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		EC036DFA1A7B215F00E88E26 /* AddPitcherAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddPitcherAlert.xib; path = ../AddPitcherAlert.xib; sourceTree = "<group>"; };
+		EC08AF391A8ADDC4006DE716 /* HighHeatModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HighHeatModel.xcdatamodel; sourceTree = "<group>"; };
 		EC2374C31A7B1E4D00B46765 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 		EC5D765C1A77110400833AF0 /* pixelGlove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pixelGlove.png; sourceTree = "<group>"; };
 		EC73FF921A7AECF500CF0E3E /* editPitcherAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = editPitcherAlert.xib; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				ECC5AC091A76BCC0006F9887 /* Pitcher.swift */,
 				ECC5AC0B1A76BD5F006F9887 /* HeatMap.swift */,
 				324FDB381A780F2400A743E9 /* Pitch.swift */,
+				EC08AF381A8ADDC4006DE716 /* HighHeatModel.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				ECC5AC041A76ADF4006F9887 /* PitcherMenuViewController.swift in Sources */,
 				EC8A04301A78628000C1E87F /* MenuCollectionViewCell.swift in Sources */,
 				ECC5AC121A76D461006F9887 /* MenuTableViewCell.swift in Sources */,
+				EC08AF3A1A8ADDC4006DE716 /* HighHeatModel.xcdatamodeld in Sources */,
 				ECC5AC0C1A76BD5F006F9887 /* HeatMap.swift in Sources */,
 				649B04DC1A78032D00A8FD99 /* PitchDetailTableViewCell.swift in Sources */,
 				ECBA079D1A73106B00B580F5 /* AppDelegate.swift in Sources */,
@@ -531,6 +535,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EC08AF381A8ADDC4006DE716 /* HighHeatModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EC08AF391A8ADDC4006DE716 /* HighHeatModel.xcdatamodel */,
+			);
+			currentVersion = EC08AF391A8ADDC4006DE716 /* HighHeatModel.xcdatamodel */;
+			path = HighHeatModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = ECBA078F1A73106B00B580F5 /* Project object */;
 }
