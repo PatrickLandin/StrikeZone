@@ -30,6 +30,8 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   var selectedPitcher : Pitcher?
   
   var targetView : StrikeRegion?
+  var actualPitchView : StrikeRegion?
+
   var currentHeatMap : HeatMap?
   var doneButton : UIBarButtonItem!
   var backButton : UIBarButtonItem!
@@ -150,6 +152,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
           currentPitch.actualZoneLocation = zoneView.tag
           currentPitch.actualLocation = actualTouchLocation
           isTargetLocation = true
+          self.actualPitchView = zoneView
         }
       }
     }
@@ -165,8 +168,6 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
         self.targetView!.backgroundColor = self.zoneColor
         self.targetView!.temperature++
         self.currentPitch.wasGoodPitch = true
-
-        
       }
       else //Handle a bad pitch
       {
@@ -175,7 +176,6 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
         self.targetView!.backgroundColor = self.zoneColor
         self.targetView!.temperature--
         self.currentPitch.wasGoodPitch = false
-
       }
     }
     else if self.targetView!.temperature > 0
@@ -184,13 +184,11 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
         self.targetView!.alpha = self.targetView!.alpha + 0.05
         self.targetView!.temperature++
         self.currentPitch.wasGoodPitch = true
-
       }
       else{
         self.targetView!.alpha = self.targetView!.alpha - 0.05
         self.targetView!.temperature--
         self.currentPitch.wasGoodPitch = false
-
       }
     }
     else
@@ -199,16 +197,13 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
         self.targetView!.alpha = self.targetView!.alpha - 0.05
         self.targetView!.temperature++
         self.currentPitch.wasGoodPitch = true
-
       }
       else{
         self.targetView!.alpha = self.targetView!.alpha + 0.05
         self.targetView!.temperature--
         self.currentPitch.wasGoodPitch = false
-
       }
     }
-  
   }
   
   func handleTap(gesture: UITapGestureRecognizer) {
@@ -216,8 +211,11 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
    
     if isTargetLocation  {
       self.handleTapForTarget(tapLocation)
-          } else  {
-          handleTapForPitch(tapLocation)
+      self.indicateTargetPitch()
+      } else  {
+      self.handleTapForPitch(tapLocation)
+      self.indicateActualPitch()
+
     }
   }
   
@@ -229,6 +227,38 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     currentHeatMap?.heatMapImage = viewImage
     UIGraphicsEndImageContext()
     currentPitch = Pitch()
+  }
+  
+  func indicateTargetPitch(){
+    let initialViewColor = self.targetView!.backgroundColor
+    let initialViewAlpha = self.targetView!.alpha
+    
+      self.targetView!.backgroundColor = UIColor.greenColor()
+      UIView.animateWithDuration(0.2, animations: { () -> Void in
+        self.targetView!.alpha = 0.25
+      }, completion: { (finished) -> Void in
+        UIView.animateWithDuration(0.2, animations: { () -> Void in
+          self.targetView!.alpha = initialViewAlpha
+          self.targetView!.backgroundColor = initialViewColor
+          }, completion: { (finished) -> Void in
+        })
+      })
+  }
+  
+  func indicateActualPitch(){
+    let initialViewColor = self.actualPitchView!.backgroundColor
+    let initialViewAlpha = self.actualPitchView!.alpha
+    
+    self.actualPitchView!.backgroundColor = UIColor.greenColor()
+    UIView.animateWithDuration(0.2, animations: { () -> Void in
+      self.actualPitchView!.alpha = 0.25
+      }, completion: { (finished) -> Void in
+        UIView.animateWithDuration(0.2, animations: { () -> Void in
+          self.actualPitchView!.alpha = initialViewAlpha
+          self.actualPitchView!.backgroundColor = initialViewColor
+          }, completion: { (finished) -> Void in
+        })
+    })
   }
   
   
