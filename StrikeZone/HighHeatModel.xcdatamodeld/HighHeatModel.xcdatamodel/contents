@@ -4,8 +4,8 @@
         <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="heatMapImage" optional="YES" syncable="YES"/>
         <attribute name="pitchCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pitcher" inverseName="newRelationship" inverseEntity="Pitcher" syncable="YES"/>
-        <relationship name="newRelationship1" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pitch" inverseName="newRelationship" inverseEntity="Pitch" syncable="YES"/>
+        <relationship name="pitcher" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pitcher" inverseName="heatMaps" inverseEntity="Pitcher" syncable="YES"/>
+        <relationship name="pitches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pitch" inverseName="heatMap" inverseEntity="Pitch" syncable="YES"/>
     </entity>
     <entity name="Pitch" representedClassName="Pitch" syncable="YES">
         <attribute name="actualLocation" optional="YES" syncable="YES"/>
@@ -14,13 +14,13 @@
         <attribute name="targetLocation" optional="YES" syncable="YES"/>
         <attribute name="targetZoneLocation" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="wasGoodPitch" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HeatMap" inverseName="newRelationship1" inverseEntity="HeatMap" syncable="YES"/>
+        <relationship name="heatMap" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HeatMap" inverseName="pitches" inverseEntity="HeatMap" syncable="YES"/>
     </entity>
     <entity name="Pitcher" representedClassName="Pitcher" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pitcherImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="team" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="newRelationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeatMap" inverseName="newRelationship" inverseEntity="HeatMap" syncable="YES"/>
+        <relationship name="heatMaps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeatMap" inverseName="pitcher" inverseEntity="HeatMap" syncable="YES"/>
     </entity>
     <elements>
         <element name="HeatMap" positionX="70" positionY="29" width="128" height="118"/>
