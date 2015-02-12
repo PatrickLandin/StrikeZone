@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C109" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="HeatMap" syncable="YES"/>
-    <entity name="Pitch" syncable="YES"/>
-    <entity name="Pitcher" syncable="YES"/>
-    <entity name="Session" syncable="YES"/>
+    <entity name="HeatMap" representedClassName="HeatMap" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="heatMapImage" optional="YES" syncable="YES"/>
+        <attribute name="pitchCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pitcher" inverseName="newRelationship" inverseEntity="Pitcher" syncable="YES"/>
+        <relationship name="newRelationship1" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pitch" inverseName="newRelationship" inverseEntity="Pitch" syncable="YES"/>
+    </entity>
+    <entity name="Pitch" representedClassName="Pitch" syncable="YES">
+        <attribute name="actualLocation" optional="YES" syncable="YES"/>
+        <attribute name="actualZoneLocation" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="pitchType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="targetLocation" optional="YES" syncable="YES"/>
+        <attribute name="targetZoneLocation" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="wasGoodPitch" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HeatMap" inverseName="newRelationship1" inverseEntity="HeatMap" syncable="YES"/>
+    </entity>
+    <entity name="Pitcher" representedClassName="Pitcher" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pitcherImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="team" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="newRelationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeatMap" inverseName="newRelationship" inverseEntity="HeatMap" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Pitcher" positionX="-27" positionY="18" width="128" height="43"/>
-        <element name="HeatMap" positionX="18" positionY="63" width="128" height="43"/>
-        <element name="Pitch" positionX="54" positionY="99" width="128" height="43"/>
-        <element name="Session" positionX="18" positionY="63" width="128" height="43"/>
+        <element name="HeatMap" positionX="70" positionY="29" width="128" height="118"/>
+        <element name="Pitch" positionX="270" positionY="171" width="128" height="148"/>
+        <element name="Pitcher" positionX="-108" positionY="-126" width="128" height="103"/>
     </elements>
 </model>

@@ -51,7 +51,6 @@
 
 /* Begin PBXFileReference section */
 		323B7CB81A7AF31900A1B87F /* pitcherStraightDealin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pitcherStraightDealin.jpg; sourceTree = "<group>"; };
-		324FB25E1A77009F0034A59A /* loveGolve.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loveGolve.jpg; sourceTree = "<group>"; };
 		324FDB381A780F2400A743E9 /* Pitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
 		324FDB3A1A78671200A743E9 /* dodgerBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dodgerBackground.jpg; sourceTree = "<group>"; };
 		640389A11A76B59800060349 /* pitcherDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = pitcherDetailView.xib; sourceTree = "<group>"; };
@@ -139,7 +138,6 @@
 		ECBA079A1A73106B00B580F5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				324FB25E1A77009F0034A59A /* loveGolve.jpg */,
 				ECBA079B1A73106B00B580F5 /* Info.plist */,
 			);
 			name = "Supporting Files";
