@@ -44,8 +44,8 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
       //self.currentHeatMap = currentPitcher?.heatMaps.first
       
       self.pitchersNameLabel.text = currentPitcher?.name
-      self.pitchCountLabel.text = "\(currentHeatMap!.allPitches.count)"
-      self.pitcherImageView.image = currentPitcher?.pitcherImage
+      self.pitchCountLabel.text = "\(currentHeatMap!.pitches.allObjects.count)"
+//      self.pitcherImageView.image = currentPitcher?.pitcherImage
       self.pitcherHometown.text = currentPitcher?.team
 
     }
@@ -64,12 +64,13 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
     default:
       let cell = tableView.dequeueReusableCellWithIdentifier("PITCH_CELL", forIndexPath: indexPath) as PitchDetailTableViewCell
   
+      let allPitches = currentHeatMap?.pitches.allObjects as [Pitch]
+      
       cell.pitchNumberLabel.text = "Pitch: \(indexPath.row + 1)"
-      cell.pitchDetailsLabel.text = currentHeatMap?.allPitches[indexPath.row].pitchType
+      cell.pitchDetailsLabel.text = allPitches[indexPath.row].pitchType
       
       cell.pitchStatusView.layer.cornerRadius = 30
-      
-      if currentHeatMap?.allPitches[indexPath.row].wasGoodPitch == true{
+      if allPitches[indexPath.row].wasGoodPitch == true{
         cell.pitchStatusView.backgroundColor = UIColor.redColor()
       }
       else{
@@ -87,7 +88,7 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
     if section == 0{
       return 1
     }
-    return self.currentHeatMap!.allPitches.count
+    return self.currentHeatMap!.pitches.allObjects.count
   }
   
   func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -111,7 +112,7 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
   @IBAction func addHeatMapButtonPressed(sender: AnyObject) {
     
     if currentHeatMap != nil {
-      self.currentPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
+//      self.currentPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
     }
     
     delegate?.setPitcher(currentPitcher)

@@ -1,30 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C109" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="HeatMap" representedClassName="HeatMap" syncable="YES">
+    <entity name="HeatMap" representedClassName="StrikeZone.HeatMap" syncable="YES">
         <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="heatMapImage" optional="YES" syncable="YES"/>
+        <attribute name="heatMapImage" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="heatMapScore" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="pitchCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="pitcher" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pitcher" inverseName="heatMaps" inverseEntity="Pitcher" syncable="YES"/>
         <relationship name="pitches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pitch" inverseName="heatMap" inverseEntity="Pitch" syncable="YES"/>
     </entity>
-    <entity name="Pitch" representedClassName="Pitch" syncable="YES">
-        <attribute name="actualLocation" optional="YES" syncable="YES"/>
+    <entity name="Pitch" representedClassName="StrikeZone.Pitch" syncable="YES">
+        <attribute name="actualX" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="actualY" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="actualZoneLocation" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="pitchScore" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="pitchType" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="targetLocation" optional="YES" syncable="YES"/>
+        <attribute name="targetX" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="targetY" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="targetZoneLocation" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="wasGoodPitch" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="heatMap" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HeatMap" inverseName="pitches" inverseEntity="HeatMap" syncable="YES"/>
     </entity>
-    <entity name="Pitcher" representedClassName="Pitcher" syncable="YES">
+    <entity name="Pitcher" representedClassName="StrikeZone.Pitcher" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="pitcherImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="pitcherImage" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="team" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="heatMaps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeatMap" inverseName="pitcher" inverseEntity="HeatMap" syncable="YES"/>
     </entity>
     <elements>
-        <element name="HeatMap" positionX="70" positionY="29" width="128" height="118"/>
-        <element name="Pitch" positionX="270" positionY="171" width="128" height="148"/>
+        <element name="HeatMap" positionX="70" positionY="29" width="128" height="133"/>
+        <element name="Pitch" positionX="270" positionY="171" width="128" height="193"/>
         <element name="Pitcher" positionX="-108" positionY="-126" width="128" height="103"/>
     </elements>
 </model>

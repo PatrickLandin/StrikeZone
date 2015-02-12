@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		323B7CB91A7AF31900A1B87F /* pitcherStraightDealin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 323B7CB81A7AF31900A1B87F /* pitcherStraightDealin.jpg */; };
-		324FDB391A780F2400A743E9 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324FDB381A780F2400A743E9 /* Pitch.swift */; };
 		324FDB3B1A78671200A743E9 /* dodgerBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 324FDB3A1A78671200A743E9 /* dodgerBackground.jpg */; };
 		640389A21A76B59800060349 /* pitcherDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 640389A11A76B59800060349 /* pitcherDetailView.xib */; };
 		64124D691A7C0333004C96CB /* baseball10.png in Resources */ = {isa = PBXBuildFile; fileRef = 64124D681A7C0333004C96CB /* baseball10.png */; };
@@ -21,6 +20,11 @@
 		649B04E21A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B04E11A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift */; };
 		EC036DFB1A7B215F00E88E26 /* AddPitcherAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC036DFA1A7B215F00E88E26 /* AddPitcherAlert.xib */; };
 		EC08AF3A1A8ADDC4006DE716 /* HighHeatModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC08AF381A8ADDC4006DE716 /* HighHeatModel.xcdatamodeld */; };
+		EC08AF901A8D5980006DE716 /* PitchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC08AF8F1A8D5980006DE716 /* PitchService.swift */; };
+		EC08AF921A8D5C7B006DE716 /* Pitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC08AF911A8D5C7B006DE716 /* Pitcher.swift */; };
+		EC08AF941A8D5C7B006DE716 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC08AF931A8D5C7B006DE716 /* Pitch.swift */; };
+		EC08AF961A8D5C7C006DE716 /* HeatMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC08AF951A8D5C7C006DE716 /* HeatMap.swift */; };
+		EC08AF981A8D60CF006DE716 /* DataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC08AF971A8D60CF006DE716 /* DataStack.swift */; };
 		EC2374C41A7B1E4D00B46765 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC2374C31A7B1E4D00B46765 /* Main.storyboard */; };
 		EC5D765D1A77110400833AF0 /* pixelGlove.png in Resources */ = {isa = PBXBuildFile; fileRef = EC5D765C1A77110400833AF0 /* pixelGlove.png */; };
 		EC73FF931A7AECF500CF0E3E /* editPitcherAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC73FF921A7AECF500CF0E3E /* editPitcherAlert.xib */; };
@@ -34,8 +38,6 @@
 		ECC5AC021A76ADD5006F9887 /* PitcherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5AC011A76ADD5006F9887 /* PitcherDetailViewController.swift */; };
 		ECC5AC041A76ADF4006F9887 /* PitcherMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5AC031A76ADF4006F9887 /* PitcherMenuViewController.swift */; };
 		ECC5AC081A76B6FE006F9887 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECC5AC071A76B6FE006F9887 /* MenuCell.xib */; };
-		ECC5AC0A1A76BCC0006F9887 /* Pitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5AC091A76BCC0006F9887 /* Pitcher.swift */; };
-		ECC5AC0C1A76BD5F006F9887 /* HeatMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5AC0B1A76BD5F006F9887 /* HeatMap.swift */; };
 		ECC5AC121A76D461006F9887 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC5AC111A76D461006F9887 /* MenuTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +53,6 @@
 
 /* Begin PBXFileReference section */
 		323B7CB81A7AF31900A1B87F /* pitcherStraightDealin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pitcherStraightDealin.jpg; sourceTree = "<group>"; };
-		324FDB381A780F2400A743E9 /* Pitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
 		324FDB3A1A78671200A743E9 /* dodgerBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dodgerBackground.jpg; sourceTree = "<group>"; };
 		640389A11A76B59800060349 /* pitcherDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = pitcherDetailView.xib; sourceTree = "<group>"; };
 		64124D681A7C0333004C96CB /* baseball10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baseball10.png; path = ../baseball10.png; sourceTree = "<group>"; };
@@ -64,6 +65,11 @@
 		649B04E11A7854EB00A8FD99 /* HeatMapCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeatMapCollectionTableViewCell.swift; path = ../HeatMapCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		EC036DFA1A7B215F00E88E26 /* AddPitcherAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddPitcherAlert.xib; path = ../AddPitcherAlert.xib; sourceTree = "<group>"; };
 		EC08AF391A8ADDC4006DE716 /* HighHeatModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HighHeatModel.xcdatamodel; sourceTree = "<group>"; };
+		EC08AF8F1A8D5980006DE716 /* PitchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchService.swift; path = ../PitchService.swift; sourceTree = "<group>"; };
+		EC08AF911A8D5C7B006DE716 /* Pitcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pitcher.swift; sourceTree = "<group>"; };
+		EC08AF931A8D5C7B006DE716 /* Pitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
+		EC08AF951A8D5C7C006DE716 /* HeatMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatMap.swift; sourceTree = "<group>"; };
+		EC08AF971A8D60CF006DE716 /* DataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStack.swift; sourceTree = "<group>"; };
 		EC2374C31A7B1E4D00B46765 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 		EC5D765C1A77110400833AF0 /* pixelGlove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pixelGlove.png; sourceTree = "<group>"; };
 		EC73FF921A7AECF500CF0E3E /* editPitcherAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = editPitcherAlert.xib; sourceTree = "<group>"; };
@@ -81,8 +87,6 @@
 		ECC5AC011A76ADD5006F9887 /* PitcherDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitcherDetailViewController.swift; sourceTree = "<group>"; };
 		ECC5AC031A76ADF4006F9887 /* PitcherMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitcherMenuViewController.swift; sourceTree = "<group>"; };
 		ECC5AC071A76B6FE006F9887 /* MenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuCell.xib; path = ../MenuCell.xib; sourceTree = "<group>"; };
-		ECC5AC091A76BCC0006F9887 /* Pitcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pitcher.swift; sourceTree = "<group>"; };
-		ECC5AC0B1A76BD5F006F9887 /* HeatMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatMap.swift; sourceTree = "<group>"; };
 		ECC5AC111A76D461006F9887 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuTableViewCell.swift; path = ../MenuTableViewCell.swift; sourceTree = "<group>"; };
 		ECFA632E1A7982AD00D844A0 /* MapCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapCollectionViewController.swift; path = ../MapCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,9 +168,11 @@
 			isa = PBXGroup;
 			children = (
 				ECBA079C1A73106B00B580F5 /* AppDelegate.swift */,
-				ECC5AC091A76BCC0006F9887 /* Pitcher.swift */,
-				ECC5AC0B1A76BD5F006F9887 /* HeatMap.swift */,
-				324FDB381A780F2400A743E9 /* Pitch.swift */,
+				EC08AF951A8D5C7C006DE716 /* HeatMap.swift */,
+				EC08AF931A8D5C7B006DE716 /* Pitch.swift */,
+				EC08AF911A8D5C7B006DE716 /* Pitcher.swift */,
+				EC08AF8F1A8D5980006DE716 /* PitchService.swift */,
+				EC08AF971A8D60CF006DE716 /* DataStack.swift */,
 				EC08AF381A8ADDC4006DE716 /* HighHeatModel.xcdatamodeld */,
 			);
 			name = Model;
@@ -327,14 +333,16 @@
 				ECC5AC041A76ADF4006F9887 /* PitcherMenuViewController.swift in Sources */,
 				EC8A04301A78628000C1E87F /* MenuCollectionViewCell.swift in Sources */,
 				ECC5AC121A76D461006F9887 /* MenuTableViewCell.swift in Sources */,
+				EC08AF961A8D5C7C006DE716 /* HeatMap.swift in Sources */,
 				EC08AF3A1A8ADDC4006DE716 /* HighHeatModel.xcdatamodeld in Sources */,
-				ECC5AC0C1A76BD5F006F9887 /* HeatMap.swift in Sources */,
 				649B04DC1A78032D00A8FD99 /* PitchDetailTableViewCell.swift in Sources */,
+				EC08AF921A8D5C7B006DE716 /* Pitcher.swift in Sources */,
+				EC08AF941A8D5C7B006DE716 /* Pitch.swift in Sources */,
+				EC08AF981A8D60CF006DE716 /* DataStack.swift in Sources */,
+				EC08AF901A8D5980006DE716 /* PitchService.swift in Sources */,
 				ECBA079D1A73106B00B580F5 /* AppDelegate.swift in Sources */,
 				ECC5AC021A76ADD5006F9887 /* PitcherDetailViewController.swift in Sources */,
-				324FDB391A780F2400A743E9 /* Pitch.swift in Sources */,
 				648AD7B51A7AB23100472192 /* StrikeRegion.swift in Sources */,
-				ECC5AC0A1A76BCC0006F9887 /* Pitcher.swift in Sources */,
 				64232A8E1A76D16600057E18 /* HeatMapCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
