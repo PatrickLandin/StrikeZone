@@ -31,17 +31,19 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
       
       self.navigationItem.title = "Strike Zone"
-//      var pitcher1 = Pitcher(name: "Ebby Calvin 'Nuke' LaLoosh", team: "Durham Bulls")
-//      pitchers.append(pitcher1)
-      
-      
-      
       self.tableView.delegate = self
       self.tableView.dataSource = self
       self.tableView.registerNib(UINib(nibName: "MenuCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CELL")
       self.tableView.estimatedRowHeight = 100
       self.tableView.rowHeight = UITableViewAutomaticDimension
       self.navigationController?.delegate = self
+      
+      let fetchRequest = NSFetchRequest(entityName: "Pitcher")
+      let teamSortDescriptor = NSSortDescriptor(key: "team", ascending: true)
+      let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+      fetchRequest.sortDescriptors = [teamSortDescriptor, nameSortDescriptor]
+      self.fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: PitchService.sharedPitchService.coreDataStack.managedObjectContext!, sectionNameKeyPath: "team", cacheName: nil)
+      self.fetchedResultController.delegate = self
       
         // Do any additional setup after loading the view.
     }
