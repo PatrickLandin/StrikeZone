@@ -32,7 +32,7 @@ class HeatMapCollectionTableViewCell: UITableViewCell, UICollectionViewDataSourc
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier("HEAT_MAP_CELL", forIndexPath: indexPath) as HeatMapCell
     
     cell.imageView.image = currentPitcher?.heatMaps[indexPath.row].heatMapImage
-    cell.heatMapDateLabel.text = "mm/dd/yy"
+    cell.heatMapDateLabel.text = ""
         
     return cell
   }
