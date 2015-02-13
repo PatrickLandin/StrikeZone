@@ -282,7 +282,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     }
   }
   
-  //MARK: Instaniate StrikeZoneViewController
+  //MARK: Instantiate StrikeZoneViewController
   func showMap(sender : UIButton) {
     
     var strikeZoneVC = self.storyboard?.instantiateViewControllerWithIdentifier("MAP") as StrikeZoneViewController
