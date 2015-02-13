@@ -36,6 +36,8 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   var doneButton : UIBarButtonItem!
   var backButton : UIBarButtonItem!
   
+  var score : CGFloat?
+  
   var zoneColor = UIColor()
   var alphaNumber = 0
   
@@ -52,30 +54,40 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
       strikeZoneView.layer.borderColor = UIColor.blackColor().CGColor
       let tap = UITapGestureRecognizer(target: self, action: ("handleTap:"))
       strikeZoneView.addGestureRecognizer(tap)
+      
+//      var pitchScore = UIAlertController(title: "\(selectedPitcher!.name)", message: "\(self.score)", preferredStyle: UIAlertControllerStyle.Alert)
+//      pitchScore.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+//      self.presentViewController(pitchScore, animated: true, completion: nil)
+
       let pitchTypeFastBall = UIAlertAction(title: "FastBall", style: .Default, handler: { (action) -> Void in
         self.currentPitch.pitchType = "Fast Ball"
         self.modifyTemperatureForNewPitch()
+        self.distanceBetweenTaps()
         self.finishPitch()
       })
       let pitchTypeOffSpeed = UIAlertAction(title: "OffSpeed", style: .Default, handler: { (action) -> Void in
         self.currentPitch.pitchType = "OffSpeed"
         self.modifyTemperatureForNewPitch()
+        self.distanceBetweenTaps()
         self.finishPitch()
 
       })
       let pitchTypeBreaking = UIAlertAction(title: "Breaking Ball", style: .Default, handler: { (action) -> Void in
         self.currentPitch.pitchType = "Breaking Ball"
         self.modifyTemperatureForNewPitch()
+        self.distanceBetweenTaps()
         self.finishPitch()
 
       })
       let pitchCancel = UIAlertAction(title: "Cancel Pitch", style: UIAlertActionStyle.Destructive) { (action) -> Void in
         println()
       }
+      
       self.alert.addAction(pitchTypeFastBall)
       self.alert.addAction(pitchTypeOffSpeed)
       self.alert.addAction(pitchTypeBreaking)
       self.alert.addAction(pitchCancel)
+      
       
       for view in strikeZoneView.subviews{
         let subView = view as? UIView
@@ -163,6 +175,21 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     self.presentViewController(self.alert, animated: true, completion: nil)
   }
   
+  func distanceBetweenTaps(){
+    var targetDistanceX = currentPitch.targetLocation.x / strikeZoneView.frame.width
+    var targetDistanceY = currentPitch.targetLocation.y / strikeZoneView.frame.height
+    var actualDistanceX = currentPitch.actualLocation.x / strikeZoneView.frame.width
+    var actualDistanceY = currentPitch.actualLocation.y / strikeZoneView.frame.height
+    var deltaX = abs(targetDistanceX - actualDistanceX)
+    var deltaY = abs(targetDistanceY - actualDistanceY)
+    var distance = sqrt((deltaX * deltaX) + (deltaY * deltaY))
+    self.score = abs(1 - distance)
+    
+    println("score: \(score)")
+    println(deltaX)
+    println(deltaY)
+  }
+  
   func modifyTemperatureForNewPitch() {
     if self.targetView!.temperature == 0{
       if self.currentPitch.actualZoneLocation == self.currentPitch.targetZoneLocation {
@@ -195,8 +222,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
         self.currentPitch.wasGoodPitch = false
       }
     }
-    else
-    {
+    else {
       if self.currentPitch.actualZoneLocation == self.currentPitch.targetZoneLocation{
         self.targetView!.alpha = self.targetView!.alpha - 0.05
         self.targetView!.temperature++
