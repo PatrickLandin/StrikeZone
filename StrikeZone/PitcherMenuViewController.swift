@@ -31,17 +31,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
       
       self.navigationItem.title = "Strike Zone"
-      
-      var pitcher1 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
-      var pitcher2 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
-      var pitcher3 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
-      var pitcher4 = Pitcher(name: "Mr. Gomez", team: "Hillside BloomyBombers")
 
-      pitchers.append(pitcher1)
-      pitchers.append(pitcher2)
-      pitchers.append(pitcher3)
-      pitchers.append(pitcher4)
-      
       self.tableView.delegate = self
       self.tableView.registerNib(UINib(nibName: "MenuCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CELL")
       self.tableView.estimatedRowHeight = 100
@@ -59,6 +49,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
         // Do any additional setup after loading the view.
     }
   
+  //MARK: NSFetchedResultsController
   func controllerWillChangeContent(controller: NSFetchedResultsController) {
     self.tableView.beginUpdates()
   }
@@ -111,7 +102,8 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   }
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return self.fetchedResultController.sections!.count
+//    return self.fetchedResultController.sections!.count
+    return 1
   }
   
   func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -157,9 +149,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     return cell
   }
   //MARK: Tableview DataSource
-  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 1
-  }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return self.pitchers.count
@@ -167,31 +156,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = self.tableView.dequeueReusableCellWithIdentifier("CELL", forIndexPath: indexPath) as MenuTableViewCell
-    
-    var pitcherToDisplay = self.pitchers[indexPath.row]
-    cell.pitcherNameLabel.text = pitcherToDisplay.name
-    cell.teamLabel.text = pitcherToDisplay.team
-    cell.contentView.clipsToBounds = true
-    
-    cell.newMapButton.tag = indexPath.row
-    cell.newMapButton.addTarget(self, action: "showMap:", forControlEvents: UIControlEvents.TouchUpInside)
-    
-    cell.imageButton.tag = indexPath.row
-    cell.imageButton.addTarget(self, action: "showPickerController:", forControlEvents: UIControlEvents.TouchUpInside)
-    
-    cell.editButton.tag = indexPath.row
-    cell.editButton.addTarget(self, action: "editPitcher:", forControlEvents: UIControlEvents.TouchUpInside)
-    cell.editButton.enabled = true
-    
-    cell.pitcherImage.image = pitcherToDisplay.pitcherImage
-    cell.pitcherImage.layer.masksToBounds = true
-    cell.pitcherImage.layer.cornerRadius = 10.0
-    
-    //    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
-    //    let blurEffectView = UIVisualEffectView(effect: blurEffect)
-    //    blurEffectView.frame = cell.bounds
-    //    cell.insertSubview(blurEffectView, atIndex: indexPath.row)
-    
+    configureCellAtIndexPath(cell, indexPath: indexPath)
     return cell
   }
   
