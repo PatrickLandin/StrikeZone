@@ -32,7 +32,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       
       self.navigationItem.title = "Strike Zone"
       self.tableView.delegate = self
-      self.tableView.dataSource = self
       self.tableView.registerNib(UINib(nibName: "MenuCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CELL")
       self.tableView.estimatedRowHeight = 100
       self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -42,11 +41,67 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       let teamSortDescriptor = NSSortDescriptor(key: "team", ascending: true)
       let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
       fetchRequest.sortDescriptors = [teamSortDescriptor, nameSortDescriptor]
-      self.fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: PitchService.sharedPitchService.coreDataStack.managedObjectContext!, sectionNameKeyPath: "team", cacheName: nil)
+      self.fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: PitchService.sharedPitchService.coreDataStack.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
       self.fetchedResultController.delegate = self
-      
+            self.tableView.dataSource = self
+      self.fetchedResultController.performFetch(nil)
         // Do any additional setup after loading the view.
     }
+  
+  func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    self.tableView.beginUpdates()
+  }
+  
+  func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    self.tableView.endUpdates()
+  }
+  
+  func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    switch type {
+    case NSFetchedResultsChangeType.Delete :
+      self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+    case NSFetchedResultsChangeType.Insert :
+      self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+    case NSFetchedResultsChangeType.Move :
+      self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+      self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+    case NSFetchedResultsChangeType.Update :
+      let menuCell = self.tableView.cellForRowAtIndexPath(indexPath!) as MenuTableViewCell
+      configureCellAtIndexPath(menuCell, indexPath: indexPath!)
+    default:
+      println("default")
+    }
+  }
+  
+  func configureCellAtIndexPath(cell : MenuTableViewCell, indexPath : NSIndexPath) {
+    
+    var pitcherToDisplay = self.fetchedResultController.objectAtIndexPath(indexPath) as Pitcher
+    cell.pitcherNameLabel.text = pitcherToDisplay.name
+    cell.teamLabel.text = pitcherToDisplay.team
+    cell.contentView.clipsToBounds = true
+    
+    cell.newMapButton.tag = indexPath.row
+    cell.newMapButton.addTarget(self, action: "showMap:", forControlEvents: UIControlEvents.TouchUpInside)
+    
+    cell.imageButton.tag = indexPath.row
+    cell.imageButton.addTarget(self, action: "showPickerController:", forControlEvents: UIControlEvents.TouchUpInside)
+    
+    cell.editButton.tag = indexPath.row
+    cell.editButton.addTarget(self, action: "editPitcher:", forControlEvents: UIControlEvents.TouchUpInside)
+    cell.editButton.enabled = true
+    
+    //    if pitcherToDisplay.pitcherImage != nil{
+    //    cell.pitcherImage.image = pitcherToDisplay.pitcherImage
+    //    }
+    cell.pitcherImage.layer.masksToBounds = true
+    cell.pitcherImage.layer.cornerRadius = 7.0
+    
+    cell.collectionView.reloadData()
+  }
+  
+  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    return self.fetchedResultController.sections!.count
+  }
   
   func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
     if let menuCell = cell as? MenuTableViewCell {
@@ -65,7 +120,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     let contentView = collectionView.superview! as UIView
     let tableViewCell = contentView.superview as MenuTableViewCell
     let tableViewIndexPath = self.tableView.indexPathForCell(tableViewCell)
-    let pitcher = self.pitchers[tableViewIndexPath!.row]
+    let pitcher = self.fetchedResultController.objectAtIndexPath(tableViewIndexPath!) as Pitcher
 
     
     if pitcher.heatMaps.count == 0 {
@@ -132,8 +187,8 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
 
   @IBAction func addPitcherPressed(sender: AnyObject) {    
     var newPitcher = PitchService.sharedPitchService.newPitcher(self.newPitcherText.text, team: self.newTeamText.text)
-    self.pitchers.insert(newPitcher!, atIndex: 0)
-    self.tableView.reloadData()
+    //self.pitchers.insert(newPitcher!, atIndex: 0)
+    //self.tableView.reloadData()
     
     UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
       self.alertView.alpha = 0
@@ -155,40 +210,14 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   }
   
   //MARK: Tableview datasource
-  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 1
-  }
-  
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.pitchers.count
+    let sectionInfo = self.fetchedResultController.sections![section] as NSFetchedResultsSectionInfo
+    return sectionInfo.numberOfObjects
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = self.tableView.dequeueReusableCellWithIdentifier("CELL", forIndexPath: indexPath) as MenuTableViewCell
-    
-    var pitcherToDisplay = self.pitchers[indexPath.row]
-    cell.pitcherNameLabel.text = pitcherToDisplay.name
-    cell.teamLabel.text = pitcherToDisplay.team
-    cell.contentView.clipsToBounds = true
-    
-    cell.newMapButton.tag = indexPath.row
-    cell.newMapButton.addTarget(self, action: "showMap:", forControlEvents: UIControlEvents.TouchUpInside)
-    
-    cell.imageButton.tag = indexPath.row
-    cell.imageButton.addTarget(self, action: "showPickerController:", forControlEvents: UIControlEvents.TouchUpInside)
-    
-    cell.editButton.tag = indexPath.row
-    cell.editButton.addTarget(self, action: "editPitcher:", forControlEvents: UIControlEvents.TouchUpInside)
-    cell.editButton.enabled = true
-    
-//    if pitcherToDisplay.pitcherImage != nil{
-//    cell.pitcherImage.image = pitcherToDisplay.pitcherImage
-//    }
-    cell.pitcherImage.layer.masksToBounds = true
-    cell.pitcherImage.layer.cornerRadius = 7.0
-    
-    cell.collectionView.reloadData()
-    
+    configureCellAtIndexPath(cell, indexPath: indexPath)
     return cell
   }
   
