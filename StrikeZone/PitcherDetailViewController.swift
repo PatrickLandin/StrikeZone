@@ -64,8 +64,9 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
     default:
       let cell = tableView.dequeueReusableCellWithIdentifier("PITCH_CELL", forIndexPath: indexPath) as PitchDetailTableViewCell
   
-      cell.pitchNumberLabel.text = "Pitch: \(indexPath.row + 1)"
+      cell.pitchNumberLabel.text = "Pitch #: \(indexPath.row + 1)"
       cell.pitchDetailsLabel.text = currentHeatMap?.allPitches[indexPath.row].pitchType
+      //cell.pitchScoreLabel.text = currentHeatMap?.allPitches[indexPath.row].PitchScore;
       
       cell.pitchStatusView.layer.cornerRadius = 30
       
