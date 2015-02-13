@@ -42,6 +42,12 @@ class PitchService {
     return nil
   }
   
+  func newPitch () -> Pitch? {
+
+    var pitch = NSEntityDescription.insertNewObjectForEntityForName("Pitch", inManagedObjectContext: coreDataStack.managedObjectContext!) as Pitch
+    return pitch
+  }
+  
   
   
 }

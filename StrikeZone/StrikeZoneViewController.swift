@@ -25,7 +25,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   var pitchLocation = [CGPoint]()
   var pitches = [Pitch]()
   var isTargetLocation = true
-  var currentPitch = Pitch()
+  var currentPitch : Pitch!
   let locationView = UIView()
   var selectedPitcher : Pitcher?
   
@@ -110,8 +110,8 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
             }
           }
         }
-        currentPitch = Pitch()
       }else{
+        currentPitch = PitchService.sharedPitchService.newPitch()!
         currentHeatMap = HeatMap()
 //        self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
       }
@@ -150,7 +150,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     for subView in self.strikeZoneView.subviews {
       if let zoneView = subView as? StrikeRegion {
         if CGRectContainsPoint(zoneView.frame, targetTouchLocation) {
-          currentPitch.targetZoneLocation = zoneView.tag
+          currentPitch.targetZoneLocation = NSNumber(integer: zoneView.tag)
           currentPitch.targetX = targetTouchLocation.x
           currentPitch.targetY = targetTouchLocation.y
           self.targetView = zoneView
@@ -257,7 +257,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     // ????
 //    currentHeatMap?.heatMapImage = viewImage
     UIGraphicsEndImageContext()
-    currentPitch = Pitch()
+    currentPitch = PitchService.sharedPitchService.newPitch() 
   }
   
   func indicateTargetPitch(){
