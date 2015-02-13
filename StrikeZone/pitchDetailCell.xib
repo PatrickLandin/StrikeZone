@@ -14,10 +14,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pitch: #" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOh-Nw-9oz">
-                        <rect key="frame" x="218" y="23" width="94" height="20"/>
+                        <rect key="frame" x="262" y="23" width="50" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="Ej7-HO-KzR"/>
-                            <constraint firstAttribute="width" constant="94" id="Qmy-kX-MaC"/>
+                            <constraint firstAttribute="height" constant="20" id="Yxo-js-W4i"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,22 +40,35 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pitch Score:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yke-AW-BBE">
+                        <rect key="frame" x="162" y="8" width="150" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="XkC-Vc-Ihn"/>
+                            <constraint firstAttribute="width" constant="150" id="XyR-v3-JSR"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                        <color key="textColor" red="0.075016975134941793" green="0.21214216848451689" blue="0.53536551339285721" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="LGV-zP-oV7" firstAttribute="leading" secondItem="h2o-n1-FPa" secondAttribute="leadingMargin" id="0Uc-iE-pgg"/>
+                    <constraint firstItem="nOh-Nw-9oz" firstAttribute="top" secondItem="Yke-AW-BBE" secondAttribute="bottom" id="0rd-PT-f3n"/>
                     <constraint firstItem="vrh-ZX-lnc" firstAttribute="leading" secondItem="LGV-zP-oV7" secondAttribute="trailing" constant="8" id="EMS-KG-j8H"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="nOh-Nw-9oz" secondAttribute="bottom" constant="-8" id="P7s-KU-BRE"/>
+                    <constraint firstItem="Yke-AW-BBE" firstAttribute="trailing" secondItem="h2o-n1-FPa" secondAttribute="trailingMargin" id="Kln-bD-vVK"/>
                     <constraint firstItem="vrh-ZX-lnc" firstAttribute="top" secondItem="h2o-n1-FPa" secondAttribute="topMargin" constant="5" id="RwG-Sa-6E1"/>
+                    <constraint firstItem="Yke-AW-BBE" firstAttribute="top" secondItem="h2o-n1-FPa" secondAttribute="topMargin" id="TWZ-pM-Jox"/>
                     <constraint firstItem="LGV-zP-oV7" firstAttribute="top" secondItem="h2o-n1-FPa" secondAttribute="topMargin" id="Ubw-mh-Ohe"/>
-                    <constraint firstItem="nOh-Nw-9oz" firstAttribute="trailing" secondItem="h2o-n1-FPa" secondAttribute="trailingMargin" id="WkO-yp-sGF"/>
+                    <constraint firstItem="nOh-Nw-9oz" firstAttribute="trailing" secondItem="h2o-n1-FPa" secondAttribute="trailingMargin" id="eT5-UG-afy"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="pitchDetailsLabel" destination="vrh-ZX-lnc" id="5wG-15-L4I"/>
                 <outlet property="pitchNumberLabel" destination="nOh-Nw-9oz" id="GrF-ht-Zad"/>
+                <outlet property="pitchScoreLabel" destination="Yke-AW-BBE" id="kF5-u9-Vcx"/>
                 <outlet property="pitchStatusView" destination="LGV-zP-oV7" id="Oa5-lx-BSZ"/>
             </connections>
-            <point key="canvasLocation" x="285" y="269"/>
+            <point key="canvasLocation" x="285" y="267"/>
         </tableViewCell>
     </objects>
 </document>
