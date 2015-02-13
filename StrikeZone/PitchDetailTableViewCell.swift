@@ -12,6 +12,8 @@ class PitchDetailTableViewCell: UITableViewCell {
 
   @IBOutlet var pitchDetailsLabel: UILabel!
   @IBOutlet var pitchNumberLabel: UILabel!
+  @IBOutlet var pitchScoreLabel: UILabel!
+
   
   @IBOutlet var pitchStatusView: UIView!
   
