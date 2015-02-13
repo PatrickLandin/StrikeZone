@@ -151,7 +151,8 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   //MARK: Tableview DataSource
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.pitchers.count
+    let sectionInfo = self.fetchedResultController.sections![section] as NSFetchedResultsSectionInfo
+    return sectionInfo.numberOfObjects
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
