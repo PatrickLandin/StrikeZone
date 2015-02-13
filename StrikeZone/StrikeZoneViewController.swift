@@ -86,7 +86,8 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
       // Do any additional setup after loading the view.
       
       if currentHeatMap != nil{
-        for pitch in currentHeatMap!.allPitches{
+        for item in currentHeatMap!.pitches.allObjects {
+          if let pitch = item as? Pitch {
           for view in strikeZoneView.subviews{
             let subView = view as? StrikeRegion
             if pitch.targetZoneLocation == subView!.tag{
@@ -94,12 +95,13 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
               self.targetView = subView
               self.modifyTemperatureForNewPitch()
             }
+            }
           }
         }
         currentPitch = Pitch()
       }else{
         currentHeatMap = HeatMap()
-        self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
+//        self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
       }
 
     }
@@ -129,15 +131,16 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     self.navigationController?.popViewControllerAnimated(true)
   }
   
-  func handleTapForTarget(targetToouchLocation: CGPoint) {
+  func handleTapForTarget(targetTouchLocation: CGPoint) {
     if currentHeatMap == nil {
       currentHeatMap = HeatMap()
     }
     for subView in self.strikeZoneView.subviews {
       if let zoneView = subView as? StrikeRegion {
-        if CGRectContainsPoint(zoneView.frame, targetToouchLocation) {
+        if CGRectContainsPoint(zoneView.frame, targetTouchLocation) {
           currentPitch.targetZoneLocation = zoneView.tag
-          currentPitch.targetLocation = targetToouchLocation
+          currentPitch.targetX = targetTouchLocation.x
+          currentPitch.targetY = targetTouchLocation.y
           self.targetView = zoneView
           isTargetLocation = false
           return
@@ -150,7 +153,8 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
       if let zoneView = subView as? StrikeRegion {
         if CGRectContainsPoint(zoneView.frame, actualTouchLocation) {
           currentPitch.actualZoneLocation = zoneView.tag
-          currentPitch.actualLocation = actualTouchLocation
+          currentPitch.actualX = actualTouchLocation.x
+          currentPitch.actualY = actualTouchLocation.y
           isTargetLocation = true
           self.actualPitchView = zoneView
         }
@@ -220,11 +224,12 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   }
   
   func finishPitch(){
-    currentHeatMap?.allPitches.append(currentPitch)
+//    currentHeatMap?.allPitches.append(currentPitch)
     UIGraphicsBeginImageContext(view.bounds.size);
     self.view.layer.renderInContext(UIGraphicsGetCurrentContext())
     let viewImage = UIGraphicsGetImageFromCurrentImageContext()
-    currentHeatMap?.heatMapImage = viewImage
+    // ????
+//    currentHeatMap?.heatMapImage = viewImage
     UIGraphicsEndImageContext()
     currentPitch = Pitch()
   }
