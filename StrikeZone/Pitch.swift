@@ -2,7 +2,7 @@
 //  Pitch.swift
 //  StrikeZone
 //
-//  Created by RYAN CHRISTENSEN on 2/12/15.
+//  Created by Adam Wallraff on 2/13/15.
 //  Copyright (c) 2015 QadburyDreams. All rights reserved.
 //
 
@@ -20,6 +20,6 @@ class Pitch: NSManagedObject {
     @NSManaged var targetY: NSNumber
     @NSManaged var targetZoneLocation: NSNumber
     @NSManaged var wasGoodPitch: NSNumber
-    @NSManaged var heatMap: StrikeZone.HeatMap
+    @NSManaged var heatMap: HeatMap
 
 }

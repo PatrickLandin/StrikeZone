@@ -8,15 +8,9 @@
 
 import UIKit
 
-protocol PitcherDetailDelegate{
-  func setPitcher(pitcher : Pitcher?)
-  func setHeatMap(heatmap : HeatMap?)
-}
 // StrikeZoneViewController
 
 class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-  var delegate : PitcherDetailDelegate?
   
   @IBOutlet var pitcherHometown: UILabel!
   @IBOutlet var pitchersNameLabel: UILabel!
@@ -45,7 +39,7 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
       
       self.pitchersNameLabel.text = currentPitcher?.name
       self.pitchCountLabel.text = "\(currentHeatMap!.pitches.allObjects.count)"
-//      self.pitcherImageView.image = currentPitcher?.pitcherImage
+      //self.pitcherImageView.image = currentPitcher?.pitcherImage
       self.pitcherHometown.text = currentPitcher?.team
 
     }
@@ -65,9 +59,10 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
       let cell = tableView.dequeueReusableCellWithIdentifier("PITCH_CELL", forIndexPath: indexPath) as PitchDetailTableViewCell
   
       cell.pitchNumberLabel.text = "Pitch #: \(indexPath.row + 1)"
-      let allPitches = currentHeatMap?.pitches.allObjects as [Pitch]
+      let allPitches = currentHeatMap!.pitches.allObjects as [Pitch]
+      println(allPitches[indexPath.row].pitchType)
       cell.pitchDetailsLabel.text = allPitches[indexPath.row].pitchType
-      //cell.pitchScoreLabel.text = currentHeatMap?.allPitches[indexPath.row].PitchScore;
+      cell.pitchScoreLabel.text = "\(allPitches[indexPath.row].pitchScore)"
       
       cell.pitchStatusView.layer.cornerRadius = 30
       if allPitches[indexPath.row].wasGoodPitch == true{
@@ -88,7 +83,8 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
     if section == 0{
       return 1
     }
-    return self.currentHeatMap!.pitches.allObjects.count
+    let allPitches = currentHeatMap!.pitches.allObjects as [Pitch]
+    return allPitches.count
   }
   
   func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -110,16 +106,6 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
   }
   
   @IBAction func addHeatMapButtonPressed(sender: AnyObject) {
-    
-    if currentHeatMap != nil {
-//      self.currentPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
-    }
-    
-    delegate?.setPitcher(currentPitcher)
-    delegate?.setHeatMap(nil)
-    
-    //self.navigationController?.popToViewController(destinationVC, animated: true)
-    self.navigationController?.popViewControllerAnimated(true)
     
   }
 }
