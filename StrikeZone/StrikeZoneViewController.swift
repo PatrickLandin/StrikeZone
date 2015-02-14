@@ -120,7 +120,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    currentPitch = PitchService.sharedPitchService.newPitch(currentHeatMap!)
+    currentPitch = PitchService.sharedPitchService.newPitch()
   }
   
   override func viewWillDisappear(animated: Bool) {
@@ -264,7 +264,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     currentPitch.heatMap = currentHeatMap!
     //let error : NSError?
     PitchService.sharedPitchService.coreDataStack.saveContext()
-    currentPitch = PitchService.sharedPitchService.newPitch(currentHeatMap!)
+    currentPitch = PitchService.sharedPitchService.newPitch()
   }
   
   func indicateTargetPitch(){

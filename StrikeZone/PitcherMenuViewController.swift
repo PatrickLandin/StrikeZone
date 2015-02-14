@@ -93,9 +93,9 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     cell.editButton.addTarget(self, action: "editPitcher:", forControlEvents: UIControlEvents.TouchUpInside)
     cell.editButton.enabled = true
     
-    //    if pitcherToDisplay.pitcherImage != nil{
-    //    cell.pitcherImage.image = pitcherToDisplay.pitcherImage
-    //    }
+    let pitcherImage = PitchService.sharedPitchService.convertDataToImage(pitcherToDisplay.pitcherImage)
+    
+    cell.pitcherImage.image = pitcherImage
     cell.pitcherImage.layer.masksToBounds = true
     cell.pitcherImage.layer.cornerRadius = 7.0
     
@@ -305,12 +305,14 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       self.imagePickerController.delegate = self
       self.imagePickerController.allowsEditing = true
       self.presentViewController(self.imagePickerController, animated: true, completion: nil)
-      self.selectedPitcher = self.pitchers[sender.tag]
+//      self.selectedPitcher = self.pitchers[self.selectedIndexPath.row]
     }
   }
   
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
       self.pitcherImage = info[UIImagePickerControllerEditedImage] as? UIImage
+      PitchService.sharedPitchService.covertAndSaveImageForPitcher(self.selectedPitcher!, image: self.pitcherImage!)
+      
 //      self.selectedPitcher!.pitcherImage = self.pitcherImage
       self.tableView.reloadData()
       self.imagePickerController.dismissViewControllerAnimated(true, completion: nil)
