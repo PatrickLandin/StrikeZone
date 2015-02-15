@@ -42,6 +42,21 @@ class PitchService {
     return nil
   }
   
+  func newHeatMap (currentPitcher: Pitcher) -> HeatMap? {
+    
+    var heatMap = NSEntityDescription.insertNewObjectForEntityForName("HeatMap", inManagedObjectContext: coreDataStack.managedObjectContext!) as HeatMap
+    //if heatMap.pitcher == nil{
+    heatMap.pitcher = currentPitcher
+    //}
+    var heatMapError : NSError?
+    self.coreDataStack.managedObjectContext?.save(&heatMapError)
+    
+    if heatMapError == nil {
+      return heatMap
+    }
+    return nil
+  }
+  
   func newPitch () -> Pitch? {
     var pitch = NSEntityDescription.insertNewObjectForEntityForName("Pitch", inManagedObjectContext: coreDataStack.managedObjectContext!) as Pitch
     
