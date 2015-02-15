@@ -12,7 +12,7 @@ protocol heatMapDelegate{
   func setPitcher(pitcher : Pitcher?) -> (Void)
 }
 
-class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate, PitcherDetailDelegate {
+class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate {
   
   var delegate : heatMapDelegate?
   
@@ -111,8 +111,8 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
           }
         }
       }else{
-        currentPitch = PitchService.sharedPitchService.newPitch()!
-        currentHeatMap = HeatMap()
+        currentHeatMap = PitchService.sharedPitchService.newHeatMap(selectedPitcher!)
+
 //        self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
       }
 
@@ -120,7 +120,13 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-
+    currentPitch = PitchService.sharedPitchService.newPitch()
+  }
+  
+  override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    
+    self.currentPitch.managedObjectContext?.deleteObject(self.currentPitch)
   }
   
   func detailButtonPressed(sender: UIButton) {
@@ -129,9 +135,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
 
     pitcherDetailVC.currentPitcher = self.selectedPitcher
     pitcherDetailVC.currentHeatMap = self.currentHeatMap
-    
-    pitcherDetailVC.delegate = self
-        
+            
     self.navigationController?.pushViewController(pitcherDetailVC, animated: true)
   }
   
@@ -250,14 +254,17 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   }
   
   func finishPitch(){
-//    currentHeatMap?.allPitches.append(currentPitch)
+    //currentHeatMap?.pitches.append(currentPitch)
     UIGraphicsBeginImageContext(view.bounds.size);
     self.view.layer.renderInContext(UIGraphicsGetCurrentContext())
     let viewImage = UIGraphicsGetImageFromCurrentImageContext()
     // ????
 //    currentHeatMap?.heatMapImage = viewImage
     UIGraphicsEndImageContext()
-    currentPitch = PitchService.sharedPitchService.newPitch() 
+    currentPitch.heatMap = currentHeatMap!
+    //let error : NSError?
+    PitchService.sharedPitchService.coreDataStack.saveContext()
+    currentPitch = PitchService.sharedPitchService.newPitch()
   }
   
   func indicateTargetPitch(){
