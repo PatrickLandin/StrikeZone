@@ -20,6 +20,6 @@ class Pitch: NSManagedObject {
     @NSManaged var targetY: NSNumber
     @NSManaged var targetZoneLocation: NSNumber
     @NSManaged var wasGoodPitch: NSNumber
-    @NSManaged var heatMap: StrikeZone.HeatMap
+    @NSManaged var heatMap: HeatMap
 
 }

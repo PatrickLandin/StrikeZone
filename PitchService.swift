@@ -43,11 +43,15 @@ class PitchService {
   }
   
   func newPitch () -> Pitch? {
-
     var pitch = NSEntityDescription.insertNewObjectForEntityForName("Pitch", inManagedObjectContext: coreDataStack.managedObjectContext!) as Pitch
+    
     return pitch
   }
   
-  
+  func newHeatMap() -> HeatMap {
+    var heatmap = NSEntityDescription.insertNewObjectForEntityForName("Heatmap", inManagedObjectContext: coreDataStack.managedObjectContext!) as HeatMap
+    
+   return heatmap
+  }
   
 }

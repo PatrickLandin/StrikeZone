@@ -62,20 +62,20 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
       let pitchTypeFastBall = UIAlertAction(title: "FastBall", style: .Default, handler: { (action) -> Void in
         self.currentPitch.pitchType = "Fast Ball"
         self.modifyTemperatureForNewPitch()
-//        self.distanceBetweenTaps()
+        self.distanceBetweenTaps()
         self.finishPitch()
       })
       let pitchTypeOffSpeed = UIAlertAction(title: "OffSpeed", style: .Default, handler: { (action) -> Void in
         self.currentPitch.pitchType = "OffSpeed"
         self.modifyTemperatureForNewPitch()
-//        self.distanceBetweenTaps()
+        self.distanceBetweenTaps()
         self.finishPitch()
 
       })
       let pitchTypeBreaking = UIAlertAction(title: "Breaking Ball", style: .Default, handler: { (action) -> Void in
         self.currentPitch.pitchType = "Breaking Ball"
         self.modifyTemperatureForNewPitch()
-//        self.distanceBetweenTaps()
+        self.distanceBetweenTaps()
         self.finishPitch()
 
       })
@@ -175,20 +175,21 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     self.presentViewController(self.alert, animated: true, completion: nil)
   }
   
-//  func distanceBetweenTaps(){
-//    var targetDistanceX = currentPitch.targetLocation.x / strikeZoneView.frame.width
-//    var targetDistanceY = currentPitch.targetLocation.y / strikeZoneView.frame.height
-//    var actualDistanceX = currentPitch.actualLocation.x / strikeZoneView.frame.width
-//    var actualDistanceY = currentPitch.actualLocation.y / strikeZoneView.frame.height
-//    var deltaX = abs(targetDistanceX - actualDistanceX)
-//    var deltaY = abs(targetDistanceY - actualDistanceY)
-//    var distance = sqrt((deltaX * deltaX) + (deltaY * deltaY))
-//    self.score = abs(1 - distance)
-//    
-//    println("score: \(score)")
-//    println(deltaX)
-//    println(deltaY)
-//  }
+  func distanceBetweenTaps(){
+    
+    var targetDistanceX = CGFloat(currentPitch.targetX) / strikeZoneView.frame.width
+    var targetDistanceY = CGFloat(currentPitch.targetY) / strikeZoneView.frame.height
+    var actualDistanceX = CGFloat(currentPitch.actualX) / strikeZoneView.frame.width
+    var actualDistanceY = CGFloat(currentPitch.actualY) / strikeZoneView.frame.height
+    var deltaX = abs(targetDistanceX - actualDistanceX)
+    var deltaY = abs(targetDistanceY - actualDistanceY)
+    var distance = sqrt((deltaX * deltaX) + (deltaY * deltaY))
+    self.score = (abs(1 - distance) * 100)
+    
+    let formatString = NSString(format: "%.01f", Float(self.score!))
+    
+    println("score: \((formatString))")
+  }
   
   func modifyTemperatureForNewPitch() {
     if self.targetView!.temperature == 0{
