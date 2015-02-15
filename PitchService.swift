@@ -85,9 +85,9 @@ class PitchService {
     }
   }
   
-  func convertDataToImage(data : NSData) -> UIImage {
+  func convertDataToImage(data : NSData) -> UIImage? {
     let image = UIImage(data : data)
-    return image!
+    return image?
   }
   
   
