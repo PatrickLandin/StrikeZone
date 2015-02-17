@@ -111,7 +111,6 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
           }
         }
       }else{
-        currentHeatMap = PitchService.sharedPitchService.newHeatMap(selectedPitcher!)
 
 //        self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
       }
@@ -149,7 +148,9 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   
   func handleTapForTarget(targetTouchLocation: CGPoint) {
     if currentHeatMap == nil {
-      currentHeatMap = HeatMap()
+//      currentHeatMap = HeatMap()
+      currentHeatMap = PitchService.sharedPitchService.newHeatMap(selectedPitcher!)
+
     }
     for subView in self.strikeZoneView.subviews {
       if let zoneView = subView as? StrikeRegion {
@@ -258,8 +259,10 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     UIGraphicsBeginImageContext(view.bounds.size);
     self.view.layer.renderInContext(UIGraphicsGetCurrentContext())
     let viewImage = UIGraphicsGetImageFromCurrentImageContext()
-    // ????
-//    currentHeatMap?.heatMapImage = viewImage
+
+    PitchService.sharedPitchService.covertAndSaveImageForPitcherHeatMaps(currentHeatMap!, image: viewImage)
+    
+//  currentHeatMap?.heatMapImage = viewImage
     UIGraphicsEndImageContext()
     currentPitch.heatMap = currentHeatMap!
     //let error : NSError?
@@ -297,20 +300,6 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
           }, completion: { (finished) -> Void in
         })
     })
-  }
-  
-  
-  func setPitcher(pitcher : Pitcher?){
-    //self.selectedPitcher = pitcher
-  }
-  func setHeatMap(heatmap: HeatMap?){
-    self.currentHeatMap = heatmap
-    
-    for view in strikeZoneView.subviews{
-      let subView = view as? UIView
-      subView!.alpha = 0
-      
-    }
   }
 }
       
