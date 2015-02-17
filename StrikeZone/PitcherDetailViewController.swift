@@ -39,8 +39,11 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
       
       self.pitchersNameLabel.text = currentPitcher?.name
       self.pitchCountLabel.text = "\(currentHeatMap!.pitches.allObjects.count)"
+      
+      //let pitcherImage = self.
       //self.pitcherImageView.image = currentPitcher?.pitcherImage
       self.pitcherHometown.text = currentPitcher?.team
+      
 
     }
   
