@@ -2,7 +2,7 @@
 //  HeatMap.swift
 //  StrikeZone
 //
-//  Created by Adam Wallraff on 2/13/15.
+//  Created by Adam Wallraff on 2/17/15.
 //  Copyright (c) 2015 QadburyDreams. All rights reserved.
 //
 
@@ -11,11 +11,11 @@ import CoreData
 
 class HeatMap: NSManagedObject {
 
-    @NSManaged var date: String
+    @NSManaged var date: NSDate
     @NSManaged var heatMapImage: NSData
     @NSManaged var heatMapScore: NSNumber
     @NSManaged var pitchCount: NSNumber
-    @NSManaged var pitches: NSSet
     @NSManaged var pitcher: Pitcher
+    @NSManaged var pitches: NSSet
 
 }

@@ -20,7 +20,7 @@ class HeatMapCell: UICollectionViewCell {
       
       let cellGradiantMaskLayer = CAGradientLayer()
       cellGradiantMaskLayer.colors = [UIColor.blackColor().CGColor, UIColor.clearColor().CGColor]
-      cellGradiantMaskLayer.locations = [-0.6]
+      cellGradiantMaskLayer.locations = [-1.5]
       cellGradiantMaskLayer.frame = self.bounds
       
       self.imageView.layer.insertSublayer(cellGradiantMaskLayer, atIndex: 1)

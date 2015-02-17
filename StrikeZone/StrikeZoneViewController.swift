@@ -193,6 +193,8 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     var distance = sqrt((deltaX * deltaX) + (deltaY * deltaY))
     self.score = (abs(1 - distance) * 100)
     
+    currentPitch.pitchScore = self.score!
+    
     let formatString = NSString(format: "%.01f", Float(self.score!))
     
     println("score: \((formatString))")
@@ -268,6 +270,13 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
 //  currentHeatMap?.heatMapImage = viewImage
     UIGraphicsEndImageContext()
     currentPitch.heatMap = currentHeatMap!
+    
+    currentHeatMap?.date = NSDate()
+    currentPitch.date = NSDate()
+    
+    println(currentPitch.date)
+
+    
     //let error : NSError?
     PitchService.sharedPitchService.coreDataStack.saveContext()
     currentPitch = PitchService.sharedPitchService.newPitch()
