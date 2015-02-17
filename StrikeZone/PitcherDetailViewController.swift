@@ -41,6 +41,12 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
       self.pitchCountLabel.text = "\(currentHeatMap!.pitches.allObjects.count)"
       //self.pitcherImageView.image = currentPitcher?.pitcherImage
       self.pitcherHometown.text = currentPitcher?.team
+      
+      let tableGradient = CAGradientLayer()
+      tableGradient.colors = [UIColor.clearColor().CGColor, UIColor(red: 0, green: 1, blue: 0, alpha: 1).CGColor]
+      tableGradient.locations = [-0.005]
+      tableGradient.frame = view.bounds
+      self.view.layer.insertSublayer(tableGradient, atIndex: 0)
 
     }
   

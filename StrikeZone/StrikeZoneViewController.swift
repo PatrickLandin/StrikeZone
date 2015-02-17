@@ -12,7 +12,7 @@ protocol heatMapDelegate{
   func setPitcher(pitcher : Pitcher?) -> (Void)
 }
 
-class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate {
+class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
   
   var delegate : heatMapDelegate?
   
@@ -65,7 +65,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
         self.distanceBetweenTaps()
         self.finishPitch()
       })
-      let pitchTypeOffSpeed = UIAlertAction(title: "OffSpeed", style: .Default, handler: { (action) -> Void in
+      let pitchTypeOffSpeed = UIAlertAction(title: "Off Speed", style: .Default, handler: { (action) -> Void in
         self.currentPitch.pitchType = "OffSpeed"
         self.modifyTemperatureForNewPitch()
         self.distanceBetweenTaps()
@@ -82,12 +82,11 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
       let pitchCancel = UIAlertAction(title: "Cancel Pitch", style: UIAlertActionStyle.Destructive) { (action) -> Void in
         println()
       }
-      
+    
       self.alert.addAction(pitchTypeFastBall)
       self.alert.addAction(pitchTypeOffSpeed)
       self.alert.addAction(pitchTypeBreaking)
       self.alert.addAction(pitchCancel)
-      
       
       for view in strikeZoneView.subviews{
         let subView = view as? UIView
@@ -115,7 +114,6 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
 
 //        self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
       }
-
     }
   
   override func viewWillAppear(animated: Bool) {
@@ -175,6 +173,10 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
           self.actualPitchView = zoneView
         }
       }
+    }
+    if (self.alert.popoverPresentationController != nil) {
+        self.alert.popoverPresentationController?.sourceRect = self.actualPitchView!.bounds
+        self.alert.popoverPresentationController?.sourceView = self.actualPitchView 
     }
     self.presentViewController(self.alert, animated: true, completion: nil)
   }
