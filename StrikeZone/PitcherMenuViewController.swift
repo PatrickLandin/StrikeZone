@@ -31,13 +31,15 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
       
-      self.navigationItem.title = "Strike Zone"
+      self.navigationItem.title = "High Heat"
 
       self.tableView.delegate = self
       self.tableView.registerNib(UINib(nibName: "MenuCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "CELL")
       self.tableView.estimatedRowHeight = 100
       self.tableView.rowHeight = UITableViewAutomaticDimension
       self.navigationController?.delegate = self
+      //self.tableView.backgroundColor = UIColor(red: 0.82, green: 0.88, blue: 0.89, alpha: 1)
+      self.tableView.separatorStyle = .None
       
       let fetchRequest = NSFetchRequest(entityName: "Pitcher")
       let teamSortDescriptor = NSSortDescriptor(key: "team", ascending: true)
@@ -98,6 +100,8 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     cell.pitcherImage.image = pitcherImage
     cell.pitcherImage.layer.masksToBounds = true
     cell.pitcherImage.layer.cornerRadius = 7.0
+    
+    cell.backgroundColor = UIColor.lightGrayColor()
     
     cell.collectionView.reloadData()
   }

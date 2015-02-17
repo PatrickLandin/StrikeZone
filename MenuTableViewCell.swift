@@ -28,6 +28,7 @@ class MenuTableViewCell: UITableViewCell {
       self.pitcherImage.layer.cornerRadius = 7.0
       self.imageButton.layer.cornerRadius = 7.0
       
+      
         // Initialization code
     }
 

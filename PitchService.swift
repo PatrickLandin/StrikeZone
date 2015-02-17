@@ -34,7 +34,7 @@ class PitchService {
     pitcher.team = team
     
     var pitcherError : NSError?
-    self.coreDataStack.managedObjectContext?.save(&pitcherError)
+    self.coreDataStack.managedObjectContext!.save(&pitcherError)
     
     if pitcherError == nil {
       return pitcher
@@ -53,7 +53,6 @@ class PitchService {
   }
   
   func newPitch () -> Pitch? {
-
     var pitch = NSEntityDescription.insertNewObjectForEntityForName("Pitch", inManagedObjectContext: coreDataStack.managedObjectContext!) as Pitch
 
     return pitch
@@ -67,7 +66,7 @@ class PitchService {
 
     currentPitcher.pitcherImage = imageData
     var pitcherError : NSError?
-    self.coreDataStack.managedObjectContext?.save(&pitcherError)
+    self.coreDataStack.managedObjectContext!.save(&pitcherError)
     
     if pitcherError != nil {
       println("\(pitcherError)")

@@ -12,7 +12,7 @@ protocol heatMapDelegate{
   func setPitcher(pitcher : Pitcher?) -> (Void)
 }
 
-class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate {
+class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
   
   var delegate : heatMapDelegate?
   
@@ -62,32 +62,31 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
       let pitchTypeFastBall = UIAlertAction(title: "FastBall", style: .Default, handler: { (action) -> Void in
         self.currentPitch.pitchType = "Fast Ball"
         self.modifyTemperatureForNewPitch()
-//        self.distanceBetweenTaps()
+        self.distanceBetweenTaps()
         self.finishPitch()
       })
-      let pitchTypeOffSpeed = UIAlertAction(title: "OffSpeed", style: .Default, handler: { (action) -> Void in
+      let pitchTypeOffSpeed = UIAlertAction(title: "Off Speed", style: .Default, handler: { (action) -> Void in
         self.currentPitch.pitchType = "OffSpeed"
         self.modifyTemperatureForNewPitch()
-//        self.distanceBetweenTaps()
+        self.distanceBetweenTaps()
         self.finishPitch()
 
       })
       let pitchTypeBreaking = UIAlertAction(title: "Breaking Ball", style: .Default, handler: { (action) -> Void in
         self.currentPitch.pitchType = "Breaking Ball"
         self.modifyTemperatureForNewPitch()
-//        self.distanceBetweenTaps()
+        self.distanceBetweenTaps()
         self.finishPitch()
 
       })
       let pitchCancel = UIAlertAction(title: "Cancel Pitch", style: UIAlertActionStyle.Destructive) { (action) -> Void in
         println()
       }
-      
+    
       self.alert.addAction(pitchTypeFastBall)
       self.alert.addAction(pitchTypeOffSpeed)
       self.alert.addAction(pitchTypeBreaking)
       self.alert.addAction(pitchCancel)
-      
       
       for view in strikeZoneView.subviews{
         let subView = view as? UIView
@@ -114,7 +113,6 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
 
 //        self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
       }
-
     }
   
   override func viewWillAppear(animated: Bool) {
@@ -177,23 +175,28 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
         }
       }
     }
+    if (self.alert.popoverPresentationController != nil) {
+        self.alert.popoverPresentationController?.sourceRect = self.actualPitchView!.bounds
+        self.alert.popoverPresentationController?.sourceView = self.actualPitchView 
+    }
     self.presentViewController(self.alert, animated: true, completion: nil)
   }
   
-//  func distanceBetweenTaps(){
-//    var targetDistanceX = currentPitch.targetLocation.x / strikeZoneView.frame.width
-//    var targetDistanceY = currentPitch.targetLocation.y / strikeZoneView.frame.height
-//    var actualDistanceX = currentPitch.actualLocation.x / strikeZoneView.frame.width
-//    var actualDistanceY = currentPitch.actualLocation.y / strikeZoneView.frame.height
-//    var deltaX = abs(targetDistanceX - actualDistanceX)
-//    var deltaY = abs(targetDistanceY - actualDistanceY)
-//    var distance = sqrt((deltaX * deltaX) + (deltaY * deltaY))
-//    self.score = abs(1 - distance)
-//    
-//    println("score: \(score)")
-//    println(deltaX)
-//    println(deltaY)
-//  }
+  func distanceBetweenTaps(){
+    
+    var targetDistanceX = CGFloat(currentPitch.targetX) / strikeZoneView.frame.width
+    var targetDistanceY = CGFloat(currentPitch.targetY) / strikeZoneView.frame.height
+    var actualDistanceX = CGFloat(currentPitch.actualX) / strikeZoneView.frame.width
+    var actualDistanceY = CGFloat(currentPitch.actualY) / strikeZoneView.frame.height
+    var deltaX = abs(targetDistanceX - actualDistanceX)
+    var deltaY = abs(targetDistanceY - actualDistanceY)
+    var distance = sqrt((deltaX * deltaX) + (deltaY * deltaY))
+    self.score = (abs(1 - distance) * 100)
+    
+    let formatString = NSString(format: "%.01f", Float(self.score!))
+    
+    println("score: \((formatString))")
+  }
   
   func modifyTemperatureForNewPitch() {
     if self.targetView!.temperature == 0{
