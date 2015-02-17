@@ -162,6 +162,12 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     let sectionInfo = self.fetchedResultController.sections![section] as NSFetchedResultsSectionInfo
+    
+//    if sectionInfo.numberOfObjects == 0{
+//      let alertView = UIAlertView(title: "Initial Setup", message: "Please press the + in the bottom right corner to create your first pitcher.", delegate: self, cancelButtonTitle: "OK")
+//      alertView.show()
+//    }
+    
     return sectionInfo.numberOfObjects
   }
   

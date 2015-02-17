@@ -22,8 +22,11 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
   
   @IBOutlet var addNewHeatMap: UIBarButtonItem!
   
+  
+  
   var currentPitcher : Pitcher?
   var currentHeatMap : HeatMap?
+  var allPitches : NSArray?
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,10 +41,23 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
       //self.currentHeatMap = currentPitcher?.heatMaps.first
       
       self.pitchersNameLabel.text = currentPitcher?.name
-      self.pitchCountLabel.text = "\(currentHeatMap!.pitches.allObjects.count)"
+  
       
-      //let pitcherImage = self.
-      //self.pitcherImageView.image = currentPitcher?.pitcherImage
+      self.allPitches = currentHeatMap!.pitches.allObjects as [Pitch]
+      let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+      self.allPitches = allPitches!.sortedArrayUsingDescriptors([sortDescriptor])
+      
+      
+      if currentHeatMap  != nil {
+      self.pitchCountLabel.text = "\(currentHeatMap!.pitches.allObjects.count)"
+      }
+      else
+      {
+        self.pitchCountLabel.text = "0"
+      }
+      
+      let pitcherImage = PitchService.sharedPitchService.convertDataToImage(currentPitcher!.pitcherImage)
+      self.pitcherImageView.image = pitcherImage
       self.pitcherHometown.text = currentPitcher?.team
       
       let tableGradient = CAGradientLayer()
@@ -66,14 +82,17 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
     default:
       let cell = tableView.dequeueReusableCellWithIdentifier("PITCH_CELL", forIndexPath: indexPath) as PitchDetailTableViewCell
   
-      cell.pitchNumberLabel.text = "Pitch #: \(indexPath.row + 1)"
-      let allPitches = currentHeatMap!.pitches.allObjects as [Pitch]
-      println(allPitches[indexPath.row].pitchType)
-      cell.pitchDetailsLabel.text = allPitches[indexPath.row].pitchType
-      cell.pitchScoreLabel.text = "\(allPitches[indexPath.row].pitchScore)"
+      cell.pitchNumberLabel.text = "Pitch #: \(allPitches!.count - indexPath.row)"
+      
+      let currentPitch = allPitches![indexPath.row] as Pitch
+      
+      println(currentPitch.pitchType)
+      println(currentPitch.pitchScore)
+      cell.pitchDetailsLabel.text = currentPitch.pitchType
+      cell.pitchScoreLabel.text = "Pitch Score: \(currentPitch.pitchScore)"
       
       cell.pitchStatusView.layer.cornerRadius = 30
-      if allPitches[indexPath.row].wasGoodPitch == true{
+      if currentPitch.wasGoodPitch == true{
         cell.pitchStatusView.backgroundColor = UIColor.redColor()
       }
       else{
@@ -91,8 +110,11 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
     if section == 0{
       return 1
     }
-    let allPitches = currentHeatMap!.pitches.allObjects as [Pitch]
+    
+    let allPitches = currentHeatMap?.pitches.allObjects as [Pitch]
+    
     return allPitches.count
+    
   }
   
   func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -110,7 +132,12 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
   }
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    if currentHeatMap != nil{
     return 2
+    }
+    else{
+      return 1
+    }
   }
   
   @IBAction func addHeatMapButtonPressed(sender: AnyObject) {

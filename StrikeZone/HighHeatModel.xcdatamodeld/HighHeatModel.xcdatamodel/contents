@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C99d" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="HeatMap" representedClassName="StrikeZone.HeatMap" syncable="YES">
-        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" attributeType="Date" syncable="YES"/>
         <attribute name="heatMapImage" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="heatMapScore" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="pitchCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -12,6 +12,7 @@
         <attribute name="actualX" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="actualY" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="actualZoneLocation" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="date" attributeType="Date" syncable="YES"/>
         <attribute name="pitchScore" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="pitchType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="targetX" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -27,8 +28,8 @@
         <relationship name="heatMaps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HeatMap" inverseName="pitcher" inverseEntity="HeatMap" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Pitch" positionX="270" positionY="171" width="128" height="193"/>
-        <element name="Pitcher" positionX="-108" positionY="-126" width="128" height="103"/>
         <element name="HeatMap" positionX="70" positionY="38" width="128" height="133"/>
+        <element name="Pitch" positionX="270" positionY="171" width="128" height="208"/>
+        <element name="Pitcher" positionX="-108" positionY="-126" width="128" height="103"/>
     </elements>
 </model>
