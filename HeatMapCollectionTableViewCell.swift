@@ -31,9 +31,15 @@ class HeatMapCollectionTableViewCell: UITableViewCell, UICollectionViewDataSourc
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier("HEAT_MAP_CELL", forIndexPath: indexPath) as HeatMapCell
     
-//    cell.imageView.image = currentPitcher?.heatMaps[indexPath.row].heatMapImage
-    cell.heatMapDateLabel.text = ""
-        
+    let heatMaps = currentPitcher!.heatMaps.allObjects
+    if let heatMap = heatMaps[indexPath.row] as? HeatMap{
+      let heatMapImage = PitchService.sharedPitchService.convertDataToImage(heatMap.heatMapImage)
+      cell.imageView.image = heatMapImage
+      cell.heatMapDateLabel.text = ""
+
+    }
+
+    
     return cell
   }
   

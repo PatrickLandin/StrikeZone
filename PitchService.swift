@@ -51,21 +51,16 @@ class PitchService {
     var heatMapError : NSError?
     self.coreDataStack.managedObjectContext!.save(&heatMapError)
     
-    if heatMapError == nil {
-      return heatMap
-    }
-    return nil
+    heatMap.pitcher = currentPitcher
+        
+    return heatMap
+
   }
   
   func newPitch () -> Pitch? {
     var pitch = NSEntityDescription.insertNewObjectForEntityForName("Pitch", inManagedObjectContext: coreDataStack.managedObjectContext!) as Pitch
-    //pitch.heatMap = currentHeatMap
-    
-    //var pitchError : NSError?
-    //self.coreDataStack.managedObjectContext?.save(&pitchError)
-    
-   
-      return pitch
+
+    return pitch
     
     //return nil
   }
@@ -73,14 +68,26 @@ class PitchService {
   func covertAndSaveImageForPitcher(currentPitcher : Pitcher, image : UIImage) {
     
     let imageData = UIImagePNGRepresentation(image)
-    
-    currentPitcher.pitcherImage = imageData
 
+    currentPitcher.pitcherImage = imageData
     var pitcherError : NSError?
     self.coreDataStack.managedObjectContext!.save(&pitcherError)
     
     if pitcherError != nil {
       println("\(pitcherError)")
+    }
+  }
+  
+  func covertAndSaveImageForPitcherHeatMaps(currentHeatMap : HeatMap, image : UIImage) {
+    
+    let imageData = UIImagePNGRepresentation(image)
+    
+    currentHeatMap.heatMapImage = imageData
+    var heatMapError : NSError?
+    self.coreDataStack.managedObjectContext?.save(&heatMapError)
+    
+    if heatMapError != nil {
+      println("\(heatMapError)")
     }
   }
   

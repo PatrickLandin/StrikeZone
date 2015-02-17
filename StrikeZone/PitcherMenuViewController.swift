@@ -147,9 +147,14 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     let contentView = collectionView.superview! as UIView
     let tableViewCell = contentView.superview as MenuTableViewCell
     let tableViewIndexPath = self.tableView.indexPathForCell(tableViewCell)
-    //let pitcher = self.pitchers[tableViewIndexPath!.row]
+    let pitcher = self.fetchedResultController.objectAtIndexPath(tableViewIndexPath!) as Pitcher
     
-//    cell.mapImageView.image = pitcher.heatMaps[indexPath.row].heatMapImage
+    let heatMaps = pitcher.heatMaps.allObjects
+    if let currentHeatMap = heatMaps[indexPath.row] as? HeatMap{
+      let heatMapImage = PitchService.sharedPitchService.convertDataToImage(currentHeatMap.heatMapImage)
+      cell.mapImageView.image = heatMapImage
+    }
+    
     
     return cell
   }
@@ -298,7 +303,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     //self.selectedIndexPath = self.tableView.indexPathForSelectedRow()?
     strikeZoneVC.selectedPitcher = self.fetchedResultController.objectAtIndexPath(self.selectedIndexPath) as? Pitcher
     strikeZoneVC.delegate = self
-    self.tableView.selectRowAtIndexPath(self.selectedIndexPath, animated: true, scrollPosition: UITableViewScrollPosition.None)
+    self.tableView.selectRowAtIndexPath(self.selectedIndexPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
     self.navigationController?.pushViewController(strikeZoneVC, animated: true)
   }
   
