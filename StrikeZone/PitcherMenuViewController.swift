@@ -88,6 +88,13 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     cell.newMapButton.tag = indexPath.row
     cell.newMapButton.addTarget(self, action: "showMap:", forControlEvents: UIControlEvents.TouchUpInside)
     
+//    Attempting to fix image button bug that only sets the image of the selected/expanded cell
+    
+//    if indexPath.row == selectedRowIndex {
+//    cell.imageButton.enabled = true
+//    } else {
+//      cell.imageButton.enabled = false
+//    }
     cell.imageButton.tag = indexPath.row
     cell.imageButton.addTarget(self, action: "showPickerController:", forControlEvents: UIControlEvents.TouchUpInside)
     
@@ -130,7 +137,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     let tableViewIndexPath = self.tableView.indexPathForCell(tableViewCell)
     let pitcher = self.fetchedResultController.objectAtIndexPath(tableViewIndexPath!) as Pitcher
 
-    
     if pitcher.heatMaps.count == 0 {
       return 0
     }
@@ -183,11 +189,9 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     let tableViewCell = contentView.superview as MenuTableViewCell
     let tableViewIndexPath = self.tableView.indexPathForCell(tableViewCell)
     let pitcher = self.fetchedResultController.objectAtIndexPath(tableViewIndexPath!) as Pitcher
-//    let pitcher = self.pitchers[tableViewIndexPath!.row]
     
     let selectedHeatMap = self.selectedPitcher?.heatMaps.allObjects[indexPath.row] as HeatMap
     var strikeZoneVC = self.storyboard?.instantiateViewControllerWithIdentifier("MAP") as StrikeZoneViewController
-    //let selectedIndexPath = self.tableView.indexPathForSelectedRow()?.row
     strikeZoneVC.currentHeatMap = selectedHeatMap
     strikeZoneVC.selectedPitcher = pitcher
     strikeZoneVC.delegate = self
@@ -218,8 +222,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
 
   @IBAction func addPitcherPressed(sender: AnyObject) {    
     var newPitcher = PitchService.sharedPitchService.newPitcher(self.newPitcherText.text, team: self.newTeamText.text)
-    //self.pitchers.insert(newPitcher!, atIndex: 0)
-    //self.tableView.reloadData()
     
     UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
       self.alertView.alpha = 0
@@ -310,7 +312,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   func showMap(sender : UIButton) {
     
     var strikeZoneVC = self.storyboard?.instantiateViewControllerWithIdentifier("MAP") as StrikeZoneViewController
-    //self.selectedIndexPath = self.tableView.indexPathForSelectedRow()?
     strikeZoneVC.selectedPitcher = self.fetchedResultController.objectAtIndexPath(self.selectedIndexPath) as? Pitcher
     strikeZoneVC.delegate = self
     self.tableView.selectRowAtIndexPath(self.selectedIndexPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
@@ -324,15 +325,12 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       self.imagePickerController.delegate = self
       self.imagePickerController.allowsEditing = true
       self.presentViewController(self.imagePickerController, animated: true, completion: nil)
-//      self.selectedPitcher = self.pitchers[self.selectedIndexPath.row]
     }
   }
   
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
       self.pitcherImage = info[UIImagePickerControllerEditedImage] as? UIImage
       PitchService.sharedPitchService.covertAndSaveImageForPitcher(self.selectedPitcher!, image: self.pitcherImage!)
-      
-//      self.selectedPitcher!.pitcherImage = self.pitcherImage
       self.tableView.reloadData()
       self.imagePickerController.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -355,6 +353,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     } else {
       self.selectedRowIndex = indexPath.row
     }
+    
     tableView.beginUpdates()
     tableView.endUpdates()
   }
