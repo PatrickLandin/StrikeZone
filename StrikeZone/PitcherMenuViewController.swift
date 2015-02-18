@@ -88,13 +88,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     cell.newMapButton.tag = indexPath.row
     cell.newMapButton.addTarget(self, action: "showMap:", forControlEvents: UIControlEvents.TouchUpInside)
     
-//    Attempting to fix image button bug that only sets the image of the selected/expanded cell
-    
-//    if indexPath.row == selectedRowIndex {
-//    cell.imageButton.enabled = true
-//    } else {
-//      cell.imageButton.enabled = false
-//    }
+    cell.imageButton.enabled = false
     cell.imageButton.tag = indexPath.row
     cell.imageButton.addTarget(self, action: "showPickerController:", forControlEvents: UIControlEvents.TouchUpInside)
     
@@ -124,7 +118,8 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       menuCell.collectionView.delegate = self
     }
   }
-  
+
+  //MARK: Segue to StrikeZone
   func continueButtonPressed() {
     let destinationVC = StrikeZoneViewController()
     self.navigationController?.pushViewController(destinationVC, animated: true)
@@ -324,6 +319,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       self.imagePickerController.sourceType = UIImagePickerControllerSourceType.Camera
       self.imagePickerController.delegate = self
       self.imagePickerController.allowsEditing = true
+      sender.enabled = false
       self.presentViewController(self.imagePickerController, animated: true, completion: nil)
     }
   }
@@ -345,17 +341,25 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     
+    var cell : MenuTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath) as MenuTableViewCell
     self.selectedIndexPath = indexPath
     self.selectedPitcher = self.fetchedResultController.objectAtIndexPath(indexPath) as? Pitcher
     
     if selectedRowIndex == indexPath.row {
       selectedRowIndex = -1
+      cell.imageButton.enabled = false
     } else {
       self.selectedRowIndex = indexPath.row
+      cell.imageButton.enabled = true
     }
-    
     tableView.beginUpdates()
     tableView.endUpdates()
+  }
+  
+  func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    println("wkjvbaebe;i")
+    var cell : MenuTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath) as MenuTableViewCell
+    cell.imageButton.enabled = false
   }
 
   //MARK: Data Passing
