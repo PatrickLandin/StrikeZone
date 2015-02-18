@@ -261,14 +261,15 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   }
   
   @IBAction func editingDonePressed(sender: UIButton) {
-    var editedPitcher = self.pitchers[selectedRowIndex]
     
     if editPitcherText.text != "" {
-      editedPitcher.name = self.editPitcherText.text
+      selectedPitcher!.name = self.editPitcherText.text
     }
     if editTeamText.text != "" {
-      editedPitcher.team = self.editTeamText.text
+      selectedPitcher!.team = self.editTeamText.text
     }
+    var editError : NSError?
+    PitchService.sharedPitchService.coreDataStack.managedObjectContext?.save(&editError)
     self.tableView.reloadData()
     
     UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
