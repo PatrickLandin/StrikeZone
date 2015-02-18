@@ -38,7 +38,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       self.tableView.estimatedRowHeight = 100
       self.tableView.rowHeight = UITableViewAutomaticDimension
       self.navigationController?.delegate = self
-      //self.tableView.backgroundColor = UIColor(red: 0.82, green: 0.88, blue: 0.89, alpha: 1)
       self.tableView.separatorStyle = .None
       
       let fetchRequest = NSFetchRequest(entityName: "Pitcher")
@@ -108,7 +107,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   }
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//    return self.fetchedResultController.sections!.count
     return 1
   }
   
@@ -136,7 +134,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       return 0
     }
     return pitcher.heatMaps.count
-    
   }
   
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -155,20 +152,13 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       let heatMapImage = PitchService.sharedPitchService.convertDataToImage(currentHeatMap.heatMapImage)
       cell.mapImageView.image = heatMapImage
     }
-    
-    
     return cell
   }
+  
   //MARK: Tableview DataSource
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     let sectionInfo = self.fetchedResultController.sections![section] as NSFetchedResultsSectionInfo
-    
-//    if sectionInfo.numberOfObjects == 0{
-//      let alertView = UIAlertView(title: "Initial Setup", message: "Please press the + in the bottom right corner to create your first pitcher.", delegate: self, cancelButtonTitle: "OK")
-//      alertView.show()
-//    }
-    
     return sectionInfo.numberOfObjects
   }
   
@@ -357,7 +347,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   }
   
   func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-    println("wkjvbaebe;i")
     var cell : MenuTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath) as MenuTableViewCell
     cell.imageButton.enabled = false
   }
