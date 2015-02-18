@@ -286,12 +286,15 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       }) { (finished) -> Void in
         self.editAlertView.removeFromSuperview()
     }
-    self.tableView.reloadData()
   }
   
   @IBAction func removeButtonPressed(sender: UIButton) {
-    var removedPitcher = self.pitchers[selectedRowIndex]
-    pitchers.removeAtIndex(selectedRowIndex)
+    
+    PitchService.sharedPitchService.coreDataStack.managedObjectContext?.deleteObject(self.selectedPitcher! as NSManagedObject)
+    var deleteError : NSError?
+    PitchService.sharedPitchService.coreDataStack.managedObjectContext?.save(&deleteError)
+    println(deleteError?.localizedDescription)
+    
     self.tableView.reloadData()
     
     UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
