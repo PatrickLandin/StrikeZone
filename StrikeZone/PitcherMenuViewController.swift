@@ -38,7 +38,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       self.tableView.estimatedRowHeight = 100
       self.tableView.rowHeight = UITableViewAutomaticDimension
       self.navigationController?.delegate = self
-      //self.tableView.backgroundColor = UIColor(red: 0.82, green: 0.88, blue: 0.89, alpha: 1)
       self.tableView.separatorStyle = .None
       
       let fetchRequest = NSFetchRequest(entityName: "Pitcher")
@@ -92,6 +91,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     cell.newMapButton.tag = indexPath.row
     cell.newMapButton.addTarget(self, action: "showMap:", forControlEvents: UIControlEvents.TouchUpInside)
     
+    cell.imageButton.enabled = false
     cell.imageButton.tag = indexPath.row
     cell.imageButton.addTarget(self, action: "showPickerController:", forControlEvents: UIControlEvents.TouchUpInside)
     
@@ -111,7 +111,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   }
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//    return self.fetchedResultController.sections!.count
     return 1
   }
   
@@ -121,7 +120,8 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       menuCell.collectionView.delegate = self
     }
   }
-  
+
+  //MARK: Segue to StrikeZone
   func continueButtonPressed() {
     let destinationVC = StrikeZoneViewController()
     self.navigationController?.pushViewController(destinationVC, animated: true)
@@ -135,12 +135,10 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
 
     let pitcher = self.fetchedResultController.objectAtIndexPath(tableViewIndexPath!) as Pitcher
 
-    
     if pitcher.heatMaps.count == 0 {
       return 0
     }
     return pitcher.heatMaps.count
-    
   }
   
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -159,10 +157,9 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       let heatMapImage = PitchService.sharedPitchService.convertDataToImage(currentHeatMap.heatMapImage)
       cell.mapImageView.image = heatMapImage
     }
-    
-    
     return cell
   }
+  
   //MARK: Tableview DataSource
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -186,7 +183,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     
     let selectedHeatMap = self.selectedPitcher?.heatMaps.allObjects[indexPath.row] as HeatMap
     var strikeZoneVC = self.storyboard?.instantiateViewControllerWithIdentifier("MAP") as StrikeZoneViewController
-    //let selectedIndexPath = self.tableView.indexPathForSelectedRow()?.row
     strikeZoneVC.currentHeatMap = selectedHeatMap
     strikeZoneVC.selectedPitcher = pitcher
     strikeZoneVC.delegate = self
@@ -297,7 +293,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   func showMap(sender : UIButton) {
     
     var strikeZoneVC = self.storyboard?.instantiateViewControllerWithIdentifier("MAP") as StrikeZoneViewController
-    //self.selectedIndexPath = self.tableView.indexPathForSelectedRow()?
     strikeZoneVC.selectedPitcher = self.fetchedResultController.objectAtIndexPath(self.selectedIndexPath) as? Pitcher
     strikeZoneVC.delegate = self
     self.tableView.selectRowAtIndexPath(self.selectedIndexPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
@@ -310,16 +305,14 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       self.imagePickerController.sourceType = UIImagePickerControllerSourceType.Camera
       self.imagePickerController.delegate = self
       self.imagePickerController.allowsEditing = true
+      sender.enabled = false
       self.presentViewController(self.imagePickerController, animated: true, completion: nil)
-//      self.selectedPitcher = self.pitchers[self.selectedIndexPath.row]
     }
   }
   
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
       self.pitcherImage = info[UIImagePickerControllerEditedImage] as? UIImage
       PitchService.sharedPitchService.covertAndSaveImageForPitcher(self.selectedPitcher!, image: self.pitcherImage!)
-      
-//      self.selectedPitcher!.pitcherImage = self.pitcherImage
       self.tableView.reloadData()
       self.imagePickerController.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -334,16 +327,25 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     
+    var cell : MenuTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath) as MenuTableViewCell
     self.selectedIndexPath = indexPath
     self.selectedPitcher = self.fetchedResultController.objectAtIndexPath(indexPath) as? Pitcher
     
     if selectedRowIndex == indexPath.row {
       selectedRowIndex = -1
+      cell.imageButton.enabled = false
     } else {
       self.selectedRowIndex = indexPath.row
+      cell.imageButton.enabled = true
+      cell.editButton.enabled = true
     }
     tableView.beginUpdates()
     tableView.endUpdates()
+  }
+  
+  func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    var cell : MenuTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath) as MenuTableViewCell
+    cell.imageButton.enabled = false
   }
 
   //MARK: Data Passing

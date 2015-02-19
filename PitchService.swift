@@ -110,5 +110,4 @@ class PitchService {
     return image?
   }
   
-  
 }
