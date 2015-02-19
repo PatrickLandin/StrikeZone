@@ -22,11 +22,11 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
   
   @IBOutlet var addNewHeatMap: UIBarButtonItem!
   
-  
-  
   var currentPitcher : Pitcher?
   var currentHeatMap : HeatMap?
   var allPitches : NSArray?
+  
+  var newHeatMapHandler: (() -> (Void))?
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,5 +142,18 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
   
   @IBAction func addHeatMapButtonPressed(sender: AnyObject) {
     
+    self.newHeatMapHandler!()
+    
+    self.navigationController?.popViewControllerAnimated(true)
+    
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
