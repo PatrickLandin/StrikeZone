@@ -268,11 +268,13 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   }
 
   @IBAction func editCancelPressed(sender: UIButton) {
+    var cell : MenuTableViewCell = self.tableView.cellForRowAtIndexPath(selectedIndexPath) as MenuTableViewCell
     UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
       self.editAlertView.alpha = 0
       self.editAlertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
       }) { (finished) -> Void in
         self.editAlertView.removeFromSuperview()
+        cell.editButton.enabled = true
     }
   }
   
@@ -341,6 +343,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     } else {
       self.selectedRowIndex = indexPath.row
       cell.imageButton.enabled = true
+      cell.editButton.enabled = true
     }
     tableView.beginUpdates()
     tableView.endUpdates()
