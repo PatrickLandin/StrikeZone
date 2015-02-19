@@ -86,6 +86,25 @@ class PitchService {
     }
   }
   
+  func saveEditedPitcher(currentPitcher: Pitcher){
+    var savePitcherError : NSError?
+    self.coreDataStack.managedObjectContext?.save(&savePitcherError)
+    
+    if savePitcherError != nil {
+      println("\(savePitcherError)")
+    }
+  }
+  
+  func josePaniagua(currentPitcher: Pitcher){
+    self.coreDataStack.managedObjectContext?.deleteObject(currentPitcher)
+    var deletePitcherError : NSError?
+    self.coreDataStack.managedObjectContext?.save(&deletePitcherError)
+    
+    if deletePitcherError != nil {
+      println("\(deletePitcherError)")
+    }
+  }
+  
   func convertDataToImage(data : NSData) -> UIImage? {
     let image = UIImage(data : data)
     return image?
