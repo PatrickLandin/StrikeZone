@@ -43,8 +43,9 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   var zoneColor = UIColor()
   var alphaNumber = 0
   
+  
     override func viewDidLoad() {
-        super.viewDidLoad()
+      super.viewDidLoad()
       
       self.navigationItem.title = selectedPitcher?.name
       self.navigationController?.delegate = self
@@ -331,5 +332,6 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
         })
     })
   }
+  
 }
       
