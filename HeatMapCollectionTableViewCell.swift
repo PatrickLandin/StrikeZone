@@ -20,7 +20,7 @@ class HeatMapCollectionTableViewCell: UITableViewCell, UICollectionViewDataSourc
       
       self.collectionView.dataSource = self
       self.collectionView.backgroundColor = UIColor.whiteColor()
-      
+      self.collectionView.pagingEnabled = true
       self.collectionView.registerNib(UINib(nibName: "HeatMapCell", bundle: nil), forCellWithReuseIdentifier: "HEAT_MAP_CELL")
     }
 

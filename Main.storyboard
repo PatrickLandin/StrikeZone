@@ -405,6 +405,7 @@
                     </view>
                     <toolbarItems/>
                     <connections>
+                        <outlet property="infoButton" destination="Ws9-TK-2kA" id="PCT-BO-qTu"/>
                         <outlet property="pitchArea" destination="Lb5-d9-xZQ" id="8Dr-KH-GoG"/>
                         <outlet property="strikeZoneView" destination="M0q-2R-qmy" id="OqZ-G6-rFR"/>
                     </connections>

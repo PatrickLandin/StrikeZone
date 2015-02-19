@@ -21,6 +21,8 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   @IBOutlet weak var pitchArea: UIView!
   @IBOutlet weak var strikeZoneView: UIView!
   
+  @IBOutlet var infoButton: UIButton!
+  
   let alert = UIAlertController(title: "Pitch Type", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
   var pitchLocation = [CGPoint]()
   var pitches = [Pitch]()
@@ -151,7 +153,17 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
 
     pitcherDetailVC.currentPitcher = self.selectedPitcher
     pitcherDetailVC.currentHeatMap = self.currentHeatMap
-            
+    
+    pitcherDetailVC.newHeatMapHandler = { () in
+      self.currentHeatMap = nil
+      for view in self.strikeZoneView.subviews{
+        if let subView = view as? StrikeRegion{
+          subView.alpha = 0
+          subView.temperature = 0
+        }
+      }
+    }
+    
     self.navigationController?.pushViewController(pitcherDetailVC, animated: true)
   }
   
@@ -281,6 +293,9 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   
   func finishPitch(){
     //currentHeatMap?.pitches.append(currentPitch)
+    
+    self.infoButton.hidden = true
+    
     UIGraphicsBeginImageContext(view.bounds.size);
     self.view.layer.renderInContext(UIGraphicsGetCurrentContext())
     let viewImage = UIGraphicsGetImageFromCurrentImageContext()
@@ -289,6 +304,9 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     
 //  currentHeatMap?.heatMapImage = viewImage
     UIGraphicsEndImageContext()
+    
+    self.infoButton.hidden = false
+
     currentPitch.heatMap = currentHeatMap!
     
     currentHeatMap?.date = NSDate()
@@ -333,5 +351,6 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
         })
     })
   }
+  
 }
       
