@@ -18,7 +18,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   @IBOutlet weak var editTeamText: UITextField!
   @IBOutlet weak var addButton: UIBarButtonItem!
   
-  var pitchers = [Pitcher]()
+  var allPitchers : NSArray?
   var selectedPitcher : Pitcher?
   var alertView : UIView!
   var editAlertView : UIView!
@@ -26,7 +26,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   var selectedIndexPath : NSIndexPath!
   var imagePickerController = UIImagePickerController()
   var pitcherImage : UIImage?
-  var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
+  var fetchedResultController = NSFetchedResultsController()
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,11 +43,15 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       let fetchRequest = NSFetchRequest(entityName: "Pitcher")
       let teamSortDescriptor = NSSortDescriptor(key: "team", ascending: true)
       let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-      fetchRequest.sortDescriptors = [teamSortDescriptor, nameSortDescriptor]
+      fetchRequest.sortDescriptors = [nameSortDescriptor, teamSortDescriptor]
       self.fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: PitchService.sharedPitchService.coreDataStack.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
       self.fetchedResultController.delegate = self
             self.tableView.dataSource = self
       self.fetchedResultController.performFetch(nil)
+      
+      let sortDescriptor = NSSortDescriptor(key: "team", ascending: true)
+      self.allPitchers = self.allPitchers?.sortedArrayUsingDescriptors([sortDescriptor])
+      
         // Do any additional setup after loading the view.
     }
   
@@ -127,7 +131,8 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     let contentView = collectionView.superview! as UIView
     let tableViewCell = contentView.superview as MenuTableViewCell
-    let tableViewIndexPath = self.tableView.indexPathForCell(tableViewCell)
+    var tableViewIndexPath = self.tableView.indexPathForCell(tableViewCell)
+
     let pitcher = self.fetchedResultController.objectAtIndexPath(tableViewIndexPath!) as Pitcher
 
     if pitcher.heatMaps.count == 0 {
@@ -159,6 +164,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     let sectionInfo = self.fetchedResultController.sections![section] as NSFetchedResultsSectionInfo
+    
     return sectionInfo.numberOfObjects
   }
   
@@ -187,112 +193,100 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   //MARK: New Pitcher
   @IBAction func addPressed(sender: AnyObject) {
     
-    self.alertView = NSBundle.mainBundle().loadNibNamed("AddPitcherAlert", owner: self, options: nil).first as? UIView
-    self.alertView.center = self.view.center
-    self.alertView.alpha = 0
-    self.alertView.layer.cornerRadius = 15.0
-    self.alertView.transform = CGAffineTransformMakeScale(0.4, 0.4)
-    self.view.addSubview(alertView)
+    var alert = UIAlertController(title: "New Pitcher", message: "Enter Pitcher's Info", preferredStyle: UIAlertControllerStyle.Alert)
     
-    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
+    var pitcherNameTextField: UITextField?
+    var teamNameTextField: UITextField?
+    
+    alert.addTextFieldWithConfigurationHandler { (pitcherTextField : UITextField!) -> Void in
+      pitcherTextField.placeholder = "Name"
+      pitcherNameTextField = pitcherTextField
+    }
+    
+    alert.addTextFieldWithConfigurationHandler { (teamTextField : UITextField!) -> Void in
+      teamTextField.placeholder = "Team"
+      teamNameTextField = teamTextField
+    }
+    
+    let saveAction = UIAlertAction(title: "Create", style: .Default) { (action) -> Void in
       
-      self.alertView.alpha = 1
-      self.alertView.layer.cornerRadius = 15.0
-      self.alertView.backgroundColor = UIColor.lightGrayColor()
-      self.alertView.transform =  CGAffineTransformMakeScale(1.0 , 1.0)
-      }) { (finished) -> Void in
+      var name : String?
+      var team : String?
+      
+      if (pitcherNameTextField?.text != "") {
+        println(pitcherNameTextField!.text)
+        name = pitcherNameTextField!.text
+      }
+      else{
+        name = ""
+      }
+      if (teamNameTextField?.text != "") {
+        println(teamNameTextField!.text)
+        team = teamNameTextField!.text
+      }
+      else{
+        team = ""
+      }
+      
+      var newPitcher = PitchService.sharedPitchService.newPitcher(name!, team : team!)
     }
-    self.addButton.enabled = false
-  }
-
-  @IBAction func addPitcherPressed(sender: AnyObject) {    
-    var newPitcher = PitchService.sharedPitchService.newPitcher(self.newPitcherText.text, team: self.newTeamText.text)
     
-    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
-      self.alertView.alpha = 0
-      self.alertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
-      }) { (finished) -> Void in
-        self.alertView.removeFromSuperview()
-        self.addButton.enabled = true
-    }
-  }
-  
-  @IBAction func cancelNewPressed(sender: UIButton) {
-    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
-      self.alertView.alpha = 0
-      self.alertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
-      }) { (finished) -> Void in
-        self.alertView.removeFromSuperview()
-    }
-    self.addButton.enabled = true
+    let cancelAction = UIAlertAction(title:"Cancel", style:.Destructive, handler: nil)
+    
+    alert.addAction(saveAction)
+    alert.addAction(cancelAction)
+    
+    self.presentViewController(alert, animated: true, completion: nil)
+    
+    self.tableView.reloadData()
   }
   
   //MARK: Edit Pitcher
   func editPitcher(sender : UIButton) {
     
-    self.editAlertView = NSBundle.mainBundle().loadNibNamed("editPitcherAlert", owner: self, options: nil).first as? UIView
-    self.editAlertView.center = self.view.center
-    self.editAlertView.alpha = 0
-    self.editAlertView.layer.cornerRadius = 15.0
-    self.editAlertView.transform = CGAffineTransformMakeScale(0.5, 0.5)
-    self.view.addSubview(self.editAlertView)
+    var alert = UIAlertController(title: "Edit", message: "Enter Pitcher's Info", preferredStyle: UIAlertControllerStyle.Alert)
     
-    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
-      self.editAlertView.alpha = 1
-      self.editAlertView.layer.cornerRadius = 15.0
-      self.editAlertView.backgroundColor = UIColor.lightGrayColor()
-      self.editAlertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
-      }) { (finished) -> Void in
-    }
-    sender.enabled = false
-  }
-  
-  @IBAction func editingDonePressed(sender: UIButton) {
+    var pitcherNameTextField: UITextField?
+    var teamNameTextField: UITextField?
     
-    if editPitcherText.text != "" {
-      selectedPitcher!.name = self.editPitcherText.text
+    alert.addTextFieldWithConfigurationHandler { (pitcherTextField : UITextField!) -> Void in
+      pitcherTextField.placeholder = "Name"
+      pitcherNameTextField = pitcherTextField
     }
-    if editTeamText.text != "" {
-      selectedPitcher!.team = self.editTeamText.text
-    }
-    var editError : NSError?
-    PitchService.sharedPitchService.coreDataStack.managedObjectContext?.save(&editError)
-    self.tableView.reloadData()
     
-    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
-      self.editAlertView.alpha = 0
-      self.editAlertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
-      }) { (finished) -> Void in
-        self.editAlertView.removeFromSuperview()
+    alert.addTextFieldWithConfigurationHandler { (teamTextField : UITextField!) -> Void in
+      teamTextField.placeholder = "Team"
+      teamNameTextField = teamTextField
     }
-  }
+    
+    let saveAction = UIAlertAction(title: "Save", style: .Default) { (action) -> Void in
+      if (pitcherNameTextField?.text != "") {
+      println(pitcherNameTextField!.text)
+        self.selectedPitcher?.name = pitcherNameTextField!.text
+      }
+      if (teamNameTextField?.text != "") {
+        println(teamNameTextField!.text)
+        self.selectedPitcher?.team = teamNameTextField!.text
+      }
+      
+      PitchService.sharedPitchService.saveEditedPitcher(self.selectedPitcher!)
 
-  @IBAction func editCancelPressed(sender: UIButton) {
-    var cell : MenuTableViewCell = self.tableView.cellForRowAtIndexPath(selectedIndexPath) as MenuTableViewCell
-    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
-      self.editAlertView.alpha = 0
-      self.editAlertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
-      }) { (finished) -> Void in
-        self.editAlertView.removeFromSuperview()
-        cell.editButton.enabled = true
     }
-  }
-  
-  @IBAction func removeButtonPressed(sender: UIButton) {
     
-    PitchService.sharedPitchService.coreDataStack.managedObjectContext?.deleteObject(self.selectedPitcher! as NSManagedObject)
-    var deleteError : NSError?
-    PitchService.sharedPitchService.coreDataStack.managedObjectContext?.save(&deleteError)
-    println(deleteError?.localizedDescription)
+    let removeAction = UIAlertAction(title: "Remove", style: .Default) { (action) -> Void in
+      PitchService.sharedPitchService.josePaniagua(self.selectedPitcher!)
+    }
+    let cancelAction = UIAlertAction(title:"Cancel", style:.Destructive, handler: nil)
+
+    alert.addAction(saveAction)
+    alert.addAction(removeAction)
+    alert.addAction(cancelAction)
+    
+    
+    self.presentViewController(alert, animated: true, completion: nil)
+    
     
     self.tableView.reloadData()
-    
-    UIView.animateWithDuration(0.4, delay: 0.1, options: nil, animations: { () -> Void in
-      self.editAlertView.alpha = 0
-      self.editAlertView.transform = CGAffineTransformMakeScale(1.0, 1.0)
-      }) { (finished) -> Void in
-        self.editAlertView.removeFromSuperview()
-    }
   }
   
   //MARK: Instantiate StrikeZoneViewController
