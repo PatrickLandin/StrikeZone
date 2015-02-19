@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C99d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="azW-i3-eat">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="azW-i3-eat">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -123,7 +123,7 @@
         <!--Info View Controller-->
         <scene sceneID="6fd-f4-crS">
             <objects>
-                <viewController id="bIS-ZM-j32" customClass="InfoViewController" customModule="StrikeZone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="infoVC" id="bIS-ZM-j32" customClass="InfoViewController" customModule="StrikeZone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="U4g-9H-D4r"/>
                         <viewControllerLayoutGuide type="bottom" id="tv4-mC-tBz"/>
@@ -138,6 +138,7 @@
                                     <constraint firstAttribute="height" constant="30" id="LVm-vo-uj1"/>
                                 </constraints>
                                 <state key="normal" title="Done">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -145,7 +146,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hD-1V-PjR">
-                                <rect key="frame" x="255" y="20" width="90" height="25"/>
+                                <rect key="frame" x="255" y="64" width="90" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="Ne6-57-Wa6"/>
                                 </constraints>
@@ -154,7 +155,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- First Touch should indicate where the pitcher is attempting to place the pitch." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgy-Oy-sMD">
-                                <rect key="frame" x="16" y="53" width="568" height="50"/>
+                                <rect key="frame" x="16" y="97" width="568" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="D1Z-K7-kz0"/>
                                 </constraints>
@@ -163,7 +164,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Second Touch should represent where, within the zone, the actual pitch came in." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Blp-Hn-Wac">
-                                <rect key="frame" x="16" y="111" width="568" height="50"/>
+                                <rect key="frame" x="16" y="155" width="568" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="FS3-7k-wRJ"/>
                                 </constraints>
@@ -172,7 +173,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUg-4U-z36">
-                                <rect key="frame" x="16" y="169" width="568" height="120"/>
+                                <rect key="frame" x="16" y="213" width="568" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="42o-B0-PcH"/>
                                 </constraints>
@@ -182,7 +183,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6h-4s-miZ">
-                                <rect key="frame" x="16" y="297" width="35" height="35"/>
+                                <rect key="frame" x="16" y="341" width="34" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="hI6-OQ-etF"/>
                                 </constraints>
@@ -191,7 +192,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blue" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGS-t3-ZRp">
-                                <rect key="frame" x="16" y="340" width="35" height="35"/>
+                                <rect key="frame" x="16" y="384" width="34.5" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Om5-B5-rCv"/>
                                 </constraints>
@@ -200,19 +201,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Signifies a Pitch being ON Target." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phw-uc-jE7">
-                                <rect key="frame" x="51" y="304" width="268" height="21"/>
+                                <rect key="frame" x="50" y="348" width="268" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" - Signifies a Pitch being OFF Target." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJw-mj-fom">
-                                <rect key="frame" x="51" y="347" width="281" height="21"/>
+                                <rect key="frame" x="50" y="391" width="280.5" height="20.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="tv4-mC-tBz" firstAttribute="top" secondItem="ZD6-fl-kR6" secondAttribute="bottom" constant="20" id="0xt-2A-mOW"/>
                             <constraint firstItem="Blp-Hn-Wac" firstAttribute="trailing" secondItem="WSw-02-W0Q" secondAttribute="trailingMargin" id="28B-QT-Qdb"/>
@@ -240,10 +243,11 @@
                             <constraint firstItem="PGS-t3-ZRp" firstAttribute="top" secondItem="d6h-4s-miZ" secondAttribute="bottom" constant="8" id="yUV-5S-jJa"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Q7J-Qq-1g8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p0i-mO-Hb8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="814" y="-685"/>
+            <point key="canvasLocation" x="1626" y="-685"/>
         </scene>
         <!--Strike Zone View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -379,7 +383,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="bIS-ZM-j32" kind="presentation" id="l2G-gE-ioD"/>
+                                    <action selector="infoButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N17-RM-swk"/>
                                 </connections>
                             </button>
                         </subviews>

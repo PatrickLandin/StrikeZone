@@ -15,7 +15,7 @@ protocol heatMapDelegate{
 class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
   
   var delegate : heatMapDelegate?
-  
+    
   @IBOutlet var inZoneView: [UIView]!
   @IBOutlet var outZoneView: [UIView]!
   @IBOutlet weak var pitchArea: UIView!
@@ -28,6 +28,8 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   var currentPitch : Pitch!
   let locationView = UIView()
   var selectedPitcher : Pitcher?
+  var infoVC : UIViewController?
+  var blurView : UIView!
   
   var targetView : StrikeRegion?
   var actualPitchView : StrikeRegion?
@@ -41,23 +43,27 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   var zoneColor = UIColor()
   var alphaNumber = 0
   
+  var blurEffect = UIVisualEffectView(effect: UIBlurEffect(style: .Light)) as UIVisualEffectView
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+      var blurViews = NSBundle.mainBundle().loadNibNamed("blurInfo", owner: StrikeZoneViewController(), options: nil)
+      self.blurView = blurViews.first as UIView
+      self.blurView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: self.view.frame.height)
+      self.blurView.backgroundColor = UIColor.clearColor()
+      self.navigationController?.view.addSubview(blurView)
+      self.blurEffect.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+      self.blurView.insertSubview(blurEffect, atIndex: 0)
+      self.view.frame.height
       self.navigationItem.title = selectedPitcher?.name
       self.navigationController?.delegate = self
       self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: "backButtonPressed:")
       self.doneButton = UIBarButtonItem(title: "Detail", style: .Done, target: self, action: "detailButtonPressed:")
-      //self.navigationItem.leftBarButtonItem = backButton
       self.navigationItem.rightBarButtonItem = doneButton
       strikeZoneView.layer.borderWidth = 3
       strikeZoneView.layer.borderColor = UIColor.blackColor().CGColor
       let tap = UITapGestureRecognizer(target: self, action: ("handleTap:"))
       strikeZoneView.addGestureRecognizer(tap)
-      
-//      var pitchScore = UIAlertController(title: "\(selectedPitcher!.name)", message: "\(self.score)", preferredStyle: UIAlertControllerStyle.Alert)
-//      pitchScore.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
-//      self.presentViewController(pitchScore, animated: true, completion: nil)
 
       let pitchTypeFastBall = UIAlertAction(title: "FastBall", style: .Default, handler: { (action) -> Void in
         self.currentPitch.pitchType = "Fast Ball"
@@ -110,11 +116,22 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
           }
         }
       }else{
-
-//        self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
       }
     }
   
+  @IBAction func infoButtonPressed(sender: AnyObject) {
+   UIView.animateWithDuration(0.9, animations: { () -> Void in
+    self.blurView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+   })
+  }
+  
+  @IBAction func doneButtonPressed(sender: AnyObject) {
+    println("pressed")
+    UIView.animateWithDuration(0.3, animations: { () -> Void in
+      self.view.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: self.view.frame.height)
+    })
+    
+  }
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     currentPitch = PitchService.sharedPitchService.newPitch()
@@ -123,7 +140,9 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   override func viewWillDisappear(animated: Bool) {
     super.viewWillDisappear(animated)
     
+
     self.currentPitch.managedObjectContext?.deleteObject(self.currentPitch)
+    
   }
   
   func detailButtonPressed(sender: UIButton) {
@@ -138,13 +157,14 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   
   func backButtonPressed(sender: UIButton) {
     //self.selectedPitcher?.heatMaps.insert(currentHeatMap!, atIndex: 0)
-    println("this should fire")
+    //println("this should fire")
     delegate?.setPitcher(selectedPitcher)
     
     self.navigationController?.popViewControllerAnimated(true)
   }
   
   func handleTapForTarget(targetTouchLocation: CGPoint) {
+    //currentPitch = PitchService.sharedPitchService.newPitch()
     if currentHeatMap == nil {
 //      currentHeatMap = HeatMap()
       currentHeatMap = PitchService.sharedPitchService.newHeatMap(selectedPitcher!)
@@ -274,7 +294,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     currentHeatMap?.date = NSDate()
     currentPitch.date = NSDate()
     
-    println(currentPitch.date)
+    //println(currentPitch.date)
 
     
     //let error : NSError?
