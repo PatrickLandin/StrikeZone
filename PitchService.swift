@@ -62,7 +62,11 @@ class PitchService {
   
   func covertAndSaveImageForPitcher(currentPitcher : Pitcher, image : UIImage) {
     
-    let imageData = UIImagePNGRepresentation(image)
+    let size = CGSize(width: 300, height: 300)
+    UIGraphicsBeginImageContext(size)
+    image.drawInRect(CGRect(x: 0, y: 0, width: 300, height: 300))
+    let smallImage = UIGraphicsGetImageFromCurrentImageContext()
+    let imageData = UIImagePNGRepresentation(smallImage)
 
     currentPitcher.pitcherImage = imageData
     var pitcherError : NSError?
