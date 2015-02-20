@@ -11,7 +11,7 @@ import UIKit
 // StrikeZoneViewController
 
 class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-  
+    
   @IBOutlet var pitcherHometown: UILabel!
   @IBOutlet var pitchersNameLabel: UILabel!
   @IBOutlet var pitchCountLabel: UILabel!
@@ -22,14 +22,15 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
   
   @IBOutlet var addNewHeatMap: UIBarButtonItem!
   
-  
-  
   var currentPitcher : Pitcher?
   var currentHeatMap : HeatMap?
   var allPitches : NSArray?
   
+  var newHeatMapHandler: (() -> (Void))?
+  
     override func viewDidLoad() {
-        super.viewDidLoad()
+      super.viewDidLoad()
+
       
       self.pitchTableView.dataSource = self
       self.pitchTableView.delegate = self
