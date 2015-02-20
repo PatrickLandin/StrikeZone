@@ -46,7 +46,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       fetchRequest.sortDescriptors = [nameSortDescriptor, teamSortDescriptor]
       self.fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: PitchService.sharedPitchService.coreDataStack.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
       self.fetchedResultController.delegate = self
-            self.tableView.dataSource = self
+      self.tableView.dataSource = self
       self.fetchedResultController.performFetch(nil)
       
       let sortDescriptor = NSSortDescriptor(key: "team", ascending: true)
@@ -111,6 +111,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     cell.backgroundColor = UIColor.lightGrayColor()
     
     cell.collectionView.reloadData()
+    cell.collectionView.tag = indexPath.row
   }
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -154,10 +155,11 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     let contentView = collectionView.superview! as UIView
     let tableViewCell = contentView.superview as MenuTableViewCell
     let tableViewIndexPath = self.tableView.indexPathForCell(tableViewCell)
-    let pitcher = self.fetchedResultController.objectAtIndexPath(tableViewIndexPath!) as Pitcher
+    let indexPath = NSIndexPath(forRow: collectionView.tag, inSection: 0)
+    let pitcher = self.fetchedResultController.objectAtIndexPath(indexPath) as Pitcher
     
     let heatMaps = pitcher.heatMaps.allObjects
-    if let currentHeatMap = heatMaps[indexPath.row] as? HeatMap{
+    if let currentHeatMap = heatMaps[indexPath.row] as? HeatMap {
       let heatMapImage = PitchService.sharedPitchService.convertDataToImage(currentHeatMap.heatMapImage)
       cell.mapImageView.image = heatMapImage
     }
@@ -191,7 +193,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     strikeZoneVC.selectedPitcher = pitcher
     //strikeZoneVC.delegate = self
     self.navigationController?.pushViewController(strikeZoneVC, animated: true)
-    
   }
   
   //MARK: New Pitcher
@@ -221,17 +222,16 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
         println(pitcherNameTextField!.text)
         name = pitcherNameTextField!.text
       }
-      else{
+      else {
         name = ""
       }
       if (teamNameTextField?.text != "") {
         println(teamNameTextField!.text)
         team = teamNameTextField!.text
       }
-      else{
+      else {
         team = ""
       }
-      
       var newPitcher = PitchService.sharedPitchService.newPitcher(name!, team : team!)
     }
     
@@ -285,11 +285,8 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     alert.addAction(saveAction)
     alert.addAction(removeAction)
     alert.addAction(cancelAction)
-    
-    
     self.presentViewController(alert, animated: true, completion: nil)
-    
-    
+
     self.tableView.reloadData()
   }
   
@@ -331,6 +328,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
     var cell : MenuTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath) as MenuTableViewCell
     self.selectedIndexPath = indexPath
     self.selectedPitcher = self.fetchedResultController.objectAtIndexPath(indexPath) as? Pitcher
@@ -347,9 +345,15 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     tableView.endUpdates()
   }
   
+  func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    
+  }
+  
   func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
     var cell : MenuTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath) as MenuTableViewCell
     cell.imageButton.enabled = false
+    
+    
   }
 
   //MARK: Data Passing

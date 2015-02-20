@@ -143,9 +143,6 @@ class PitcherDetailViewController: UIViewController, UITableViewDataSource, UITa
   
   @IBAction func addHeatMapButtonPressed(sender: AnyObject) {
     
-    self.newHeatMapHandler!()
-    
-    self.navigationController?.popViewControllerAnimated(true)
     
   }
 }
