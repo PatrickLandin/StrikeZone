@@ -99,9 +99,12 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     cell.editButton.addTarget(self, action: "editPitcher:", forControlEvents: UIControlEvents.TouchUpInside)
     cell.editButton.enabled = true
     
-    let pitcherImage = PitchService.sharedPitchService.convertDataToImage(pitcherToDisplay.pitcherImage)
+    if pitcherToDisplay.realImage == nil {
+    pitcherToDisplay.realImage = PitchService.sharedPitchService.convertDataToImage(pitcherToDisplay.pitcherImage)
+    }
     
-    cell.pitcherImage.image = pitcherImage
+    
+    cell.pitcherImage.image = pitcherToDisplay.realImage
     cell.pitcherImage.layer.masksToBounds = true
     cell.pitcherImage.layer.cornerRadius = 7.0
     
@@ -123,10 +126,10 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   }
 
   //MARK: Segue to StrikeZone
-  func continueButtonPressed() {
-    let destinationVC = StrikeZoneViewController()
-    self.navigationController?.pushViewController(destinationVC, animated: true)
-  }
+//  func continueButtonPressed() {
+//    let destinationVC = StrikeZoneViewController()
+//    self.navigationController?.pushViewController(destinationVC, animated: true)
+//  }
   
   //MARK: CollectionView DataSource
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -164,6 +167,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     let sectionInfo = self.fetchedResultController.sections![section] as NSFetchedResultsSectionInfo
+    println("numer of objects in tableview : \(sectionInfo.numberOfObjects)")
     return sectionInfo.numberOfObjects
   }
   
@@ -184,7 +188,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     var strikeZoneVC = self.storyboard?.instantiateViewControllerWithIdentifier("MAP") as StrikeZoneViewController
     strikeZoneVC.currentHeatMap = selectedHeatMap
     strikeZoneVC.selectedPitcher = pitcher
-    strikeZoneVC.delegate = self
+    //strikeZoneVC.delegate = self
     self.navigationController?.pushViewController(strikeZoneVC, animated: true)
   }
   

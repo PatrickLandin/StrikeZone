@@ -19,9 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
     //self.window?.makeKeyAndVisible()
 //    
-//    let rootViewController = PitcherDetailViewController(nibName : "pitcherDetailView" , bundle : NSBundle.mainBundle())
-//    
+//
 //    self.window?.rootViewController = rootViewController
+    
+    
     
     return true
   }

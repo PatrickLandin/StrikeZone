@@ -68,7 +68,7 @@ class PitchService {
     image.drawInRect(CGRect(x: 0, y: 0, width: 300, height: 300))
     let smallImage = UIGraphicsGetImageFromCurrentImageContext()
     let imageData = UIImagePNGRepresentation(smallImage)
-
+    
     currentPitcher.pitcherImage = imageData
     var pitcherError : NSError?
     self.coreDataStack.managedObjectContext!.save(&pitcherError)

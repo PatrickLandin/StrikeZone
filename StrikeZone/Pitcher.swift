@@ -6,8 +6,9 @@
 //  Copyright (c) 2015 QadburyDreams. All rights reserved.
 //
 
-import Foundation
+
 import CoreData
+import UIKit
 
 class Pitcher: NSManagedObject {
 
@@ -15,5 +16,5 @@ class Pitcher: NSManagedObject {
     @NSManaged var pitcherImage: NSData
     @NSManaged var team: String
     @NSManaged var heatMaps: NSSet
-
+    var realImage : UIImage?
 }
