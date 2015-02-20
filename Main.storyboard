@@ -120,6 +120,131 @@
             </objects>
             <point key="canvasLocation" x="134" y="386"/>
         </scene>
+        <!--Info View Controller-->
+        <scene sceneID="6fd-f4-crS">
+            <objects>
+                <viewController id="bIS-ZM-j32" customClass="InfoViewController" customModule="StrikeZone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="U4g-9H-D4r"/>
+                        <viewControllerLayoutGuide type="bottom" id="tv4-mC-tBz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WSw-02-W0Q">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZD6-fl-kR6">
+                                <rect key="frame" x="282" y="550" width="37" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="LVm-vo-uj1"/>
+                                </constraints>
+                                <state key="normal" title="Done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="bIS-ZM-j32" eventType="touchUpInside" id="7Nv-65-dhI"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hD-1V-PjR">
+                                <rect key="frame" x="255" y="20" width="90" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Ne6-57-Wa6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- First Touch should indicate where the pitcher is attempting to place the pitch." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgy-Oy-sMD">
+                                <rect key="frame" x="16" y="53" width="568" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="D1Z-K7-kz0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Second Touch should represent where, within the zone, the actual pitch came in." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Blp-Hn-Wac">
+                                <rect key="frame" x="16" y="111" width="568" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="FS3-7k-wRJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUg-4U-z36">
+                                <rect key="frame" x="16" y="169" width="568" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="42o-B0-PcH"/>
+                                </constraints>
+                                <string key="text">As each pitch is mapped on the zone, the area within the zone will become more or less Red or Blue depending on whether the pitch was on target or off target. </string>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6h-4s-miZ">
+                                <rect key="frame" x="16" y="297" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="hI6-OQ-etF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.78066871280000005" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blue" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGS-t3-ZRp">
+                                <rect key="frame" x="16" y="340" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Om5-B5-rCv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.075016975129999997" green="0.21214216850000001" blue="0.53536551340000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" - Signifies a Pitch being OFF Target." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJw-mj-fom">
+                                <rect key="frame" x="51" y="347" width="281" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Signifies a Pitch being ON Target." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phw-uc-jE7">
+                                <rect key="frame" x="51" y="304" width="268" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tv4-mC-tBz" firstAttribute="top" secondItem="ZD6-fl-kR6" secondAttribute="bottom" constant="20" id="0xt-2A-mOW"/>
+                            <constraint firstItem="Blp-Hn-Wac" firstAttribute="trailing" secondItem="WSw-02-W0Q" secondAttribute="trailingMargin" id="28B-QT-Qdb"/>
+                            <constraint firstItem="phw-uc-jE7" firstAttribute="centerY" secondItem="d6h-4s-miZ" secondAttribute="centerY" id="7Kz-d9-pGj"/>
+                            <constraint firstItem="PGS-t3-ZRp" firstAttribute="leading" secondItem="WSw-02-W0Q" secondAttribute="leadingMargin" id="9pu-16-Vfa"/>
+                            <constraint firstAttribute="centerX" secondItem="ZD6-fl-kR6" secondAttribute="centerX" id="CLS-uw-oVa"/>
+                            <constraint firstItem="Blp-Hn-Wac" firstAttribute="top" secondItem="lgy-Oy-sMD" secondAttribute="bottom" constant="8" id="Ees-qU-htm"/>
+                            <constraint firstItem="uUg-4U-z36" firstAttribute="top" secondItem="Blp-Hn-Wac" secondAttribute="bottom" constant="8" id="Gc0-ab-Qz8"/>
+                            <constraint firstItem="uUg-4U-z36" firstAttribute="leading" secondItem="WSw-02-W0Q" secondAttribute="leadingMargin" id="GwR-44-4tq"/>
+                            <constraint firstItem="JJw-mj-fom" firstAttribute="leading" secondItem="PGS-t3-ZRp" secondAttribute="trailing" id="JAr-9V-Vqf"/>
+                            <constraint firstAttribute="centerX" secondItem="5hD-1V-PjR" secondAttribute="centerX" id="ODZ-Ne-A5p"/>
+                            <constraint firstItem="uUg-4U-z36" firstAttribute="trailing" secondItem="WSw-02-W0Q" secondAttribute="trailingMargin" id="Pcj-1o-OHM"/>
+                            <constraint firstItem="5hD-1V-PjR" firstAttribute="top" secondItem="U4g-9H-D4r" secondAttribute="bottom" id="Vlo-Of-z1a"/>
+                            <constraint firstItem="phw-uc-jE7" firstAttribute="leading" secondItem="JJw-mj-fom" secondAttribute="leading" id="a5A-an-4RT"/>
+                            <constraint firstItem="Blp-Hn-Wac" firstAttribute="leading" secondItem="WSw-02-W0Q" secondAttribute="leadingMargin" id="bMP-tW-1Ru"/>
+                            <constraint firstItem="lgy-Oy-sMD" firstAttribute="top" secondItem="5hD-1V-PjR" secondAttribute="bottom" constant="8" id="doG-a7-2d6"/>
+                            <constraint firstItem="PGS-t3-ZRp" firstAttribute="leading" secondItem="uUg-4U-z36" secondAttribute="leading" id="dxc-wN-bqo"/>
+                            <constraint firstItem="phw-uc-jE7" firstAttribute="leading" secondItem="d6h-4s-miZ" secondAttribute="trailing" id="f2a-vT-rIm"/>
+                            <constraint firstItem="lgy-Oy-sMD" firstAttribute="leading" secondItem="WSw-02-W0Q" secondAttribute="leadingMargin" id="kd5-VV-xH8"/>
+                            <constraint firstItem="PGS-t3-ZRp" firstAttribute="centerY" secondItem="JJw-mj-fom" secondAttribute="centerY" id="kpc-dq-Xts"/>
+                            <constraint firstItem="lgy-Oy-sMD" firstAttribute="trailing" secondItem="WSw-02-W0Q" secondAttribute="trailingMargin" id="mpX-fr-E5y"/>
+                            <constraint firstItem="d6h-4s-miZ" firstAttribute="top" secondItem="uUg-4U-z36" secondAttribute="bottom" constant="8" id="nR0-hf-KDA"/>
+                            <constraint firstItem="PGS-t3-ZRp" firstAttribute="leading" secondItem="d6h-4s-miZ" secondAttribute="leading" id="vyS-uQ-Iwy"/>
+                            <constraint firstItem="d6h-4s-miZ" firstAttribute="leading" secondItem="WSw-02-W0Q" secondAttribute="leadingMargin" id="xh8-hV-qfh"/>
+                            <constraint firstItem="PGS-t3-ZRp" firstAttribute="top" secondItem="d6h-4s-miZ" secondAttribute="bottom" constant="8" id="yUV-5S-jJa"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p0i-mO-Hb8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="814" y="-685"/>
+        </scene>
         <!--Strike Zone View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>

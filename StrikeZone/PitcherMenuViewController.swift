@@ -133,12 +133,9 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   //MARK: CollectionView DataSource
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    let contentView = collectionView.superview! as UIView
-    let tableViewCell = contentView.superview as MenuTableViewCell
-    var tableViewIndexPath = self.tableView.indexPathForCell(tableViewCell)
-    println("section \(section) row : \(tableViewIndexPath?.row)")
-
-    let pitcher = self.fetchedResultController.objectAtIndexPath(tableViewIndexPath!) as Pitcher
+    
+    let indexPath = NSIndexPath(forRow: collectionView.tag, inSection: 0)
+    let pitcher = self.fetchedResultController.objectAtIndexPath(indexPath) as Pitcher
 
     if pitcher.heatMaps.count == 0 {
       return 0
@@ -241,8 +238,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     alert.addAction(cancelAction)
     
     self.presentViewController(alert, animated: true, completion: nil)
-    
-    //self.tableView.reloadData()
+    self.tableView.reloadData()
   }
   
   //MARK: Edit Pitcher
