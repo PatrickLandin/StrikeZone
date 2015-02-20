@@ -49,7 +49,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   
     override func viewDidLoad() {
         super.viewDidLoad()
-      var blurViews = NSBundle.mainBundle().loadNibNamed("blurInfo", owner: StrikeZoneViewController(), options: nil)
+      var blurViews = NSBundle.mainBundle().loadNibNamed("blurInfo", owner: self, options: nil)
       self.blurView = blurViews.first as UIView
       self.blurView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: self.view.frame.height)
       self.blurView.backgroundColor = UIColor.clearColor()
@@ -122,7 +122,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     }
   
   @IBAction func infoButtonPressed(sender: AnyObject) {
-   UIView.animateWithDuration(0.9, animations: { () -> Void in
+   UIView.animateWithDuration(0.4, animations: { () -> Void in
     self.blurView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
    })
   }
@@ -130,7 +130,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   @IBAction func doneButtonPressed(sender: AnyObject) {
     println("pressed")
     UIView.animateWithDuration(0.3, animations: { () -> Void in
-      self.view.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: self.view.frame.height)
+      self.blurView.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: self.view.frame.height)
     })
     
   }
@@ -299,8 +299,6 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     UIGraphicsBeginImageContext(view.bounds.size);
     self.view.layer.renderInContext(UIGraphicsGetCurrentContext())
     let viewImage = UIGraphicsGetImageFromCurrentImageContext()
-
-    PitchService.sharedPitchService.covertAndSaveImageForPitcherHeatMaps(currentHeatMap!, image: viewImage)
     
 //  currentHeatMap?.heatMapImage = viewImage
     UIGraphicsEndImageContext()
@@ -317,6 +315,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     
     //let error : NSError?
     PitchService.sharedPitchService.coreDataStack.saveContext()
+    PitchService.sharedPitchService.covertAndSaveImageForPitcherHeatMaps(currentHeatMap!, image: viewImage)
     currentPitch = PitchService.sharedPitchService.newPitch()
   }
   

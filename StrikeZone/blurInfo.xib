@@ -4,22 +4,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StrikeZoneViewController" customModule="StrikeZone" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UIView"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2H-9j-e0R">
-                    <rect key="frame" x="281" y="520" width="37" height="30"/>
-                    <state key="normal" title="Done">
-                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="doneButtonPressed:" destination="-1" eventType="touchUpInside" id="6bk-P2-1Bg"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfs-Ay-4oW">
                     <rect key="frame" x="255" y="82" width="90" height="21"/>
                     <constraints>
@@ -83,6 +73,16 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LqO-RF-f2G">
+                    <rect key="frame" x="268" y="475" width="63" height="47"/>
+                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
+                    <state key="normal" title="Done">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="doneButtonPressed:" destination="-1" eventType="touchUpInside" id="3ku-VW-YN9"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -98,11 +98,11 @@
                 <constraint firstItem="hrQ-TL-rt3" firstAttribute="leading" secondItem="HIx-yA-wgg" secondAttribute="trailing" constant="8" id="FM5-5w-8kn"/>
                 <constraint firstItem="5nZ-xl-cWR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="LtO-l3-eVI"/>
                 <constraint firstAttribute="centerX" secondItem="Bfs-Ay-4oW" secondAttribute="centerX" id="Ncx-m9-8S3"/>
+                <constraint firstAttribute="centerX" secondItem="LqO-RF-f2G" secondAttribute="centerX" id="O4i-0f-5Ar"/>
                 <constraint firstItem="h89-rS-Ja2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="SZx-fr-nGL"/>
                 <constraint firstItem="5nZ-xl-cWR" firstAttribute="top" secondItem="HIx-yA-wgg" secondAttribute="bottom" constant="1" id="U2n-eq-Qdu"/>
                 <constraint firstAttribute="trailing" secondItem="c2w-yu-9y2" secondAttribute="trailing" constant="20" id="V0t-cH-JOp"/>
                 <constraint firstItem="6bI-rX-Gdc" firstAttribute="top" secondItem="h89-rS-Ja2" secondAttribute="bottom" constant="13" id="VeW-Uo-wTK"/>
-                <constraint firstAttribute="centerX" secondItem="c2H-9j-e0R" secondAttribute="centerX" id="WeA-l6-EI4"/>
                 <constraint firstItem="HIx-yA-wgg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="335" id="YkX-50-yAn"/>
                 <constraint firstItem="78U-gy-Lir" firstAttribute="leading" secondItem="5nZ-xl-cWR" secondAttribute="trailing" constant="-6" id="c2r-uu-7qB"/>
                 <constraint firstItem="5nZ-xl-cWR" firstAttribute="centerY" secondItem="78U-gy-Lir" secondAttribute="centerY" id="c3b-HM-gM2"/>
@@ -113,7 +113,7 @@
                 <constraint firstItem="HIx-yA-wgg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="19" id="p2t-7C-RNO"/>
                 <constraint firstAttribute="centerX" secondItem="c2w-yu-9y2" secondAttribute="centerX" constant="1" id="sas-Gd-hct"/>
                 <constraint firstItem="6bI-rX-Gdc" firstAttribute="top" secondItem="h89-rS-Ja2" secondAttribute="bottom" constant="13" id="tfK-Nb-kwp"/>
-                <constraint firstAttribute="bottom" secondItem="c2H-9j-e0R" secondAttribute="bottom" constant="50" id="xac-gu-64O"/>
+                <constraint firstAttribute="bottom" secondItem="LqO-RF-f2G" secondAttribute="bottom" constant="78" id="tq8-Gp-qGT"/>
                 <constraint firstAttribute="centerX" secondItem="6bI-rX-Gdc" secondAttribute="centerX" constant="1" id="ycf-PW-Jsf"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>

@@ -30,11 +30,11 @@
 		32BCF3DB1A96995E003D96CE /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32BCF3C01A96995E003D96CE /* Icon@2x.png */; };
 		32BCF3DC1A96995E003D96CE /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 32BCF3C11A96995E003D96CE /* iTunesArtwork */; };
 		32BCF3DD1A96995E003D96CE /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = 32BCF3C21A96995E003D96CE /* iTunesArtwork@2x */; };
+		32BCF3DF1A96F3B6003D96CE /* Screenshot 2015-02-19 20.46.06.png in Resources */ = {isa = PBXBuildFile; fileRef = 32BCF3DE1A96F3B6003D96CE /* Screenshot 2015-02-19 20.46.06.png */; };
 		640389A21A76B59800060349 /* pitcherDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 640389A11A76B59800060349 /* pitcherDetailView.xib */; };
 		64124D691A7C0333004C96CB /* baseball10.png in Resources */ = {isa = PBXBuildFile; fileRef = 64124D681A7C0333004C96CB /* baseball10.png */; };
 		64232A8E1A76D16600057E18 /* HeatMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64232A8C1A76D16600057E18 /* HeatMapCell.swift */; };
 		64232A8F1A76D16600057E18 /* HeatMapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64232A8D1A76D16600057E18 /* HeatMapCell.xib */; };
-		647160E81A93C03F00FE5DEC /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647160E71A93C03F00FE5DEC /* InfoViewController.swift */; };
 		647160EC1A93EA0000FE5DEC /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647160EB1A93EA0000FE5DEC /* Pitch.swift */; };
 		647160EE1A93EA0000FE5DEC /* HeatMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647160ED1A93EA0000FE5DEC /* HeatMap.swift */; };
 		647160F01A93EA0100FE5DEC /* Pitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647160EF1A93EA0100FE5DEC /* Pitcher.swift */; };
@@ -97,11 +97,11 @@
 		32BCF3C01A96995E003D96CE /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		32BCF3C11A96995E003D96CE /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		32BCF3C21A96995E003D96CE /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iTunesArtwork@2x"; sourceTree = "<group>"; };
+		32BCF3DE1A96F3B6003D96CE /* Screenshot 2015-02-19 20.46.06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot 2015-02-19 20.46.06.png"; sourceTree = "<group>"; };
 		640389A11A76B59800060349 /* pitcherDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = pitcherDetailView.xib; sourceTree = "<group>"; };
 		64124D681A7C0333004C96CB /* baseball10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baseball10.png; path = ../baseball10.png; sourceTree = "<group>"; };
 		64232A8C1A76D16600057E18 /* HeatMapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatMapCell.swift; sourceTree = "<group>"; };
 		64232A8D1A76D16600057E18 /* HeatMapCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeatMapCell.xib; sourceTree = "<group>"; };
-		647160E71A93C03F00FE5DEC /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		647160EB1A93EA0000FE5DEC /* Pitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
 		647160ED1A93EA0000FE5DEC /* HeatMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatMap.swift; sourceTree = "<group>"; };
 		647160EF1A93EA0100FE5DEC /* Pitcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pitcher.swift; sourceTree = "<group>"; };
@@ -283,6 +283,7 @@
 				ECBA07A31A73106B00B580F5 /* Images.xcassets */,
 				32BCF39E1A96995E003D96CE /* icon */,
 				64124D681A7C0333004C96CB /* baseball10.png */,
+				32BCF3DE1A96F3B6003D96CE /* Screenshot 2015-02-19 20.46.06.png */,
 				323B7CB81A7AF31900A1B87F /* pitcherStraightDealin.jpg */,
 				324FDB3A1A78671200A743E9 /* dodgerBackground.jpg */,
 			);
@@ -292,7 +293,6 @@
 		ECBA07BE1A73172200B580F5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				647160E71A93C03F00FE5DEC /* InfoViewController.swift */,
 				64232A8C1A76D16600057E18 /* HeatMapCell.swift */,
 				649B04DB1A78032D00A8FD99 /* PitchDetailTableViewCell.swift */,
 				ECC5AC031A76ADF4006F9887 /* PitcherMenuViewController.swift */,
@@ -415,6 +415,7 @@
 				EC5D765D1A77110400833AF0 /* pixelGlove.png in Resources */,
 				32BCF3DB1A96995E003D96CE /* Icon@2x.png in Resources */,
 				32BCF3D71A96995E003D96CE /* Icon-72@2x.png in Resources */,
+				32BCF3DF1A96F3B6003D96CE /* Screenshot 2015-02-19 20.46.06.png in Resources */,
 				32BCF3D41A96995E003D96CE /* Icon-Small@3x.png in Resources */,
 				649B04E01A78542E00A8FD99 /* heatMapCollectionView.xib in Resources */,
 				32BCF3D61A96995E003D96CE /* Icon-72.png in Resources */,
@@ -446,7 +447,6 @@
 				ECC5AC121A76D461006F9887 /* MenuTableViewCell.swift in Sources */,
 				EC08AF3A1A8ADDC4006DE716 /* HighHeatModel.xcdatamodeld in Sources */,
 				649B04DC1A78032D00A8FD99 /* PitchDetailTableViewCell.swift in Sources */,
-				647160E81A93C03F00FE5DEC /* InfoViewController.swift in Sources */,
 				647160EE1A93EA0000FE5DEC /* HeatMap.swift in Sources */,
 				EC08AF981A8D60CF006DE716 /* DataStack.swift in Sources */,
 				647160EC1A93EA0000FE5DEC /* Pitch.swift in Sources */,
