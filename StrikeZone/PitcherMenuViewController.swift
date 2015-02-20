@@ -108,6 +108,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     cell.backgroundColor = UIColor.lightGrayColor()
     
     cell.collectionView.reloadData()
+    cell.collectionView.tag = indexPath.row
   }
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -129,11 +130,9 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   //MARK: CollectionView DataSource
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    let contentView = collectionView.superview! as UIView
-    let tableViewCell = contentView.superview as MenuTableViewCell
-    var tableViewIndexPath = self.tableView.indexPathForCell(tableViewCell)
-
-    let pitcher = self.fetchedResultController.objectAtIndexPath(tableViewIndexPath!) as Pitcher
+    
+    let indexPath = NSIndexPath(forRow: collectionView.tag, inSection: 0)
+    let pitcher = self.fetchedResultController.objectAtIndexPath(indexPath) as Pitcher
 
     if pitcher.heatMaps.count == 0 {
       return 0
@@ -150,7 +149,8 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     let contentView = collectionView.superview! as UIView
     let tableViewCell = contentView.superview as MenuTableViewCell
     let tableViewIndexPath = self.tableView.indexPathForCell(tableViewCell)
-    let pitcher = self.fetchedResultController.objectAtIndexPath(tableViewIndexPath!) as Pitcher
+    let indexPath = NSIndexPath(forRow: collectionView.tag, inSection: 0)
+    let pitcher = self.fetchedResultController.objectAtIndexPath(indexPath) as Pitcher
     
     let heatMaps = pitcher.heatMaps.allObjects
     if let currentHeatMap = heatMaps[indexPath.row] as? HeatMap {
@@ -320,6 +320,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
     var cell : MenuTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath) as MenuTableViewCell
     self.selectedIndexPath = indexPath
     self.selectedPitcher = self.fetchedResultController.objectAtIndexPath(indexPath) as? Pitcher
@@ -336,9 +337,15 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     tableView.endUpdates()
   }
   
+  func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    
+  }
+  
   func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
     var cell : MenuTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath) as MenuTableViewCell
     cell.imageButton.enabled = false
+    
+    
   }
 
   //MARK: Data Passing
