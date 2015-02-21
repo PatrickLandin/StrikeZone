@@ -61,6 +61,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
       self.navigationController?.delegate = self
       self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: "backButtonPressed:")
       self.doneButton = UIBarButtonItem(title: "Detail", style: .Done, target: self, action: "detailButtonPressed:")
+      self.doneButton.enabled = false
       self.navigationItem.rightBarButtonItem = doneButton
       strikeZoneView.layer.borderWidth = 3
       strikeZoneView.layer.borderColor = UIColor.blackColor().CGColor
@@ -105,6 +106,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
       // Do any additional setup after loading the view.
       
       if currentHeatMap != nil{
+        self.doneButton.enabled = true
         for item in currentHeatMap!.pitches.allObjects {
           if let pitch = item as? Pitch {
           for view in strikeZoneView.subviews{
@@ -141,8 +143,6 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   
   override func viewWillDisappear(animated: Bool) {
     super.viewWillDisappear(animated)
-    
-
     self.currentPitch.managedObjectContext?.deleteObject(self.currentPitch)
     
   }
@@ -292,9 +292,9 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
   }
   
   func finishPitch(){
-    //currentHeatMap?.pitches.append(currentPitch)
     
     self.infoButton.hidden = true
+    self.doneButton.enabled = true
     
     UIGraphicsBeginImageContext(view.bounds.size);
     self.view.layer.renderInContext(UIGraphicsGetCurrentContext())

@@ -21,10 +21,10 @@ class MenuTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
       
-      self.collectionView.registerNib(UINib(nibName: "MenuCollectionCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "CELL")
-      self.collectionView.backgroundColor = UIColor.clearColor()
-      self.pitcherImage.layer.cornerRadius = 7.0
-      self.imageButton.layer.cornerRadius = 7.0
+//      self.collectionView.registerNib(UINib(nibName: "MenuCollectionCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "CELL")
+//      self.collectionView.backgroundColor = UIColor.clearColor()
+//      self.pitcherImage.layer.cornerRadius = 7.0
+//      self.imageButton.layer.cornerRadius = 7.0
         // Initialization code
     }
 

@@ -110,8 +110,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     
     cell.backgroundColor = UIColor.lightGrayColor()
     
-    cell.collectionView.reloadData()
-    cell.collectionView.tag = indexPath.row
   }
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -120,8 +118,6 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
     if let menuCell = cell as? MenuTableViewCell {
-      menuCell.collectionView.dataSource = self
-      menuCell.collectionView.delegate = self
     }
   }
 
@@ -324,32 +320,38 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     
-    tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    var cell : MenuTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath) as MenuTableViewCell
-    self.selectedIndexPath = indexPath
-    self.selectedPitcher = self.fetchedResultController.objectAtIndexPath(indexPath) as? Pitcher
-    
-    if selectedRowIndex == indexPath.row {
-      selectedRowIndex = -1
-      cell.imageButton.enabled = false
-    } else {
-      self.selectedRowIndex = indexPath.row
-      cell.imageButton.enabled = true
-      cell.editButton.enabled = true
-    }
-    tableView.beginUpdates()
-    tableView.endUpdates()
+    self.performSegueWithIdentifier("SHOW_MAPS", sender: self)
+//    
+//    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+//    var cell : MenuTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath) as MenuTableViewCell
+//    self.selectedIndexPath = indexPath
+//    self.selectedPitcher = self.fetchedResultController.objectAtIndexPath(indexPath) as? Pitcher
+//    
+//    if selectedRowIndex == indexPath.row {
+//      selectedRowIndex = -1
+//      cell.imageButton.enabled = false
+//    } else {
+//      self.selectedRowIndex = indexPath.row
+//      cell.imageButton.enabled = true
+//      cell.editButton.enabled = true
+//    }
+//    tableView.beginUpdates()
+//    tableView.endUpdates()
   }
   
-  func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-    
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "SHOW_MAPS" {
+      
+      let destinationVC = segue.destinationViewController as HeatMapCollectionViewController
+      let selectedIndexPath = self.tableView.indexPathsForSelectedRows()!.first as NSIndexPath
+      var pitcherToPass = self.fetchedResultController.objectAtIndexPath(selectedIndexPath) as Pitcher
+      destinationVC.selectedPitcher = pitcherToPass
+    }
   }
   
   func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
     var cell : MenuTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath) as MenuTableViewCell
     cell.imageButton.enabled = false
-    
-    
   }
 
   //MARK: Data Passing

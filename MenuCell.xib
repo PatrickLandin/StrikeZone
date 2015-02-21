@@ -35,15 +35,6 @@
                             <color key="titleShadowColor" red="0.42006400049999998" green="0.59349961100000004" blue="0.74112215910000001" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4Dm-kF-bAl">
-                        <rect key="frame" x="80" y="79" width="308" height="133"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cVh-Yi-vcG">
-                            <size key="itemSize" width="80" height="133"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                    </collectionView>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3n9-EC-avR">
                         <rect key="frame" x="14" y="82" width="56" height="55"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
@@ -86,7 +77,6 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="collectionView" destination="4Dm-kF-bAl" id="1ca-jk-qQo"/>
                 <outlet property="editButton" destination="3n9-EC-avR" id="DRt-04-q40"/>
                 <outlet property="imageButton" destination="1s2-v8-GNw" id="kUY-n8-WUu"/>
                 <outlet property="newMapButton" destination="TEG-sb-W5g" id="XUq-ZP-kLp"/>
