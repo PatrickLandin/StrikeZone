@@ -91,7 +91,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     cell.newMapButton.tag = indexPath.row
     cell.newMapButton.addTarget(self, action: "showMap:", forControlEvents: UIControlEvents.TouchUpInside)
     
-    cell.imageButton.enabled = false
+//    cell.imageButton.enabled = false
     cell.imageButton.tag = indexPath.row
     cell.imageButton.addTarget(self, action: "showPickerController:", forControlEvents: UIControlEvents.TouchUpInside)
     
@@ -298,7 +298,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
       self.imagePickerController.sourceType = UIImagePickerControllerSourceType.Camera
       self.imagePickerController.delegate = self
       self.imagePickerController.allowsEditing = true
-      sender.enabled = false
+//      sender.enabled = false
       self.presentViewController(self.imagePickerController, animated: true, completion: nil)
     }
   }
@@ -351,7 +351,7 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   
   func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
     var cell : MenuTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath) as MenuTableViewCell
-    cell.imageButton.enabled = false
+//    cell.imageButton.enabled = false
   }
 
   //MARK: Data Passing
