@@ -35,8 +35,12 @@
                             <color key="titleShadowColor" red="0.42006400049999998" green="0.59349961100000004" blue="0.74112215910000001" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3n9-EC-avR">
-                        <rect key="frame" x="14" y="82" width="56" height="55"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3n9-EC-avR">
+                        <rect key="frame" x="336" y="5" width="56" height="55"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="56" id="naO-sl-3yR"/>
+                            <constraint firstAttribute="height" constant="55" id="q98-s7-uKD"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                         <state key="normal" title="Edit">
                             <color key="titleColor" red="0.42006400049999998" green="0.59349961100000004" blue="0.74112215910000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -66,7 +70,9 @@
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
+                    <constraint firstItem="3n9-EC-avR" firstAttribute="top" secondItem="uJd-jv-5gg" secondAttribute="topMargin" constant="-3" id="0Oj-Cj-rxJ"/>
                     <constraint firstItem="1s2-v8-GNw" firstAttribute="trailing" secondItem="60b-wa-9gF" secondAttribute="trailing" id="28F-gk-aUw"/>
+                    <constraint firstItem="3n9-EC-avR" firstAttribute="trailing" secondItem="uJd-jv-5gg" secondAttribute="trailingMargin" id="CIE-Wl-6UN"/>
                     <constraint firstItem="60b-wa-9gF" firstAttribute="top" secondItem="uJd-jv-5gg" secondAttribute="topMargin" id="DqA-gb-8P8"/>
                     <constraint firstItem="60b-wa-9gF" firstAttribute="leading" secondItem="uJd-jv-5gg" secondAttribute="leadingMargin" id="He1-9Q-omn"/>
                     <constraint firstItem="1s2-v8-GNw" firstAttribute="top" secondItem="uJd-jv-5gg" secondAttribute="topMargin" id="XIX-YB-INH"/>
