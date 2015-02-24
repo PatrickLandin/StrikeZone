@@ -339,6 +339,18 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
 //    tableView.endUpdates()
   }
   
+  //MARK: Swipe to Delete
+  func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    return true
+  }
+  
+  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    if (editingStyle == UITableViewCellEditingStyle.Delete) {
+      PitchService.sharedPitchService.josePaniagua(self.fetchedResultController.objectAtIndexPath(indexPath) as Pitcher)
+    }
+  }
+  
+  //MARK: Segue
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "SHOW_MAPS" {
       
