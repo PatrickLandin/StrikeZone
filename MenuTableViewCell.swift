@@ -15,17 +15,11 @@ class MenuTableViewCell: UITableViewCell {
   @IBOutlet weak var newMapButton: UIButton!
   @IBOutlet weak var imageButton: UIButton!
   @IBOutlet weak var teamLabel: UILabel!
-  @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var editButton: UIButton!
+  @IBOutlet weak var historyButton: UIButton!
   
     override func awakeFromNib() {
         super.awakeFromNib()
-      
-//      self.collectionView.registerNib(UINib(nibName: "MenuCollectionCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "CELL")
-//      self.collectionView.backgroundColor = UIColor.clearColor()
-//      self.pitcherImage.layer.cornerRadius = 7.0
-//      self.imageButton.layer.cornerRadius = 7.0
-        // Initialization code
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

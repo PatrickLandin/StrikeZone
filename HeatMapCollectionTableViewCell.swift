@@ -36,10 +36,7 @@ class HeatMapCollectionTableViewCell: UITableViewCell, UICollectionViewDataSourc
       let heatMapImage = PitchService.sharedPitchService.convertDataToImage(heatMap.heatMapImage)
       cell.imageView.image = heatMapImage
       cell.heatMapDateLabel.text = ""
-
     }
-
-    
     return cell
   }
   

@@ -91,13 +91,17 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     cell.newMapButton.tag = indexPath.row
     cell.newMapButton.addTarget(self, action: "showMap:", forControlEvents: UIControlEvents.TouchUpInside)
     
-//    cell.imageButton.enabled = false
+    cell.imageButton.enabled = false
     cell.imageButton.tag = indexPath.row
     cell.imageButton.addTarget(self, action: "showPickerController:", forControlEvents: UIControlEvents.TouchUpInside)
     
     cell.editButton.tag = indexPath.row
     cell.editButton.addTarget(self, action: "editPitcher:", forControlEvents: UIControlEvents.TouchUpInside)
     cell.editButton.enabled = true
+    
+    cell.historyButton.tag = indexPath.row
+    cell.historyButton.addTarget(self, action:"showHistory:", forControlEvents: UIControlEvents.TouchUpInside)
+    cell.historyButton.enabled = true
     
     if pitcherToDisplay.realImage == nil {
     pitcherToDisplay.realImage = PitchService.sharedPitchService.convertDataToImage(pitcherToDisplay.pitcherImage)
@@ -292,13 +296,23 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     self.navigationController?.pushViewController(strikeZoneVC, animated: true)
   }
   
+  //MARK: Instantiate HeatMapCollectionViewController
+  func showHistory(sender : UIButton) {
+    
+    var heatMapCollectionVC = self.storyboard?.instantiateViewControllerWithIdentifier("HISTORY") as HeatMapCollectionViewController
+    heatMapCollectionVC.selectedPitcher = self.fetchedResultController.objectAtIndexPath(self.selectedIndexPath) as? Pitcher
+    self.tableView.selectRowAtIndexPath(self.selectedIndexPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
+    self.navigationController?.pushViewController(heatMapCollectionVC, animated: true)
+    
+  }
+  
   //MARK: UIImagePickerController
   func showPickerController(sender : UIButton) {
     if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
       self.imagePickerController.sourceType = UIImagePickerControllerSourceType.Camera
       self.imagePickerController.delegate = self
       self.imagePickerController.allowsEditing = true
-//      sender.enabled = false
+      sender.enabled = false
       self.presentViewController(self.imagePickerController, animated: true, completion: nil)
     }
   }
@@ -313,57 +327,57 @@ class PitcherMenuViewController: UIViewController, UITableViewDelegate, UITableV
   //MARK: Expand/Collapse tableView cells
   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     if indexPath.row == selectedRowIndex {
-      return 221
+      return 140
     }
     return 70
   }
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     
-    self.performSegueWithIdentifier("SHOW_MAPS", sender: self)
-//    
-//    tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//    var cell : MenuTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath) as MenuTableViewCell
-//    self.selectedIndexPath = indexPath
-//    self.selectedPitcher = self.fetchedResultController.objectAtIndexPath(indexPath) as? Pitcher
-//    
-//    if selectedRowIndex == indexPath.row {
-//      selectedRowIndex = -1
-//      cell.imageButton.enabled = false
-//    } else {
-//      self.selectedRowIndex = indexPath.row
-//      cell.imageButton.enabled = true
-//      cell.editButton.enabled = true
-//    }
-//    tableView.beginUpdates()
-//    tableView.endUpdates()
+//    self.performSegueWithIdentifier("SHOW_MAPS", sender: self)
+    
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    var cell : MenuTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath) as MenuTableViewCell
+    self.selectedIndexPath = indexPath
+    self.selectedPitcher = self.fetchedResultController.objectAtIndexPath(indexPath) as? Pitcher
+    
+    if selectedRowIndex == indexPath.row {
+      selectedRowIndex = -1
+      cell.imageButton.enabled = false
+    } else {
+      self.selectedRowIndex = indexPath.row
+      cell.imageButton.enabled = true
+      cell.editButton.enabled = true
+    }
+    tableView.beginUpdates()
+    tableView.endUpdates()
   }
   
   //MARK: Swipe to Delete
-  func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    return true
-  }
-  
-  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if (editingStyle == UITableViewCellEditingStyle.Delete) {
-      PitchService.sharedPitchService.josePaniagua(self.fetchedResultController.objectAtIndexPath(indexPath) as Pitcher)
-    }
-  }
+//  func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+//    return true
+//  }
+//  
+//  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//    if (editingStyle == UITableViewCellEditingStyle.Delete) {
+//      PitchService.sharedPitchService.josePaniagua(self.fetchedResultController.objectAtIndexPath(indexPath) as Pitcher)
+//    }
+//  }
   
   //MARK: Segue
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if segue.identifier == "SHOW_MAPS" {
-      
-      let destinationVC = segue.destinationViewController as HeatMapCollectionViewController
-      let selectedIndexPath = self.tableView.indexPathsForSelectedRows()!.first as NSIndexPath
-      var pitcherToPass = self.fetchedResultController.objectAtIndexPath(selectedIndexPath) as Pitcher
-      destinationVC.selectedPitcher = pitcherToPass
-    }
-  }
+//  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//    if segue.identifier == "SHOW_MAPS" {
+//      
+//      let destinationVC = segue.destinationViewController as HeatMapCollectionViewController
+//      let selectedIndexPath = self.tableView.indexPathsForSelectedRows()!.first as NSIndexPath
+//      var pitcherToPass = self.fetchedResultController.objectAtIndexPath(selectedIndexPath) as Pitcher
+//      destinationVC.selectedPitcher = pitcherToPass
+//    }
+//  }
   
   func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
     var cell : MenuTableViewCell = self.tableView.cellForRowAtIndexPath(indexPath) as MenuTableViewCell
-//    cell.imageButton.enabled = false
+    cell.imageButton.enabled = false
   }
 
   //MARK: Data Passing

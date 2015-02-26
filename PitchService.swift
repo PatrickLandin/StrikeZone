@@ -63,6 +63,7 @@ class PitchService {
   func covertAndSaveImageForPitcher(currentPitcher : Pitcher, image : UIImage) {
     
     println("called")
+    
     let size = CGSize(width: 300, height: 300)
     UIGraphicsBeginImageContext(size)
     image.drawInRect(CGRect(x: 0, y: 0, width: 300, height: 300))
@@ -82,6 +83,7 @@ class PitchService {
     println(image.size)
     println(CGImageGetWidth(image.CGImage))
     println(image.scale)
+    
     let imageData = UIImagePNGRepresentation(image)
     
     currentHeatMap.heatMapImage = imageData

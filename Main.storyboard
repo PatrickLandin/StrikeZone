@@ -114,7 +114,6 @@
                     <connections>
                         <outlet property="addButton" destination="tou-FE-XXX" id="0Yg-p4-7Ka"/>
                         <outlet property="tableView" destination="K1K-2T-tM3" id="Ebo-GP-p7A"/>
-                        <segue destination="qeO-LQ-cly" kind="show" identifier="SHOW_MAPS" id="TYm-Gs-ql9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CLv-Vs-RMs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -124,7 +123,7 @@
         <!--Heat Map Collection View Controller-->
         <scene sceneID="ZVu-eW-4ra">
             <objects>
-                <viewController id="qeO-LQ-cly" customClass="HeatMapCollectionViewController" customModule="StrikeZone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HISTORY" id="qeO-LQ-cly" customClass="HeatMapCollectionViewController" customModule="StrikeZone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8Vy-rW-HWG"/>
                         <viewControllerLayoutGuide type="bottom" id="i6N-Lw-FHK"/>
