@@ -229,7 +229,7 @@ class StrikeZoneViewController: UIViewController, UINavigationControllerDelegate
     
     let formatString = NSString(format: "%.01f", Float(self.score!))
     
-    println("score: \((formatString))")
+    //println("score: \((formatString))")
   }
   
   func modifyTemperatureForNewPitch() {
